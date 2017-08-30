@@ -103,6 +103,8 @@ html, body {
 
   .logo {
     margin-bottom: $logo-margin;
+    //margin-top: $logo-margin-top;
+    //margin-left: $logo-margin-left;
   }
 
   .search-results {
@@ -157,6 +159,7 @@ html, body {
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    text-decoration: underline;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -205,7 +208,9 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  font-size: 14px;
+  font-weight:400;
+  color: #4c555a;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
