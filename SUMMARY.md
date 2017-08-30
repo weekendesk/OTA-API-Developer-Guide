@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](index.html.md)
+* [Introduction](./sourceindex.html.md)
 * API Specifications
 * FAQs
 
