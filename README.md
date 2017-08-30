@@ -7,9 +7,9 @@
 - Download this repository.
 - Run the following command line on the terminal:
 
-  docker-compose up
+        docker-compose up
 
-- Go to `localhost:4567` to see the documentation.
+- Go to [localhost:4567](http://localhost:4567) to see the documentation.
 
 ### Live edition
 
