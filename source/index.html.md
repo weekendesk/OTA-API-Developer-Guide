@@ -2,14 +2,11 @@
 title: OTA API Developer Guide
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - php
-  - c
-  - java
-  - http
   - shell
-  - ruby
-  - python
-  - javascript
+  - php
+  - csharp
+  - java
+
 
 toc_footers:
   - <a href='http://www.weekendesk.fr' target='_blank'>Access Weekendesk Website</a>
@@ -66,32 +63,13 @@ Before starting remember to send the list of IPs you will be using both in testi
 
 > To authorize, use this code:
 
-```php
-$header = "Authorization: Basic " . base64_encode($username . ':' . $password);
-```
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  echo -n '102 iateasha' | base64
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+```php
+$header = "Authorization: Basic " . base64_encode($username . ':' . $password);
 ```
 
 > Make sure to replace `TEStTesttEsTt3st` with your Basic Authentication.
@@ -110,6 +88,17 @@ You must replace <code>TEStTesttEsTt3st</code> with your user and password encry
 
 This message is used to test that the connectivity is working, your IPs whitelisted and basic authentication you are using is correct.
 
+```shell
+curl
+  -X POST
+  -H "Content-Type: text/xml"
+  -H "Authorization: Basic TEStTesttEsTt3st"
+  -H "Cache-Control: no-cache"
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
 ```php
 <?php
 
@@ -119,7 +108,7 @@ $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
   'cache-control' => 'no-cache',
-  'authorization' => 'Basic MTAyOmlhdGVhc2hh',
+  'authorization' => 'Basic TEStTesttEsTt3st',
   'content-type' => 'text/xml'
 ));
 
@@ -136,24 +125,30 @@ try {
 }
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
+```java
+OkHttpClient client = new OkHttpClient();
 
-```javascript
-const kittn = require('kittn');
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+Response response = client.newCall(request).execute();
 ```
 
 > The above command returns XML structured like this:
@@ -165,34 +160,564 @@ let max = api.kittens.delete(2);
 </OTA_PingRS>
 ```
 
-This endpoint retrieves a specific kitten.
-
 ### HTTP Request
 
-Testing<br>
+Testing:<br>
 `POST` http://qualification-ari.weekendesk.com/ari/
-<br>Production<br>
-`POST http://ari.weekendesk.com/ari/`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
 
 
 ##Mapping
 
-Setup preparation
+In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
+Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.
+
+```shell
+curl
+  -X POST
+  -H "Content-Type: text/xml"
+  -H "Authorization: Basic TEStTesttEsTt3st"
+  -H "Cache-Control: no-cache"
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'authorization' => 'Basic TEStTesttEsTt3st',
+  'content-type' => 'text/xml'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above command returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
+    <Success />
+    <HotelRoomLists>
+        <HotelRoomList HotelCode="AL_TEST">
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType IsRoom="true" RoomID="RO_TEST">
+                            <RoomDescription Name="Test" />
+                        </RoomType>
+                    </RoomTypes>
+                    <RatePlans>
+                        <RatePlan RatePlanName="BAR" RatePlanID="001" />
+                        <RatePlan RatePlanName="SALE" RatePlanID="003" />
+                    </RatePlans>
+                </RoomStay>
+            </RoomStays>
+        </HotelRoomList>
+    </HotelRoomLists>
+</OTA_HotelRoomListRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ID | string | Yes | The Weekendesk Hotel ID
 
 
+# ARI Updates
 
-# API Specifications
+## Update Availability
 
-## Get All Kittens
+Weekendesk handles
+
+```shell
+curl -X POST
+-H "Authorization: Basic TEStTesttEsTt3st"
+-H "Content-Type: text/xml" -H "Cache-Control: no-cache"
+-d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+   <AvailStatusMessages HotelCode="AL_TEST">
+      <AvailStatusMessage LocatorID="1">
+         <StatusApplicationControl Start="2017-09-01" End="2017-09-02" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <RestrictionStatus Status="Open" />
+      </AvailStatusMessage>
+   </AvailStatusMessages>
+</OTA_HotelAvailNotifRQ>
+' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'content-type' => 'text/xml',
+  'authorization' => 'Basic TEStTesttEsTt3st'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+   <AvailStatusMessages HotelCode="AL_TEST">
+      <AvailStatusMessage LocatorID="1">
+         <StatusApplicationControl Start="2017-09-01" End="2017-09-02" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <RestrictionStatus Status="Open" />
+      </AvailStatusMessage>
+   </AvailStatusMessages>
+</OTA_HotelAvailNotifRQ>
+');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above command returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
+    <Success />
+    <HotelRoomLists>
+        <HotelRoomList HotelCode="AL_TEST">
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType IsRoom="true" RoomID="RO_TEST">
+                            <RoomDescription Name="Test" />
+                        </RoomType>
+                    </RoomTypes>
+                    <RatePlans>
+                        <RatePlan RatePlanName="BAR" RatePlanID="001" />
+                        <RatePlan RatePlanName="SALE" RatePlanID="003" />
+                    </RatePlans>
+                </RoomStay>
+            </RoomStays>
+        </HotelRoomList>
+    </HotelRoomLists>
+</OTA_HotelRoomListRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ID | string | Yes | The Weekendesk Hotel ID
+
+##Update Restrictions
+
+In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
+Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.
+
+```shell
+curl
+  -X POST
+  -H "Content-Type: text/xml"
+  -H "Authorization: Basic TEStTesttEsTt3st"
+  -H "Cache-Control: no-cache"
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'authorization' => 'Basic TEStTesttEsTt3st',
+  'content-type' => 'text/xml'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above command returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
+    <Success />
+    <HotelRoomLists>
+        <HotelRoomList HotelCode="AL_TEST">
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType IsRoom="true" RoomID="RO_TEST">
+                            <RoomDescription Name="Test" />
+                        </RoomType>
+                    </RoomTypes>
+                    <RatePlans>
+                        <RatePlan RatePlanName="BAR" RatePlanID="001" />
+                        <RatePlan RatePlanName="SALE" RatePlanID="003" />
+                    </RatePlans>
+                </RoomStay>
+            </RoomStays>
+        </HotelRoomList>
+    </HotelRoomLists>
+</OTA_HotelRoomListRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ID | string | Yes | The Weekendesk Hotel ID
+
+##Update Inventory
+
+In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
+Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.
+
+```shell
+curl
+  -X POST
+  -H "Content-Type: text/xml"
+  -H "Authorization: Basic TEStTesttEsTt3st"
+  -H "Cache-Control: no-cache"
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'authorization' => 'Basic TEStTesttEsTt3st',
+  'content-type' => 'text/xml'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above command returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
+    <Success />
+    <HotelRoomLists>
+        <HotelRoomList HotelCode="AL_TEST">
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType IsRoom="true" RoomID="RO_TEST">
+                            <RoomDescription Name="Test" />
+                        </RoomType>
+                    </RoomTypes>
+                    <RatePlans>
+                        <RatePlan RatePlanName="BAR" RatePlanID="001" />
+                        <RatePlan RatePlanName="SALE" RatePlanID="003" />
+                    </RatePlans>
+                </RoomStay>
+            </RoomStays>
+        </HotelRoomList>
+    </HotelRoomLists>
+</OTA_HotelRoomListRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ID | string | Yes | The Weekendesk Hotel ID
+
+##Update Rates
+
+In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
+Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.
+
+```shell
+curl
+  -X POST
+  -H "Content-Type: text/xml"
+  -H "Authorization: Basic TEStTesttEsTt3st"
+  -H "Cache-Control: no-cache"
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'authorization' => 'Basic TEStTesttEsTt3st',
+  'content-type' => 'text/xml'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+</OTA_PingRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddHeader("content-type", "text/xml");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("content-type", "text/xml")
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above command returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
+    <Success />
+    <HotelRoomLists>
+        <HotelRoomList HotelCode="AL_TEST">
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType IsRoom="true" RoomID="RO_TEST">
+                            <RoomDescription Name="Test" />
+                        </RoomType>
+                    </RoomTypes>
+                    <RatePlans>
+                        <RatePlan RatePlanName="BAR" RatePlanID="001" />
+                        <RatePlan RatePlanName="SALE" RatePlanID="003" />
+                    </RatePlans>
+                </RoomStay>
+            </RoomStays>
+        </HotelRoomList>
+    </HotelRoomLists>
+</OTA_HotelRoomListRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ID | string | Yes | The Weekendesk Hotel ID
+
+##Inventory
 
 ```ruby
 require 'kittn'
@@ -257,798 +782,6 @@ available | true | If set to false, the result will include kittens that have al
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-##Testing the connectivity
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-# Get the List of Room and Rates
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-# Update Availability, Inventory and Restrictions
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-# Update Prices
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
 
 # Receive Booking Notifications
 
