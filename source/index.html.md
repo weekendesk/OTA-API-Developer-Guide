@@ -22,14 +22,19 @@ search: true
 
 This document describes the interface specifications between the Weekendesk and a generic Channel Manager partner.<br>
 The interface developed by the Channel partner, according to the specifications present in this document, will allow for “2-way” communication to be set up which will provide the following features:<br>
-1. <b>ARI updates</b>: availability and restrictions, rates and inventory sent by the Channel partner and saved into Weekendesk inventory system<br>
-2. <b>Booking Notifications</b>: reservations received by Weekendesk are sent real time to the Channel partner.<br>
+
+1. **ARI updates**: availability and restrictions, rates and inventory sent by the Channel partner and saved into Weekendesk inventory system
+2. **Booking Notifications**: reservations received by Weekendesk are sent real time to the Channel partner.
+
 Following this document, the Channel Manager partner can develop a web-service (client side) that will be compatible with Weekendesk inventory system (server side).
 
 # OTA Standard
+
 ## Description
+
 XML messages exchanged by the standard interface are based on standard Open Travel Alliance (OTA) 2003B.<br>
 For further information on these standards, please consult:<br>
+
 <b>OTA</b>: http://www.opentravel.org<br>
 <b>XMLSchema</b>: http://www.w3.org/2001/XMLSchema
 
