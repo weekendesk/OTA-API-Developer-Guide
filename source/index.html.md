@@ -18,7 +18,7 @@ includes:
 search: true
 ---
 
-# Introduction
+# Introduction to the Developer Guide
 
 This document describes the interface specifications between the Weekendesk and a generic Channel Manager partner.<br>
 The interface developed by the Channel partner, according to the specifications present in this document, will allow for “2-way” communication to be set up which will provide the following features:<br>
