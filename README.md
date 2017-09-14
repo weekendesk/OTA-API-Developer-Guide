@@ -1,6 +1,6 @@
 # OTA API - Developer Guide
 
-# Check it live at: http://ota-doc.weekendesk.com/
+> Check it live at: http://ota-doc.weekendesk.com/
 
 ## Getting Started with Slate
 
