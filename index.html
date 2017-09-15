@@ -328,13 +328,13 @@ For further information on these standards, please consult:<br></p>
 <h2 id='messages'>Messages</h2>
 <p>The standard interface of Weekendesk handles several cases based on the following OTA messages:</p>
 <h3 id='ota_ping'>OTA_Ping</h3>
-<p>Ping</p>
+<p>The Ping RQ/RS allows the channel partner to test the connectivity is working.</p>
 <h3 id='ota_hotelroomlist'>OTA_HotelRoomList</h3>
-<p>Room List</p>
+<p>The RoomList RQ/RS is used by the channel partner to map the Weekendesk rooms and rate plans with the ones on its system.</p>
 <h3 id='ota_hotelavailnotif'>OTA_HotelAvailNotif</h3>
-<p>Availability and Restrictions</p>
+<p>The Availability Notification RQ/RS allows the channel partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.</p>
 <h3 id='ota_hotelrateamountnotif'>OTA_HotelRateAmountNotif</h3>
-<p>Rates</p>
+<p>The Rates Amount Notification RQ/RS allows the channel partner to send prices for each rate that is mapped in its system.</p>
 <h1 id='setup'>Setup</h1>
 <p>In this section it will be described all necessary steps to get your connectivity up and running.
 <br>
@@ -429,17 +429,25 @@ You must replace <code>TEStTesttEsTt3st</code> with your user and password encry
 <p>In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
 Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.</p>
 <pre class="highlight shell tab-shell"><code>curl
-  -X POST
-  -H <span class="s2">"Content-Type: text/xml"</span>
-  -H <span class="s2">"Authorization: Basic TEStTesttEsTt3st"</span>
-  -H <span class="s2">"Cache-Control: no-cache"</span>
-  -d <span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21"&gt;
-&lt;/OTA_PingRQ&gt;'</span> <span class="s2">"http://qualification-ari.weekendesk.com/ari/"</span>
+ -X POST
+ -H <span class="s2">"Content-Type: text/xml"</span>
+ -H <span class="s2">"Authorization: Basic TEStTesttEsTt3st"</span>
+ -H <span class="s2">"Cache-Control: no-cache"</span>
+ -d <span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+ &lt;POS&gt;
+    &lt;Source&gt;
+       &lt;RequestorID Type="1" ID="AL_TEST" /&gt;
+    &lt;/Source&gt;
+ &lt;/POS&gt;
+ &lt;HotelRoomLists&gt;
+    &lt;HotelRoomList /&gt;
+ &lt;/HotelRoomLists&gt;
+&lt;/OTA_HotelRoomListRQ&gt;'</span> <span class="s2">"http://qualification-ari.weekendesk.com/ari/"</span>
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'qualification-ari.weekendesk.com/ari/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'http://qualification-ari.weekendesk.com/ari/'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
 
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
@@ -449,8 +457,16 @@ Weekendesk allows you to do that by using the OTA_HotelRoomList request which fe
 <span class="p">));</span>
 
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21"&gt;
-&lt;/OTA_PingRQ&gt;'</span><span class="p">);</span>
+&lt;OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+   &lt;POS&gt;
+      &lt;Source&gt;
+         &lt;RequestorID Type="1" ID="AL_TEST" /&gt;
+      &lt;/Source&gt;
+   &lt;/POS&gt;
+   &lt;HotelRoomLists&gt;
+      &lt;HotelRoomList /&gt;
+   &lt;/HotelRoomLists&gt;
+&lt;/OTA_HotelRoomListRQ&gt;'</span><span class="p">);</span>
 
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
@@ -464,12 +480,12 @@ Weekendesk allows you to do that by using the OTA_HotelRoomList request which fe
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"text/xml"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\"&gt;\n&lt;/OTA_PingRQ&gt;"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n&lt;OTA_HotelRoomListRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"&gt;\r\n   &lt;POS&gt;\r\n      &lt;Source&gt;\r\n         &lt;RequestorID Type=\"1\" ID=\"AL_TEST\" /&gt;\r\n      &lt;/Source&gt;\r\n   &lt;/POS&gt;\r\n   &lt;HotelRoomLists&gt;\r\n      &lt;HotelRoomList /&gt;\r\n   &lt;/HotelRoomLists&gt;\r\n&lt;/OTA_HotelRoomListRQ&gt;"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
 
 <span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/xml"</span><span class="o">);</span>
-<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\"&gt;\n&lt;/OTA_PingRQ&gt;"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n&lt;OTA_HotelRoomListRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"&gt;\r\n   &lt;POS&gt;\r\n      &lt;Source&gt;\r\n         &lt;RequestorID Type=\"1\" ID=\"AL_TEST\" /&gt;\r\n      &lt;/Source&gt;\r\n   &lt;/POS&gt;\r\n   &lt;HotelRoomLists&gt;\r\n      &lt;HotelRoomList /&gt;\r\n   &lt;/HotelRoomLists&gt;\r\n&lt;/OTA_HotelRoomListRQ&gt;"</span><span class="o">);</span>
 <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://qualification-ari.weekendesk.com/ari/"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
@@ -522,7 +538,7 @@ Weekendesk allows you to do that by using the OTA_HotelRoomList request which fe
 <td>ID</td>
 <td>string</td>
 <td>Yes</td>
-<td>The Weekendesk Hotel ID</td>
+<td>Weekendesk Hotel ID</td>
 </tr>
 </tbody></table>
 <h1 id='ari-updates'>ARI Updates</h1><h2 id='update-availability'>Update Availability</h2>
@@ -573,19 +589,19 @@ Weekendesk allows you to do that by using the OTA_HotelRoomList request which fe
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://qualification-ari.weekendesk.com/ari/"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"text/xml"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\"&gt;\n&lt;/OTA_PingRQ&gt;"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n&lt;OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\"&gt;\r\n   &lt;AvailStatusMessages HotelCode=\"AL_TEST\"&gt;\r\n      &lt;AvailStatusMessage LocatorID=\"1\"&gt;\r\n         &lt;StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n         &lt;RestrictionStatus Status=\"Open\" /&gt;\r\n      &lt;/AvailStatusMessage&gt;\r\n&lt;/OTA_HotelAvailNotifRQ&gt;\r\n"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
 
 <span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/xml"</span><span class="o">);</span>
-<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\"&gt;\n&lt;/OTA_PingRQ&gt;"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n&lt;OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\"&gt;\r\n   &lt;AvailStatusMessages HotelCode=\"AL_TEST\"&gt;\r\n      &lt;AvailStatusMessage LocatorID=\"1\"&gt;\r\n         &lt;StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n         &lt;RestrictionStatus Status=\"Open\" /&gt;\r\n      &lt;/AvailStatusMessage&gt;\r\n&lt;/OTA_HotelAvailNotifRQ&gt;\r\n"</span><span class="o">);</span>
 <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://qualification-ari.weekendesk.com/ari/"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"text/xml"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"text/xml"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"cache-control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 
