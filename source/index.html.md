@@ -39,19 +39,19 @@ The standard interface of Weekendesk handles several cases based on the followin
 
 ### OTA_Ping
 
-Ping
+The Ping RQ/RS allows the channel partner to test the connectivity is working.
 
 ### OTA_HotelRoomList
 
-Room List
+The RoomList RQ/RS is used by the channel partner to map the Weekendesk rooms and rate plans with the ones on its system.
 
 ### OTA_HotelAvailNotif
 
-Availability and Restrictions
+The Availability Notification RQ/RS allows the channel partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.
 
 ### OTA_HotelRateAmountNotif
 
-Rates
+The Rates Amount Notification RQ/RS allows the channel partner to send prices for each rate that is mapped in its system.
 
 #Setup
 
@@ -175,20 +175,28 @@ Weekendesk allows you to do that by using the OTA_HotelRoomList request which fe
 
 ```shell
 curl
-  -X POST
-  -H "Content-Type: text/xml"
-  -H "Authorization: Basic TEStTesttEsTt3st"
-  -H "Cache-Control: no-cache"
-  -d '<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
-</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+ -X POST
+ -H "Content-Type: text/xml"
+ -H "Authorization: Basic TEStTesttEsTt3st"
+ -H "Cache-Control: no-cache"
+ -d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <POS>
+    <Source>
+       <RequestorID Type="1" ID="AL_TEST" />
+    </Source>
+ </POS>
+ <HotelRoomLists>
+    <HotelRoomList />
+ </HotelRoomLists>
+</OTA_HotelRoomListRQ>' "http://qualification-ari.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('qualification-ari.weekendesk.com/ari/');
+$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -198,8 +206,16 @@ $request->setHeaders(array(
 ));
 
 $request->setBody('<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
-</OTA_PingRQ>');
+<OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <POS>
+      <Source>
+         <RequestorID Type="1" ID="AL_TEST" />
+      </Source>
+   </POS>
+   <HotelRoomLists>
+      <HotelRoomList />
+   </HotelRoomLists>
+</OTA_HotelRoomListRQ>');
 
 try {
   $response = $request->send();
@@ -216,7 +232,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
 request.AddHeader("content-type", "text/xml");
-request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelRoomListRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <POS>\r\n      <Source>\r\n         <RequestorID Type=\"1\" ID=\"AL_TEST\" />\r\n      </Source>\r\n   </POS>\r\n   <HotelRoomLists>\r\n      <HotelRoomList />\r\n   </HotelRoomLists>\r\n</OTA_HotelRoomListRQ>", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -224,7 +240,7 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelRoomListRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <POS>\r\n      <Source>\r\n         <RequestorID Type=\"1\" ID=\"AL_TEST\" />\r\n      </Source>\r\n   </POS>\r\n   <HotelRoomLists>\r\n      <HotelRoomList />\r\n   </HotelRoomLists>\r\n</OTA_HotelRoomListRQ>");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
@@ -273,7 +289,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-ID | string | Yes | The Weekendesk Hotel ID
+ID | string | Yes | Weekendesk Hotel ID
 
 
 # ARI Updates
@@ -335,9 +351,9 @@ try {
 var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
-request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
 request.AddHeader("content-type", "text/xml");
-request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>", ParameterType.RequestBody);
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\">\r\n   <AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         <RestrictionStatus Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n</OTA_HotelAvailNotifRQ>\r\n", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -345,12 +361,12 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\">\r\n   <AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         <RestrictionStatus Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n</OTA_HotelAvailNotifRQ>\r\n");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
-  .addHeader("content-type", "text/xml")
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("content-type", "text/xml")
   .addHeader("cache-control", "no-cache")
   .build();
 
