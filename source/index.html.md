@@ -121,8 +121,8 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="3.00" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>
 ```
 
@@ -132,8 +132,8 @@ curl
   -H "Content-Type: text/xml"
   -H "Authorization: Basic TEStTesttEsTt3st"
   -H "Cache-Control: no-cache"
-  -d '<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+  -d '<?xml version="3.0" encoding="UTF-8"?>
+<OTA_PingRQ Version="3.0" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
 ```
 
@@ -150,8 +150,8 @@ $request->setHeaders(array(
   'content-type' => 'text/xml'
 ));
 
-$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="1.01" TimeStamp="2008-05-29T10:58:21">
+$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+<OTA_PingRQ version="3.0"" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>');
 
 try {
@@ -192,35 +192,35 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="3.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="3.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="3.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="3.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="3.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
@@ -236,6 +236,8 @@ Testing:<br>
 
 #Retrieve Rooms
 
+##Mapping
+
 In order to start updating the information into the Weekendesk system you will have to map the IDs of the Room and RatePlans with the ones within your system.<br>
 Weekendesk allows you to do that by using the OTA_HotelRoomList request which fetch all rooms and rate plans given a certain Weekendesk HotelID.
 
@@ -245,7 +247,7 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <POS>
     <Source>
@@ -264,7 +266,7 @@ curl
  -H "Content-Type: text/xml"
  -H "Authorization: Basic TEStTesttEsTt3st"
  -H "Cache-Control: no-cache"
- -d '<?xml version="1.0" encoding="UTF-8"?>
+ -d '<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <POS>
     <Source>
@@ -290,7 +292,7 @@ $request->setHeaders(array(
   'content-type' => 'text/xml'
 ));
 
-$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <POS>
       <Source>
@@ -340,7 +342,7 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -364,7 +366,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -388,7 +390,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -412,7 +414,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -436,7 +438,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="3.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -495,11 +497,15 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
    	<AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage LocatorID="1">
-         <StatusApplicationControl Start="2017-09-01" End="2017-09-02" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-09-01" End="2017-09-02"
+         RatePlanCode="003" InvTypeCode="RO_TEST" />
          <RestrictionStatus Status="Open" />
       </AvailStatusMessage>
     </AvailStatusMessages>
@@ -510,8 +516,11 @@ BODY
 curl -X POST
 -H "Authorization: Basic TEStTesttEsTt3st"
 -H "Content-Type: text/xml" -H "Cache-Control: no-cache"
--d '<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+-d '<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
    <AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage LocatorID="1">
          <StatusApplicationControl Start="2017-09-01" End="2017-09-02" RatePlanCode="003" InvTypeCode="RO_TEST" />
@@ -535,11 +544,15 @@ $request->setHeaders(array(
   'authorization' => 'Basic TEStTesttEsTt3st'
 ));
 
-$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
    <AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage LocatorID="1">
-         <StatusApplicationControl Start="2017-09-01" End="2017-09-02" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-09-01" End="2017-09-02"
+         RatePlanCode="003" InvTypeCode="RO_TEST" />
          <RestrictionStatus Status="Open" />
       </AvailStatusMessage>
    </AvailStatusMessages>
@@ -562,11 +575,17 @@ request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
 request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
-<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\">\r\n   \t<AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      
+<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\">\r\n  
+\t<AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      
 <AvailStatusMessage LocatorID=\"1\">\r\n         
-<StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         
+<StatusApplicationControl Start=\"2017-09-01\" End=\"2017-09-02\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         
 <RestrictionStatus Status=\"Open\" />\r\n      
-</AvailStatusMessage>\r\n    </AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>\r\n", ParameterType.RequestBody);
+</AvailStatusMessage>\r\n   
+</AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>\r\n", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -578,7 +597,8 @@ RequestBody body = RequestBody.create(mediaType,
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
 <OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-24T23:00:26\" Target=\"Production\">\r\n   \t<AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      
 <AvailStatusMessage LocatorID=\"1\">\r\n         
-<StatusApplicationControl Start=\"2018-09-01\" End=\"2018-09-02\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         
+<StatusApplicationControl Start=\"2018-09-01\" End=\"2018-09-02\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         
 <RestrictionStatus Status=\"Open\" />\r\n      
 </AvailStatusMessage>\r\n    
 </AvailStatusMessages>\r\n
@@ -597,36 +617,50 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
-</OTA_HotelAvailNotifRS>
-```
+</OTA_HotelAvailNotifRS>```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
@@ -642,10 +676,13 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
+Version | string | Yes | 3.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period
-End | date | Yes | Ending date of the updated period
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
+End | date | Yes | Ending date of the updated period (YYY-MM-DD)
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 Status | string | Yes | Open=The rate plan is sellable; Close=Stop sale
@@ -660,16 +697,25 @@ Weekendesk handles several types of restrictions.
 - CTD (Close to Departure)<br>
 <br>Each of the these restrictions can be sent in the same request and/or combined with Availability and Inventory updates.
 
+<aside class="success">
+Remember - The Channel partner may decide not to send one or more restrictions. If this happens, no update will be made for this restriction.
+</aside>
+
+
 ```xml
 HEADER
 Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	         <LengthsOfStay>
 	            <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
 	            <LengthOfStay Time="11" MinMaxMessageType="SetMaxLOS" />
@@ -687,10 +733,14 @@ curl
   -H "Content-Type: text/xml"
   -H "Authorization: Basic TEStTesttEsTt3st"
   -H "Cache-Control: no-cache"
-  -d '<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+  -d '<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	         <LengthsOfStay>
 	            <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
 	            <LengthOfStay Time="11" MinMaxMessageType="SetMaxLOS" />
@@ -715,10 +765,15 @@ $request->setHeaders(array(
   'content-type' => 'text/xml'
 ));
 
-$request->setBody('<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+$request->setBody('<OTA_HotelAvailNotifRQ
+xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	         <LengthsOfStay>
 	            <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
 	            <LengthOfStay Time="11" MinMaxMessageType="SetMaxLOS" />
@@ -744,7 +799,21 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
 request.AddHeader("content-type", "text/xml");
-request.AddParameter("text/xml", "<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t         <LengthsOfStay>\n\t            <LengthOfStay Time=\"3\" MinMaxMessageType=\"SetMinLOS\" />\n\t            <LengthOfStay Time=\"11\" MinMaxMessageType=\"SetMaxLOS\" />\n\t         </LengthsOfStay>\n\t         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\n\t         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\n\t      </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>", ParameterType.RequestBody);
+request.AddParameter("text/xml", "<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage LocatorID=\"1\">\n\t        
+<StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t       
+<LengthsOfStay>\n\t            <LengthOfStay Time=\"3\"
+MinMaxMessageType=\"SetMinLOS\" />\n\t            <LengthOfStay Time=\"11\"
+MinMaxMessageType=\"SetMaxLOS\" />\n\t         </LengthsOfStay>\n\t        
+<RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\n\t        
+<RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\n\t     
+</AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>",
+ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -752,7 +821,20 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t         <LengthsOfStay>\n\t            <LengthOfStay Time=\"3\" MinMaxMessageType=\"SetMinLOS\" />\n\t            <LengthOfStay Time=\"11\" MinMaxMessageType=\"SetMaxLOS\" />\n\t         </LengthsOfStay>\n\t         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\n\t         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\n\t      </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
+RequestBody body = RequestBody.create(mediaType, "<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage LocatorID=\"1\">\n\t        
+<StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t        
+<LengthsOfStay>\n\t            <LengthOfStay Time=\"3\"
+MinMaxMessageType=\"SetMinLOS\" />\n\t            <LengthOfStay Time=\"11\"
+MinMaxMessageType=\"SetMaxLOS\" />\n\t         </LengthsOfStay>\n\t        
+<RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\n\t        
+<RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\n\t     
+</AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
@@ -767,36 +849,51 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
@@ -813,13 +910,16 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
+Version | string | Yes | 3.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period
-End | date | Yes | Ending date of the updated period
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
+End | date | Yes | Ending date of the updated period (YYY-MM-DD)
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-Type | integer | Yes | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
+Time | integer | Yes | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
 MinMaxMessageType | string | Yes | SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction
 Restriction | string | Yes | Arrival=updates the CTA restriction; Departure=updates the CTD restriction
 Status | string | Yes | Open=The CheckIn (or CheckOut) is available for a specific RatePlan; Close=The CheckIn (or CheckOut) is NOT available for a specific RatePlan
@@ -836,10 +936,14 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage BookingLimit="10" LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	      </AvailStatusMessage>
 	   </AvailStatusMessages>
 	</OTA_HotelAvailNotifRQ>
@@ -851,10 +955,14 @@ curl
 -H "Authorization: Basic TEStTesttEsTt3st"
 -H "Content-Type: text/xml"
 -H "Cache-Control: no-cache"
--d '<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+-d '<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage BookingLimit="10" LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	      </AvailStatusMessage>
 	   </AvailStatusMessages>
 	</OTA_HotelAvailNotifRQ>' "http://qualification-ari.weekendesk.com/ari/"
@@ -873,10 +981,15 @@ $request->setHeaders(array(
   'authorization' => 'Basic TEStTesttEsTt3st'
 ));
 
-$request->setBody('<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+$request->setBody('<OTA_HotelAvailNotifRQ
+xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
 	   <AvailStatusMessages HotelCode="AL_TEST">
 	      <AvailStatusMessage BookingLimit="10" LocatorID="1">
-	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27" RatePlanCode="003" InvTypeCode="RO_TEST" />
+	         <StatusApplicationControl Start="2017-02-27" End="2017-02-27"
+           RatePlanCode="003" InvTypeCode="RO_TEST" />
 	      </AvailStatusMessage>
 	   </AvailStatusMessages>
 	</OTA_HotelAvailNotifRQ>');
@@ -896,7 +1009,16 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
-request.AddParameter("text/xml", "<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage BookingLimit=\"10\" LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t      </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>", ParameterType.RequestBody);
+request.AddParameter("text/xml", "<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage BookingLimit=\"10\"
+LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\"
+End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t     
+</AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>",
+ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -904,7 +1026,15 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage BookingLimit=\"10\" LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\" End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t      </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
+RequestBody body = RequestBody.create(mediaType, "<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n\t   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\n\t      <AvailStatusMessage BookingLimit=\"10\"
+LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\"
+End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t     
+</AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
@@ -919,36 +1049,51 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
@@ -964,10 +1109,13 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
+Version | string | Yes | 3.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period
-End | date | Yes | Ending date of the updated period
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
+End | date | Yes | Ending date of the updated period (YYY-MM-DD)
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
@@ -985,11 +1133,15 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
    <AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage BookingLimit="29" LocatorID="1">
-         <StatusApplicationControl Start="2017-04-23" End="2017-04-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-04-23" End="2017-04-30"
+         RatePlanCode="001" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="2" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -999,7 +1151,8 @@ BODY
          <RestrictionStatus Restriction="Departure" Status="Open" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="2">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="1" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1009,7 +1162,8 @@ BODY
          <RestrictionStatus Restriction="Departure" Status="Close" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="3">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST2" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST2" />
          <LengthsOfStay>
             <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1028,11 +1182,15 @@ curl
 -H "Authorization: Basic TEStTesttEsTt3st"
 -H "Content-Type: text/xml"
 -H "Cache-Control: no-cache"
--d '<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+-d '<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
    <AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage BookingLimit="29" LocatorID="1">
-         <StatusApplicationControl Start="2017-04-23" End="2017-04-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-04-23" End="2017-04-30"
+         RatePlanCode="001" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="2" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1042,7 +1200,8 @@ curl
          <RestrictionStatus Restriction="Departure" Status="Open" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="2">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="1" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1052,7 +1211,8 @@ curl
          <RestrictionStatus Restriction="Departure" Status="Close" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="3">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST2" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST2" />
          <LengthsOfStay>
             <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1078,11 +1238,15 @@ $request->setHeaders(array(
   'authorization' => 'Basic TEStTesttEsTt3st'
 ));
 
-$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+TimeStamp="2016-02-26T10:32:51" Target="Production">
    <AvailStatusMessages HotelCode="AL_TEST">
       <AvailStatusMessage BookingLimit="29" LocatorID="1">
-         <StatusApplicationControl Start="2017-04-23" End="2017-04-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-04-23" End="2017-04-30"
+         RatePlanCode="001" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="2" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1092,7 +1256,8 @@ $request->setBody('<?xml version="1.0" encoding="UTF-8"?>
          <RestrictionStatus Restriction="Departure" Status="Open" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="2">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST" />
          <LengthsOfStay>
             <LengthOfStay Time="1" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1102,7 +1267,8 @@ $request->setBody('<?xml version="1.0" encoding="UTF-8"?>
          <RestrictionStatus Restriction="Departure" Status="Close" />
       </AvailStatusMessage>
       <AvailStatusMessage BookingLimit="20" LocatorID="3">
-         <StatusApplicationControl Start="2017-03-23" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST2" />
+         <StatusApplicationControl Start="2017-03-23" End="2017-03-30"
+         RatePlanCode="003" InvTypeCode="RO_TEST2" />
          <LengthsOfStay>
             <LengthOfStay Time="3" MinMaxMessageType="SetMinLOS" />
             <LengthOfStay Time="99" MinMaxMessageType="SetMaxLOS" />
@@ -1129,7 +1295,40 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
-request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\r\n   <AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage BookingLimit=\"29\" LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-04-23\" End=\"2017-04-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"2\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Close\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\" LocatorID=\"2\">\r\n         <StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"1\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Close\" />\r\n      </AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\" LocatorID=\"3\">\r\n         <StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST2\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"3\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n   </AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>", ParameterType.RequestBody);
+request.AddParameter("text/xml", "<?xml version=\"1.0\"
+encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\r\n   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage BookingLimit=\"29\"
+LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-04-23\"
+End=\"2017-04-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"2\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n        
+<RestrictionStatus Status=\"Close\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n     
+<AvailStatusMessage BookingLimit=\"20\" LocatorID=\"2\">\r\n        
+<StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"1\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n        
+<RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Close\" />\r\n     
+</AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\"
+LocatorID=\"3\">\r\n         <StatusApplicationControl Start=\"2017-03-23\"
+End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST2\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"3\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n        
+<RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n  
+</AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1137,7 +1336,40 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\r\n   <AvailStatusMessages HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage BookingLimit=\"29\" LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-04-23\" End=\"2017-04-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"2\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Close\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\" LocatorID=\"2\">\r\n         <StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"1\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Close\" />\r\n      </AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\" LocatorID=\"3\">\r\n         <StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST2\" />\r\n         <LengthsOfStay>\r\n            <LengthOfStay Time=\"3\" MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\" MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n         <RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n   </AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\"
+encoding=\"UTF-8\"?>\r\n<OTA_HotelAvailNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" Version=\"1\"
+TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\r\n   <AvailStatusMessages
+HotelCode=\"AL_TEST\">\r\n      <AvailStatusMessage BookingLimit=\"29\"
+LocatorID=\"1\">\r\n         <StatusApplicationControl Start=\"2017-04-23\"
+End=\"2017-04-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"2\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n        
+<RestrictionStatus Status=\"Close\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n     
+<AvailStatusMessage BookingLimit=\"20\" LocatorID=\"2\">\r\n        
+<StatusApplicationControl Start=\"2017-03-23\" End=\"2017-03-30\"
+RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"1\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n        
+<RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Close\" />\r\n     
+</AvailStatusMessage>\r\n      <AvailStatusMessage BookingLimit=\"20\"
+LocatorID=\"3\">\r\n         <StatusApplicationControl Start=\"2017-03-23\"
+End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST2\" />\r\n        
+<LengthsOfStay>\r\n            <LengthOfStay Time=\"3\"
+MinMaxMessageType=\"SetMinLOS\" />\r\n            <LengthOfStay Time=\"99\"
+MinMaxMessageType=\"SetMaxLOS\" />\r\n         </LengthsOfStay>\r\n      
+<RestrictionStatus Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
+Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n  
+</AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
@@ -1152,36 +1384,51 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-26T10:32:51" Target="Production">
     <Success />
 </OTA_HotelAvailNotifRS>
 ```
@@ -1197,10 +1444,13 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
+Version | string | Yes | 3.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period
-End | date | Yes | Ending date of the updated period
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
+End | date | Yes | Ending date of the updated period (YYY-MM-DD)
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
@@ -1226,11 +1476,13 @@ Content-Type: text/xml
 
 BODY
 <OTA_HotelRateAmountNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     Version="1" TimeStamp="2013-07-19T10:03:09" Target="Production">
     <RateAmountMessages HotelCode="AL_TEST">
         <RateAmountMessage LocatorID="1">
-            <StatusApplicationControl Start="2017-02-23" End="2017-03-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-23" End="2017-03-30"
+            RatePlanCode="001" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1240,7 +1492,8 @@ BODY
             </Rates>
         </RateAmountMessage>
         <RateAmountMessage LocatorID="2">
-            <StatusApplicationControl Start="2017-02-20" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-20" End="2017-03-30"
+            RatePlanCode="003" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1260,11 +1513,13 @@ curl
 -H "Content-Type: text/xml"
 -H "Cache-Control: no-cache"
 -d '<OTA_HotelRateAmountNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     Version="1" TimeStamp="2013-07-19T10:03:09" Target="Production">
     <RateAmountMessages HotelCode="AL_TEST">
         <RateAmountMessage LocatorID="1">
-            <StatusApplicationControl Start="2017-02-23" End="2017-03-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-23" End="2017-03-30"
+            RatePlanCode="001" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1274,7 +1529,8 @@ curl
             </Rates>
         </RateAmountMessage>
         <RateAmountMessage LocatorID="2">
-            <StatusApplicationControl Start="2017-02-20" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-20" End="2017-03-30"
+            RatePlanCode="003" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1301,11 +1557,13 @@ $request->setHeaders(array(
 ));
 
 $request->setBody('<OTA_HotelRateAmountNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     Version="1" TimeStamp="2013-07-19T10:03:09" Target="Production">
     <RateAmountMessages HotelCode="AL_TEST">
         <RateAmountMessage LocatorID="1">
-            <StatusApplicationControl Start="2017-02-23" End="2017-03-30" RatePlanCode="001" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-23" End="2017-03-30"
+            RatePlanCode="001" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1315,7 +1573,8 @@ $request->setBody('<OTA_HotelRateAmountNotifRQ xmlns="http://www.opentravel.org/
             </Rates>
         </RateAmountMessage>
         <RateAmountMessage LocatorID="2">
-            <StatusApplicationControl Start="2017-02-20" End="2017-03-30" RatePlanCode="003" InvTypeCode="RO_TEST" />
+            <StatusApplicationControl Start="2017-02-20" End="2017-03-30"
+            RatePlanCode="003" InvTypeCode="RO_TEST" />
             <Rates>
                 <Rate>
                     <BaseByGuestAmts>
@@ -1342,7 +1601,25 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
-request.AddParameter("text/xml", "<OTA_HotelRateAmountNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    Version=\"1\" TimeStamp=\"2013-07-19T10:03:09\" Target=\"Production\">\n    <RateAmountMessages HotelCode=\"AL_TEST\">\n        <RateAmountMessage LocatorID=\"1\">\n            <StatusApplicationControl Start=\"2017-02-23\" End=\"2017-03-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\n            <Rates>\n                <Rate>\n                    <BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"200.00\" DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n                </Rate>\n            </Rates>\n        </RateAmountMessage>\n        <RateAmountMessage LocatorID=\"2\">\n            <StatusApplicationControl Start=\"2017-02-20\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n            <Rates>\n                <Rate>\n                    <BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"100.00\" DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n                </Rate>\n            </Rates>\n        </RateAmountMessage>\n    </RateAmountMessages>\n</OTA_HotelRateAmountNotifRQ>", ParameterType.RequestBody);
+request.AddParameter("text/xml", "<OTA_HotelRateAmountNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"\n   
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    Version=\"1\"
+TimeStamp=\"2013-07-19T10:03:09\" Target=\"Production\">\n    <RateAmountMessages
+HotelCode=\"AL_TEST\">\n        <RateAmountMessage LocatorID=\"1\">\n           
+<StatusApplicationControl Start=\"2017-02-23\" End=\"2017-03-30\"
+RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\n           
+<Rates>\n                <Rate>\n                   
+<BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"200.00\"
+DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n               
+</Rate>\n            </Rates>\n        </RateAmountMessage>\n       
+<RateAmountMessage LocatorID=\"2\">\n            <StatusApplicationControl
+Start=\"2017-02-20\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\"
+/>\n            <Rates>\n                <Rate>\n                   
+<BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"100.00\"
+DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n               
+</Rate>\n            </Rates>\n        </RateAmountMessage>\n   
+</RateAmountMessages>\n</OTA_HotelRateAmountNotifRQ>", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1350,7 +1627,25 @@ IRestResponse response = client.Execute(request);
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("text/xml");
-RequestBody body = RequestBody.create(mediaType, "<OTA_HotelRateAmountNotifRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    Version=\"1\" TimeStamp=\"2013-07-19T10:03:09\" Target=\"Production\">\n    <RateAmountMessages HotelCode=\"AL_TEST\">\n        <RateAmountMessage LocatorID=\"1\">\n            <StatusApplicationControl Start=\"2017-02-23\" End=\"2017-03-30\" RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\n            <Rates>\n                <Rate>\n                    <BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"200.00\" DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n                </Rate>\n            </Rates>\n        </RateAmountMessage>\n        <RateAmountMessage LocatorID=\"2\">\n            <StatusApplicationControl Start=\"2017-02-20\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n            <Rates>\n                <Rate>\n                    <BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"100.00\" DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n                </Rate>\n            </Rates>\n        </RateAmountMessage>\n    </RateAmountMessages>\n</OTA_HotelRateAmountNotifRQ>");
+RequestBody body = RequestBody.create(mediaType, "<OTA_HotelRateAmountNotifRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"\n   
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    Version=\"1\"
+TimeStamp=\"2013-07-19T10:03:09\" Target=\"Production\">\n    <RateAmountMessages
+HotelCode=\"AL_TEST\">\n        <RateAmountMessage LocatorID=\"1\">\n           
+<StatusApplicationControl Start=\"2017-02-23\" End=\"2017-03-30\"
+RatePlanCode=\"001\" InvTypeCode=\"RO_TEST\" />\n           
+<Rates>\n                <Rate>\n                   
+<BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"200.00\"
+DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n               
+</Rate>\n            </Rates>\n        </RateAmountMessage>\n     
+<RateAmountMessage LocatorID=\"2\">\n            <StatusApplicationControl
+Start=\"2017-02-20\" End=\"2017-03-30\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\"
+/>\n            <Rates>\n                <Rate>\n                   
+<BaseByGuestAmts>\n                        <BaseByGuestAmt AmountAfterTax=\"100.00\"
+DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n               
+</Rate>\n            </Rates>\n        </RateAmountMessage>\n   
+</RateAmountMessages>\n</OTA_HotelRateAmountNotifRQ>");
 Request request = new Request.Builder()
   .url("http://qualification-ari.weekendesk.com/ari/")
   .post(body)
@@ -1365,36 +1660,50 @@ Response response = client.newCall(request).execute();
 > The above command returns XML structured like this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelRateAmountNotifRS>
 ```
 
 ```shell
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelRateAmountNotifRS>
 ```
 
 ```php
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
-</OTA_HotelRateAmountNotifRS>
-```
+</OTA_HotelRateAmountNotifRS>```
 
 ```csharp
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelRateAmountNotifRS>
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-24T23:00:26" Target="Production">
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
+  TimeStamp="2016-02-24T23:00:26" Target="Production">
     <Success />
 </OTA_HotelRateAmountNotifRS>
 ```
@@ -1410,13 +1719,16 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
+Version | string | Yes | 3.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period
-End | date | Yes | Ending date of the updated period
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
+End | date | Yes | Ending date of the updated period (YYY-MM-DD)
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-AmountAfterTax | float | Yes | The price for the Rate of a specific Rate Plan
+AmountAfterTax | decimal | Yes | The price for the Rate of a specific Rate Plan
 DecimalPlaces | integer | No | Number of decimal places used in the AmountAfterTax
 
 #ARI Read (Beta Test)
@@ -1450,407 +1762,357 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </aside>
 
 
-### Query Parameters
+### Authentication
+
+```xml
+<POS>
+    <Source>
+      <RequestorID ID="user" MessagePassword="password"/>
+    </Source>
+</POS>
+
+```
+
+Element | Type |  Description
+--------- | ------- | -----------
+@RequestorID |  |  
+ID | string | User provided by the Channel partner to authenticate the request
+MessagePassword | string | Password provided by the Channel partner to authenticate the request
+
+### Room Information
+
+```xml
+<RoomStays>
+   <RoomStay>
+       <RoomTypes>
+           <RoomType RoomTypeCode="RO_TEST" RoomType="Classic Room"
+                     NumberOfUnits="1"/>
+       </RoomTypes>
+       <RatePlans>
+          <RatePlan RatePlanCode="004" RatePlanName="004">
+              <Rate EffectiveDate="2017-10-31" ExpireDate="2017-11-01">
+                 <Base AmountAfterTax="116.00" CurrencyCode="EUR">
+                 </Base>
+              </Rate>
+           </RatePlan>
+         </RatePlans>
+       <GuestCounts>
+            <GuestCount AgeQualifyingCode="10" Count="2" ResGuestRPH="1"/>
+            <GuestCount AgeQualifyingCode="8" Count="1" ResGuestRPH="2"/>
+       </GuestCounts>
+       <TimeSpan Start="2017-10-31" End="2017-11-01"/>
+       <BasicPropertyInfo BrandCode="BC_TEST" HotelCode="AL_TEST" HotelName="Hotel Test"/>
+   </RoomStay>
+</RoomStays>
+```
+
+Element | Type | Description
+--------- | ------- | -----------
+@RoomType |  |  |
+RoomTypeCode | string | RoomCode of the Room that is being reserved
+RoomType | string | Room Name of the Room that is being reserved
+NumberOfUnits | integer | Number of Rooms that are being reserved
+@RatePlan |  |  |
+RatePlanCode | string | RatePlanCode of the RatePlan that is being reserved
+RatePlanName | string | RatePlan Name of the RatePlan that is being reserved
+@Rate |  |  
+EffectiveDate | date | StartDate of a night stay for each day that is being reserved (YYY-MM-DD)
+ExpireDate | date | EndDate of a night stay for each day that is being reserved (YYY-MM-DD)
+@Base |  |  
+AmountAfterTax | decimal | Day price for which a Room is being reserved at a specific Rate.
+CurrencyCode | string | Currency used to specify the Day price.
+@GuestCount |  |  
+AgeQualifyingCode | integer | AgeCategory of the Guests for which the Room is being reserved. 10=Adults, 8=Children, 7=Babies
+Count | integer | Number of guests for a specific AgeCategory
+ResGuestRPH | integer | Increment number of GuestCount
+@TimeSpan |  |  
+Start | date | Date of the CheckIn
+End | date | Date of the CheckOut
+@BasicPropertyInfo |  |
+BrandCode | string | Weekendesk Chain code of the hotel
+HotelCode | string | Weekendesk Hotel code of the hotel
+HotelName | string | Name of the hotel
+
+### Services information
+
+```xml
+<Services>
+    <Service Quantity="1" ServicePricingType="Per stay" >
+        <Price>
+            <Base AmountAfterTax="0.00" CurrencyCode="EUR" />
+        </Price>
+        <ServiceDetails>
+          <TimeSpan Duration="P1D" />
+        </ServiceDetails>
+        <TPA_Extensions>
+          <Description Language="ES">
+            <Text>Supplement accomodation children</Text>
+          </Description>
+        </TPA_Extensions>
+    </Service>
+</Services>
+```
+
+Element | Type | Description
+--------- | ------- | -----------
+@Service |  |  
+Quantity | integer | Quantity of the service offered by the hotel within the reservation (2 dinners, 1 massage)
+ServicePricingType | string | Pricing model offered for the service (Per person, per night, per room)
+@Base |  |  
+AmountAfterTax | decimal | Price paid for a specific service - <b>Included in the total price</b>
+AmountAfterTax | string | Currency in which the price is expressed
+@TimeSpan |  |  |
+Duration | string | The service duration<br>P1D means:<br>Period 1 day (1night)<br> P2D means:<br>Period 2 days (2 nights)
+@Description |  |  
+Language | string | Language in which the service is described
+Text | string | Description of the service
+
+### Guest Information
+
+```xml
+<ResGuest ResGuestRPH="1" AgeQualifyingCode="10">
+    <Profiles>
+        <ProfileInfo>
+            <Profile ProfileType="1">
+                <Customer>
+                    <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName><![CDATA[Test]]></GivenName>
+                        <Surname><![CDATA[Test]]></Surname>
+                    </PersonName>
+                    <Telephone PhoneNumber="1234567" PhoneLocationType="1" PhoneTechType="1"/>
+                    <Email>test@weekendesk.com</Email>
+                    <Address>
+                        <AddressLine><![CDATA[ _]]></AddressLine>
+                        <CityName><![CDATA[Barcelona]]></CityName>
+                        <PostalCode><![CDATA[8024]]></PostalCode>
+                        <CountryName><![CDATA[Italie]]></CountryName>
+                    </Address>
+                </Customer>
+            </Profile>
+        </ProfileInfo>
+    </Profiles>
+</ResGuest>
+```
+
+Element | Type | Description
+--------- | ------- |-----------
+@Profile |  |  
+ProfileType | integer | Always 1 which defines the customer
+@PersonName |  |  
+NamePrefix | string | Civility of the customer
+GivenName | CDATA | First name of the customer
+Surname | CDATA |  Last name of the customer
+@Telephone |  |  
+PhoneNumber | string | Phone number of the customer
+PhoneLocationType | string | Fixed value equal to 1
+PhoneTechType | string | Fixed value equal to 1
+Email | string | Email of the customer
+AddressLine | CDATA | Open=The CheckIn (or
+CityName | CDATA | Open=The CheckIn (or
+PostalCode | CDATA | Open=The CheckIn (or
+CountryName | CDATA | Open=The CheckIn (or
+
+### Global Information
+
+```xml
+<ResGlobalInfo>
+    <TimeSpan Start="2017-07-12" End="2017-07-14" Duration="P2D"/>
+    <Comments>
+        <Comment>
+            <Text><![CDATA[2 nuits en chambre double standard vue lac pour 4 adultes. Entrée au Zoo pour 4 adultes]]></Text>
+        </Comment>
+    </Comments>
+    <Total AmountAfterTax="840.00" CurrencyCode="EUR"/>
+    <HotelReservationIDs>
+        <HotelReservationID ResID_Type="5" ResID_Value="123456" ResID_Source="Weekendesk" ResID_Date="2017-06-08T09:38:30.655"/>
+        <HotelReservationID ResID_Type="14" ResID_Value="ABC123" ResID_Source="ChannelPartner" ResID_Date="2017-06-08T09:38:30.655"/>
+    </HotelReservationIDs>
+    <Guarantee>
+         <GuaranteesAccepted>
+             <GuaranteeAccepted>
+                 <PaymentCard CardNumber="1111222233334444" ExpireDate="1219"
+                              SeriesCode="123" CardType="MC"
+                              CardCode="VCC" CardHolderName="WEEKENDESK"/>
+             </GuaranteeAccepted>
+         </GuaranteesAccepted>
+     </Guarantee>
+</ResGlobalInfo>
+```
+
+Element | Type | Description
+--------- | ------- |-----------
+@TimeSpan |  |  
+Start | string |
+End | string |  
+Duration | string |  
+@Comment |  |  
+Text | CDATA |
+@Total |  |  
+AmountAfterTax | Decimal |
+CurrencyCode | string |
+@Comment |  |  
+@Comment |  |  
+
+###Example of Request
+
+Here an example of a request and the response expected from the channel partner with all the elements included in the body.
+
+```xml
+<?xml version="3.0" encoding="UTF-8"?>
+<OTA_HotelResRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd"
+Version="3.0"
+                ResStatus="Commit" PrimaryLangID="en-US">
+    <POS>
+        <Source>
+        <RequestorID ID="user" MessagePassword="password"/>
+        </Source>
+    </POS>
+    <HotelReservations>
+        <HotelReservation>
+            <RoomStays>
+                <RoomStay>
+                    <RoomTypes>
+                        <RoomType RoomTypeCode="RO_TEST"
+                        RoomType="Classic Room"
+                                  NumberOfUnits="1"/>
+                    </RoomTypes>
+                    <RatePlans>
+                                                    <RatePlan RatePlanCode="004"
+                                                    RatePlanName="004">
+                                <Rate EffectiveDate="2017-10-31"
+                                      ExpireDate="2017-11-01">
+                                    <Base AmountAfterTax="116.00"
+                                    CurrencyCode="EUR"></Base>
+                                </Rate>
+                            </RatePlan>
+                                            </RatePlans>
+                    <GuestCounts>
+                            <GuestCount AgeQualifyingCode="10" Count="2"
+                            ResGuestRPH="1"/>
+                            <GuestCount AgeQualifyingCode="8" Count="1"
+                            ResGuestRPH="2"/>
+                    </GuestCounts>
+                    <TimeSpan Start="2017-10-31"
+                              End="2017-11-01"/>
+                    <BasicPropertyInfo BrandCode="BC_TEST" HotelCode="AL_TEST"
+                                       HotelName="Hotel Test"/>
+                </RoomStay>
+            </RoomStays>
+            <Services>
+                <Service Quantity="1" ServicePricingType="Per stay" >
+                    <Price>
+                        <Base AmountAfterTax="0.00" CurrencyCode="EUR" />
+                    </Price>
+                    <ServiceDetails>
+                        <TimeSpan Duration="P1D" />
+                    </ServiceDetails>
+                    <TPA_Extensions>
+                        <Description Language="ES">
+                            <Text>Supplement accomodation children</Text>
+                        </Description>
+                    </TPA_Extensions>
+                </Service>
+            </Services>
+            <ResGuests>
+                <ResGuest ResGuestRPH="1" AgeQualifyingCode="10">
+                    <Profiles>
+                        <ProfileInfo>
+                            <Profile ProfileType="1">
+                                <Customer>
+                                    <PersonName>
+                                        <NamePrefix>Ms</NamePrefix>
+                                        <GivenName><![CDATA[Test]]></GivenName>
+                                        <Surname><![CDATA[Test]]></Surname>
+                                    </PersonName>
+                                    <Telephone PhoneNumber="123456789" PhoneLocationType="1" PhoneTechType="1"/>
+                                    <Email>test@test.com</Email>
+                                    <Address>
+                                        <AddressLine><![CDATA[Test]]></AddressLine>
+                                        <CityName><![CDATA[Test]]></CityName>
+                                        <PostalCode><![CDATA[128398]]></PostalCode>
+                                        <CountryName><![CDATA[Test]]></CountryName>
+                                    </Address>
+                                </Customer>
+                            </Profile>
+                        </ProfileInfo>
+                    </Profiles>
+                </ResGuest>
+            </ResGuests>
+            <ResGlobalInfo>
+                <TimeSpan Start="2017-10-31"
+                          End="2017-11-01"
+                          Duration="P1D"/>
+                <Comments>
+                    <Comment>
+                        <Text><![CDATA[
+                            1 noche junior suite superior para 2 adultos y 1 niño. 1 desayuno continental (buffet) para 2 adultos y 1 niño
+                            Buenas tardes,  tal y como hablamos por tel&eacute;fono,  os indico que venimos con un beb&eacute; de 2 meses por lo que necesitamos la cuna tambi&eacute;n (a parte de la cama supletoria). Muchas gracias
+                            Number of children:1.Extra costs for staying and/or meals of the children must be paid for directly to the hotel.
+                            ]]></Text>
+                    </Comment>
+                    <Comment>
+                            <Text><![CDATA[Weekendesk pagará esta reserva al hotel mediante tarjeta de crédito virtual. Importe total: 92.80 EUR EUR. La cantidad estará disponible para ser retirada desde el 01/11/2017 hasta el 01/12/2017.]]></Text>
+                    </Comment>
+                </Comments>
+                <Total AmountAfterTax="116.00" CurrencyCode="EUR"/>
+                <HotelReservationIDs>
+                    <HotelReservationID ResID_Type="5" ResID_Value="12345678" ResID_Source="Weekendesk"
+                                        ResID_Date="2017-09-19T17:50:41.059"/>
+                                            <HotelReservationID ResID_Type="14" ResID_Value="ABCDEFGH"
+                                            ResID_Source="ChannelPartner"
+                                            ResID_Date="2017-09-19T17:50:41.059"/>
+                </HotelReservationIDs>
+            <Guarantee>
+                <GuaranteesAccepted>
+                    <GuaranteeAccepted>
+                      <PaymentCard CardNumber="1111222233334444" ExpireDate="1219"
+                             SeriesCode="123" CardType="MC"
+                             CardCode="VCC" CardHolderName="WEEKENDESK"/>
+                    </GuaranteeAccepted>
+                </GuaranteesAccepted>
+            </Guarantee>
+          </ResGlobalInfo>
+        </HotelReservation>
+    </HotelReservations>
+</OTA_HotelResRQ>
+```
+> The above command returns XML structured like this:
+
+```xml
+<OTA_HotelResRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.000"
+  ResResponseType="Committed"
+  xmlns="http://www.opentravel.org/OTA/2003/05"><Success/>
+  <HotelReservations>
+      <HotelReservation>
+        <ResGlobalInfo>
+          <HotelReservationIDs>
+            <HotelReservationID ResID_Type="5" ResID_Value="33092924"
+              ResID_Source="Weekendesk"
+              ResID_Date="2017-09-27T18:32:43.612"/>
+            <HotelReservationID ResID_Type="14" ResID_Value="44133727"
+              ResID_Source="TC_Number"
+              ResID_Date="2017-09-28T02:32:44.9882167+10:00"/>
+            </HotelReservationIDs>
+        </ResGlobalInfo>
+    </HotelReservation>
+  </HotelReservations>
+</OTA_HotelResRS>
+```
+
+### Cancellation Parameters
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-ResStatus | string | Yes | Weekendesk only supports one value "Commit" to indicate that the reservation is confirmed
-@RequestorID |  |  |
-ID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-MessagePassword | date | Yes | Starting date of the updated period
-@RoomType |  |  |
-RoomTypeCode | date | Yes | Ending date of the updated period
-RoomType | string | Yes | Code of the Rate Plan for which the update is sent
-NumberOfUnits | string | Yes | Code of the Room for which the update is sent
-@RatePlan |  |  |
-RatePlanCode | integer | Yes | Defines the number of Stock available for a specific Rate Plan
-RatePlanName | string | Yes | Open=The rate plan is sellable; Close=Stop sale
-@Rate |  |  |
-EffectiveDate | integer | Yes | Defines the Minimum (or Maximum) number of days of
-ExpireDate | string | Yes | SetMinLOS=updat
-@Base |  |  |
-AmountAfterTax | string | Yes | Arrival=updates
-CurrencyCode | string | Yes | Open=The CheckIn (or
-@GuestCount |  |  |
-AgeQualifyingCode | string | Yes | Arrival=updates
-Count | string | Yes | Open=The CheckIn (or
-ResGuestRPH | string | Yes | Arrival=updates
-@TimeSpan |  |  |
-Start | string | Yes | Open=The CheckIn (or
-End | string | Yes | Arrival=updates
-@BasicPropertyInfo |  |  |
-BrandCode | string | Yes | Open=The CheckIn (or
-HotelCode | string | Yes | Open=The CheckIn (or
-HotelName | string | Yes | Open=The CheckIn (or
-@Service |  |  |
-Quantity | string | Yes | Open=The CheckIn (or
-ServicePricingType | string | Yes | Open=The CheckIn (or
-@TimeSpan |  |  |
-Duration | string | Yes | Open=The CheckIn (or
-@Description |  |  |
-Language | string | Yes | Open=The CheckIn (or
-Text | string | Yes | Open=The CheckIn (or
-@Profile |  |  |
-ProfileType | string | Yes | Open=The CheckIn (or
-@PersonName |  |  |
-NamePrefix | string | Yes | Open=The CheckIn (or
-GivenName | string | Yes | Open=The CheckIn (or
-Surname | string | Yes | Open=The CheckIn (or
-@Telephone |  |  |
-PhoneNumber | string | Yes | Open=The CheckIn (or
-PhoneLocationType | string | Yes | Open=The CheckIn (or
-PhoneTechType | string | Yes | Open=The CheckIn (or
-Email | string | Yes | Open=The CheckIn (or
-AddressLine | string | Yes | Open=The CheckIn (or
-CityName | string | Yes | Open=The CheckIn (or
-PostalCode | string | Yes | Open=The CheckIn (or
-CountryName | string | Yes | Open=The CheckIn (or
-
-
-
-
-
-
-
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+ResResponseType | string | Yes | Always "Committed" if correctly saved into the Channel system
+ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Value | string | Yes | Reservation number
+ResID_Source | string | Yes | Weekendesk or ChannelPartner
+ResID_Date | date | Yes | TimeStamp of integration of the reservation
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
 </aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-## Receive Cancellation Notifications
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
