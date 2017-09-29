@@ -189,7 +189,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8" standalone="no"?>
@@ -339,7 +339,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -614,7 +614,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -846,7 +846,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -1046,7 +1046,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -1381,7 +1381,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -1657,7 +1657,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-> The above command returns XML structured like this:
+> The above request returns XML structured like this:
 
 ```xml
 <?xml version="3.0" encoding="UTF-8"?>
@@ -1749,7 +1749,7 @@ Specifically the following are used for notifying the Channel partner of a Booki
 ## Receive Booking Notifications
 
 Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room for the stay.
+Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.
 
 
 ### HTTP Request
@@ -1824,7 +1824,7 @@ CurrencyCode | string | Currency used to specify the Day price.
 @GuestCount |  |  
 AgeQualifyingCode | integer | AgeCategory of the Guests for which the Room is being reserved. 10=Adults, 8=Children, 7=Babies
 Count | integer | Number of guests for a specific AgeCategory
-ResGuestRPH | integer | Increment number of GuestCount
+ResGuestRPH | integer | Incremental number of GuestCount (which defines the types of AgeCategory included in this reservation)
 @TimeSpan |  |  
 Start | date | Date of the CheckIn
 End | date | Date of the CheckOut
@@ -1859,7 +1859,7 @@ Element | Type | Description
 Quantity | integer | Quantity of the service offered by the hotel within the reservation (2 dinners, 1 massage)
 ServicePricingType | string | Pricing model offered for the service (Per person, per night, per room)
 @Base |  |  
-AmountAfterTax | decimal | Price paid for a specific service - <b>Included in the total price</b>
+AmountAfterTax | decimal | Price paid for a specific service and already included in the total price
 AmountAfterTax | string | Currency in which the price is expressed
 @TimeSpan |  |  |
 Duration | string | The service duration<br>P1D means:<br>Period 1 day (1night)<br> P2D means:<br>Period 2 days (2 nights)
@@ -1897,21 +1897,24 @@ Text | string | Description of the service
 
 Element | Type | Description
 --------- | ------- |-----------
+@ResGuest |  |  
+ResGuestRPH | integer | Always set as 1 to identify the customer
+AgeQualifyingCode | integer | Always set as 10 which defines the AgeCategory of the  customer (adult)
 @Profile |  |  
-ProfileType | integer | Always 1 which defines the customer
+ProfileType | integer | Always set as 1 which defines the customer
 @PersonName |  |  
 NamePrefix | string | Civility of the customer
 GivenName | CDATA | First name of the customer
 Surname | CDATA |  Last name of the customer
 @Telephone |  |  
 PhoneNumber | string | Phone number of the customer
-PhoneLocationType | string | Fixed value equal to 1
-PhoneTechType | string | Fixed value equal to 1
+PhoneLocationType | string | Fixed value set as 1
+PhoneTechType | string | Fixed value set as 1
 Email | string | Email of the customer
-AddressLine | CDATA | Open=The CheckIn (or
-CityName | CDATA | Open=The CheckIn (or
-PostalCode | CDATA | Open=The CheckIn (or
-CountryName | CDATA | Open=The CheckIn (or
+AddressLine | CDATA | Always blank - not needed
+CityName | CDATA | City of the customer
+PostalCode | CDATA | Postal code of the customer
+CountryName | CDATA | Country of the customer
 
 ### Global Information
 
@@ -1943,18 +1946,68 @@ CountryName | CDATA | Open=The CheckIn (or
 Element | Type | Description
 --------- | ------- |-----------
 @TimeSpan |  |  
-Start | string |
-End | string |  
-Duration | string |  
+Start | date | CheckIn date
+End | date | CheckOut date
+Duration | string | The booking duration:<br>P1D means:<br>Period 1 day (1night)<br>P2D means:<br>Period 2 days (2 nights)<br>P3D…Etc.
 @Comment |  |  
-Text | CDATA |
+Text | CDATA | Description of the package booked
 @Total |  |  
-AmountAfterTax | Decimal |
-CurrencyCode | string |
-@Comment |  |  
-@Comment |  |  
+AmountAfterTax | decimal | Total price of the stay booked (including services and activities)
+CurrencyCode | string | Currency of the amount. Always "EUR"
+@HotelReservationID |  |  
+ResID_Type | integer | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Value | string | Reservation number
+ResID_Source | string | Weekendesk or ChannelPartner
+ResID_Date | date | TimeStamp of integration of the reservation
+@PaymentCard |  |
+CardNumber | integer | Number of the Virtual Credit Card that should be used by the hotel
+ExpireDate | integer | Expiration date of the card
+SeriesCode | integer | CVV – Security number
+CardType | string | Type of the credit card (MC=Mastercard)
+CardCode | string | Type of card - always VCC (Virtual Credit Card)
+CardHolderName | string | Card Holder Name
 
-###Example of Request
+
+## Booking Response
+
+> The above request sent to the ChannelPartner should the following  XML:
+
+```xml
+<OTA_HotelResRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="3.0"
+  ResResponseType="Committed"
+  xmlns="http://www.opentravel.org/OTA/2003/05"><Success/>
+  <HotelReservations>
+      <HotelReservation>
+        <ResGlobalInfo>
+          <HotelReservationIDs>
+            <HotelReservationID ResID_Type="5" ResID_Value="12345678"
+              ResID_Source="Weekendesk"
+              ResID_Date="2017-09-27T18:32:43.612"/>
+            <HotelReservationID ResID_Type="14" ResID_Value="ABCDEFG"
+              ResID_Source="ChannelPartner"
+              ResID_Date="2017-09-28T02:32:44.9882167+10:00"/>
+            </HotelReservationIDs>
+        </ResGlobalInfo>
+    </HotelReservation>
+  </HotelReservations>
+</OTA_HotelResRS>
+```
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+ResResponseType | string | Yes | Always "Committed" if correctly saved into the Channel system
+ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Value | string | Yes | Reservation number
+ResID_Source | string | Yes | Weekendesk or ChannelPartner
+ResID_Date | date | Yes | TimeStamp of integration of the reservation
+
+<aside class="success">
+Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
+</aside>
+
+
+### Example of Booking Request
 
 Here an example of a request and the response expected from the channel partner with all the elements included in the body.
 
@@ -2079,40 +2132,76 @@ Version="3.0"
     </HotelReservations>
 </OTA_HotelResRQ>
 ```
-> The above command returns XML structured like this:
+
+
+## Receive Cancel Notifications
+
+Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.
+
+
+### HTTP Request
+
+Endpoint:<br>
+`POST` https://channel-manager-endpoint.com
+
+<aside class="success">
+Remember - Before starting receiving Cancellation Notifications <b>send the Endpoint and Credentials (if any)</b> of both your testing and production environment to your technical contact at Weekendesk.
+</aside>
+
+### Cancellation Request
 
 ```xml
-<OTA_HotelResRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.000"
-  ResResponseType="Committed"
-  xmlns="http://www.opentravel.org/OTA/2003/05"><Success/>
-  <HotelReservations>
-      <HotelReservation>
-        <ResGlobalInfo>
-          <HotelReservationIDs>
-            <HotelReservationID ResID_Type="5" ResID_Value="33092924"
-              ResID_Source="Weekendesk"
-              ResID_Date="2017-09-27T18:32:43.612"/>
-            <HotelReservationID ResID_Type="14" ResID_Value="44133727"
-              ResID_Source="TC_Number"
-              ResID_Date="2017-09-28T02:32:44.9882167+10:00"/>
-            </HotelReservationIDs>
-        </ResGlobalInfo>
-    </HotelReservation>
-  </HotelReservations>
-</OTA_HotelResRS>
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_CancelRQ Version="3.0" CancelType="Commit" xmlns="http://www.opentravel.org/OTA/2003/05">
+    <POS>
+        <Source>
+        <RequestorID ID="user" MessagePassword="password" HotelID="AL_TEST"/>
+        </Source>
+    </POS>
+    <HotelReservationIDs>
+        <HotelReservationID ResID_Type="5"
+                            ResID_Value="12345678"
+                            ResID_Source="Weekendesk"
+                            ResID_Date="2017-09-26T17:29:03.743"/>
+        <HotelReservationID ResID_Type="14"
+                            ResID_Value="ABC123CDE"
+                            ResID_Source="ChannelPartner"
+                            ResID_Date="2017-09-26T17:29:03.743"/>
+    </HotelReservationIDs>
+    </OTA_CancelRQ>
 ```
 
-### Cancellation Parameters
+Element | Type |  Description
+--------- | ------- | -----------
+CancelType | string | Weekendesk always send Commit
+@RequestorID |  |
+ID | string | User provided by the Channel partner to authenticate the request
+MessagePassword | string | Password provided by the Channel partner to authenticate the request
+@HotelReservationID |  |
+ResID_Type | integer | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Value | string | Reservation number
+ResID_Source | string | Weekendesk or ChannelPartner
+ResID_Date | date | TimeStamp of integration of the cancellation
+
+## Cancellation Response
+
+> The above request sent to the Channel partner should the following XML :
+
+```xml
+<OTA_CancelRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="3.0" Status="Cancelled"
+xmlns="http://www.opentravel.org/OTA/2003/05">
+  <Success/>
+    <HotelReservationIDs>
+        <HotelRservationID ResID_Type="5" ResID_Value="12345678" ResID_Source="Weekendesk"/>
+    </HotelReservationIDs>
+</OTA_CancelRS>
+```
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-ResResponseType | string | Yes | Always "Committed" if correctly saved into the Channel system
+Status | string | Yes | Send "Cancelled" to acknowledge Weekendesk that the reservation has been successfully cancelled
 ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
 ResID_Value | string | Yes | Reservation number
 ResID_Source | string | Yes | Weekendesk or ChannelPartner
-ResID_Date | date | Yes | TimeStamp of integration of the reservation
-
-<aside class="success">
-Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
-</aside>

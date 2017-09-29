@@ -1,12 +1,13 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<aside class="notice">These are all errors you can receive while sending a request to Weekendesk system. Remember once the requests respects the format and pass the validation, all errors will be returned in a form of XML message and the status will be 200.</aside>
 
-The Kittn API uses the following error codes:
+The OTA ARI API uses the following error codes:
 
 
 Error Code | Meaning
 ---------- | -------
+200 | Success -- Your request has been correctly parsed.
 400 | Bad Request -- Your request sucks.
 401 | Unauthorized -- Your API key is wrong.
 403 | Forbidden -- The kitten requested is hidden for administrators only.
