@@ -284,6 +284,15 @@
                   <li>
                     <a href="#receive-booking-notifications" class="toc-h2 toc-link" data-title="Reservation Delivery">Receive Booking Notifications</a>
                   </li>
+                  <li>
+                    <a href="#booking-response" class="toc-h2 toc-link" data-title="Reservation Delivery">Booking Response</a>
+                  </li>
+                  <li>
+                    <a href="#receive-cancel-notifications" class="toc-h2 toc-link" data-title="Reservation Delivery">Receive Cancel Notifications</a>
+                  </li>
+                  <li>
+                    <a href="#cancellation-response" class="toc-h2 toc-link" data-title="Reservation Delivery">Cancellation Response</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -422,7 +431,7 @@ BODY
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8" standalone="no"?&gt;</span>
 <span class="nt">&lt;OTA_PingRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">TimeStamp=</span><span class="s">""</span><span class="nt">&gt;</span>
@@ -537,7 +546,7 @@ BODY
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelRoomListRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">Version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
@@ -792,7 +801,7 @@ RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelAvailNotifRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -1049,7 +1058,7 @@ MinMaxMessageType=\"SetMaxLOS\" /&gt;\n\t         &lt;/LengthsOfStay&gt;\n\t
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelAvailNotifRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -1286,7 +1295,7 @@ End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\n\t
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelAvailNotifRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -1645,7 +1654,7 @@ Restriction=\"Departure\" Status=\"Open\" /&gt;\r\n      &lt;/AvailStatusMessage
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelAvailNotifRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -1968,7 +1977,7 @@ DecimalPlaces=\"0\" /&gt;\n                    &lt;/BaseByGuestAmts&gt;\n
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request returns XML structured like this:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelRateAmountNotifRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -2101,7 +2110,7 @@ Specifically the following are used for notifying the Channel partner of a Booki
 <br></p>
 <h2 id='receive-booking-notifications'>Receive Booking Notifications</h2>
 <p>Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room for the stay.</p>
+Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p>Endpoint:<br>
 <code>POST</code> https://channel-manager-endpoint.com</p>
@@ -2252,7 +2261,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>ResGuestRPH</td>
 <td>integer</td>
-<td>Increment number of GuestCount</td>
+<td>Incremental number of GuestCount (which defines the types of AgeCategory included in this reservation)</td>
 </tr>
 <tr>
 <td>@TimeSpan</td>
@@ -2336,7 +2345,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>AmountAfterTax</td>
 <td>decimal</td>
-<td>Price paid for a specific service - <b>Included in the total price</b></td>
+<td>Price paid for a specific service and already included in the total price</td>
 </tr>
 <tr>
 <td>AmountAfterTax</td>
@@ -2401,6 +2410,21 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tr>
 </thead><tbody>
 <tr>
+<td>@ResGuest</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ResGuestRPH</td>
+<td>integer</td>
+<td>Always set as 1 to identify the customer</td>
+</tr>
+<tr>
+<td>AgeQualifyingCode</td>
+<td>integer</td>
+<td>Always set as 10 which defines the AgeCategory of the  customer (adult)</td>
+</tr>
+<tr>
 <td>@Profile</td>
 <td></td>
 <td></td>
@@ -2408,7 +2432,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>ProfileType</td>
 <td>integer</td>
-<td>Always 1 which defines the customer</td>
+<td>Always set as 1 which defines the customer</td>
 </tr>
 <tr>
 <td>@PersonName</td>
@@ -2443,12 +2467,12 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>PhoneLocationType</td>
 <td>string</td>
-<td>Fixed value equal to 1</td>
+<td>Fixed value set as 1</td>
 </tr>
 <tr>
 <td>PhoneTechType</td>
 <td>string</td>
-<td>Fixed value equal to 1</td>
+<td>Fixed value set as 1</td>
 </tr>
 <tr>
 <td>Email</td>
@@ -2458,22 +2482,22 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>AddressLine</td>
 <td>CDATA</td>
-<td>Open=The CheckIn (or</td>
+<td>Always blank - not needed</td>
 </tr>
 <tr>
 <td>CityName</td>
 <td>CDATA</td>
-<td>Open=The CheckIn (or</td>
+<td>City of the customer</td>
 </tr>
 <tr>
 <td>PostalCode</td>
 <td>CDATA</td>
-<td>Open=The CheckIn (or</td>
+<td>Postal code of the customer</td>
 </tr>
 <tr>
 <td>CountryName</td>
 <td>CDATA</td>
-<td>Open=The CheckIn (or</td>
+<td>Country of the customer</td>
 </tr>
 </tbody></table>
 <h3 id='global-information'>Global Information</h3><pre class="highlight xml tab-xml"><code><span class="nt">&lt;ResGlobalInfo&gt;</span>
@@ -2513,18 +2537,18 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tr>
 <tr>
 <td>Start</td>
-<td>string</td>
-<td></td>
+<td>date</td>
+<td>CheckIn date</td>
 </tr>
 <tr>
 <td>End</td>
-<td>string</td>
-<td></td>
+<td>date</td>
+<td>CheckOut date</td>
 </tr>
 <tr>
 <td>Duration</td>
 <td>string</td>
-<td></td>
+<td>The booking duration:<br>P1D means:<br>Period 1 day (1night)<br>P2D means:<br>Period 2 days (2 nights)<br>P3D…Etc.</td>
 </tr>
 <tr>
 <td>@Comment</td>
@@ -2534,7 +2558,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>Text</td>
 <td>CDATA</td>
-<td></td>
+<td>Description of the package booked</td>
 </tr>
 <tr>
 <td>@Total</td>
@@ -2543,26 +2567,143 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tr>
 <tr>
 <td>AmountAfterTax</td>
-<td>Decimal</td>
-<td></td>
+<td>decimal</td>
+<td>Total price of the stay booked (including services and activities)</td>
 </tr>
 <tr>
 <td>CurrencyCode</td>
 <td>string</td>
+<td>Currency of the amount. Always &quot;EUR&quot;</td>
+</tr>
+<tr>
+<td>@HotelReservationID</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>@Comment</td>
+<td>ResID_Type</td>
+<td>integer</td>
+<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+</tr>
+<tr>
+<td>ResID_Value</td>
+<td>string</td>
+<td>Reservation number</td>
+</tr>
+<tr>
+<td>ResID_Source</td>
+<td>string</td>
+<td>Weekendesk or ChannelPartner</td>
+</tr>
+<tr>
+<td>ResID_Date</td>
+<td>date</td>
+<td>TimeStamp of integration of the reservation</td>
+</tr>
+<tr>
+<td>@PaymentCard</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>@Comment</td>
-<td></td>
-<td></td>
+<td>CardNumber</td>
+<td>integer</td>
+<td>Number of the Virtual Credit Card that should be used by the hotel</td>
+</tr>
+<tr>
+<td>ExpireDate</td>
+<td>integer</td>
+<td>Expiration date of the card</td>
+</tr>
+<tr>
+<td>SeriesCode</td>
+<td>integer</td>
+<td>CVV – Security number</td>
+</tr>
+<tr>
+<td>CardType</td>
+<td>string</td>
+<td>Type of the credit card (MC=Mastercard)</td>
+</tr>
+<tr>
+<td>CardCode</td>
+<td>string</td>
+<td>Type of card - always VCC (Virtual Credit Card)</td>
+</tr>
+<tr>
+<td>CardHolderName</td>
+<td>string</td>
+<td>Card Holder Name</td>
 </tr>
 </tbody></table>
-<h3 id='example-of-request'>Example of Request</h3>
+<h2 id='booking-response'>Booking Response</h2>
+<blockquote>
+<p>The above request sent to the ChannelPartner should the following  XML:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_HotelResRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"3.0"</span>
+  <span class="na">ResResponseType=</span><span class="s">"Committed"</span>
+  <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;&lt;Success/&gt;</span>
+  <span class="nt">&lt;HotelReservations&gt;</span>
+      <span class="nt">&lt;HotelReservation&gt;</span>
+        <span class="nt">&lt;ResGlobalInfo&gt;</span>
+          <span class="nt">&lt;HotelReservationIDs&gt;</span>
+            <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span>
+              <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span>
+              <span class="na">ResID_Date=</span><span class="s">"2017-09-27T18:32:43.612"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"ABCDEFG"</span>
+              <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span>
+              <span class="na">ResID_Date=</span><span class="s">"2017-09-28T02:32:44.9882167+10:00"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/HotelReservationIDs&gt;</span>
+        <span class="nt">&lt;/ResGlobalInfo&gt;</span>
+    <span class="nt">&lt;/HotelReservation&gt;</span>
+  <span class="nt">&lt;/HotelReservations&gt;</span>
+<span class="nt">&lt;/OTA_HotelResRS&gt;</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ResResponseType</td>
+<td>string</td>
+<td>Yes</td>
+<td>Always &quot;Committed&quot; if correctly saved into the Channel system</td>
+</tr>
+<tr>
+<td>ResID_Type</td>
+<td>integer</td>
+<td>Yes</td>
+<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+</tr>
+<tr>
+<td>ResID_Value</td>
+<td>string</td>
+<td>Yes</td>
+<td>Reservation number</td>
+</tr>
+<tr>
+<td>ResID_Source</td>
+<td>string</td>
+<td>Yes</td>
+<td>Weekendesk or ChannelPartner</td>
+</tr>
+<tr>
+<td>ResID_Date</td>
+<td>date</td>
+<td>Yes</td>
+<td>TimeStamp of integration of the reservation</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
+</aside>
+<h3 id='example-of-booking-request'>Example of Booking Request</h3>
 <p>Here an example of a request and the response expected from the channel partner with all the elements included in the body.</p>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="3.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelResRQ</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
@@ -2683,30 +2824,101 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
         <span class="nt">&lt;/HotelReservation&gt;</span>
     <span class="nt">&lt;/HotelReservations&gt;</span>
 <span class="nt">&lt;/OTA_HotelResRQ&gt;</span>
+</code></pre><h2 id='receive-cancel-notifications'>Receive Cancel Notifications</h2>
+<p>Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p>Endpoint:<br>
+<code>POST</code> https://channel-manager-endpoint.com</p>
+
+<aside class="success">
+Remember - Before starting receiving Cancellation Notifications <b>send the Endpoint and Credentials (if any)</b> of both your testing and production environment to your technical contact at Weekendesk.
+</aside>
+<h3 id='cancellation-request'>Cancellation Request</h3><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OTA_CancelRQ</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">CancelType=</span><span class="s">"Commit"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;POS&gt;</span>
+        <span class="nt">&lt;Source&gt;</span>
+        <span class="nt">&lt;RequestorID</span> <span class="na">ID=</span><span class="s">"user"</span> <span class="na">MessagePassword=</span><span class="s">"password"</span> <span class="na">HotelID=</span><span class="s">"AL_TEST"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/POS&gt;</span>
+    <span class="nt">&lt;HotelReservationIDs&gt;</span>
+        <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span>
+                            <span class="na">ResID_Value=</span><span class="s">"12345678"</span>
+                            <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span>
+                            <span class="na">ResID_Date=</span><span class="s">"2017-09-26T17:29:03.743"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span>
+                            <span class="na">ResID_Value=</span><span class="s">"ABC123CDE"</span>
+                            <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span>
+                            <span class="na">ResID_Date=</span><span class="s">"2017-09-26T17:29:03.743"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/HotelReservationIDs&gt;</span>
+    <span class="nt">&lt;/OTA_CancelRQ&gt;</span>
 </code></pre>
+<table><thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CancelType</td>
+<td>string</td>
+<td>Weekendesk always send Commit</td>
+</tr>
+<tr>
+<td>@RequestorID</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ID</td>
+<td>string</td>
+<td>User provided by the Channel partner to authenticate the request</td>
+</tr>
+<tr>
+<td>MessagePassword</td>
+<td>string</td>
+<td>Password provided by the Channel partner to authenticate the request</td>
+</tr>
+<tr>
+<td>@HotelReservationID</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ResID_Type</td>
+<td>integer</td>
+<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+</tr>
+<tr>
+<td>ResID_Value</td>
+<td>string</td>
+<td>Reservation number</td>
+</tr>
+<tr>
+<td>ResID_Source</td>
+<td>string</td>
+<td>Weekendesk or ChannelPartner</td>
+</tr>
+<tr>
+<td>ResID_Date</td>
+<td>date</td>
+<td>TimeStamp of integration of the cancellation</td>
+</tr>
+</tbody></table>
+<h2 id='cancellation-response'>Cancellation Response</h2>
 <blockquote>
-<p>The above command returns XML structured like this:</p>
+<p>The above request sent to the Channel partner should the following XML :</p>
 </blockquote>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_HotelResRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
-  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.000"</span>
-  <span class="na">ResResponseType=</span><span class="s">"Committed"</span>
-  <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;&lt;Success/&gt;</span>
-  <span class="nt">&lt;HotelReservations&gt;</span>
-      <span class="nt">&lt;HotelReservation&gt;</span>
-        <span class="nt">&lt;ResGlobalInfo&gt;</span>
-          <span class="nt">&lt;HotelReservationIDs&gt;</span>
-            <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"33092924"</span>
-              <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span>
-              <span class="na">ResID_Date=</span><span class="s">"2017-09-27T18:32:43.612"</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"44133727"</span>
-              <span class="na">ResID_Source=</span><span class="s">"TC_Number"</span>
-              <span class="na">ResID_Date=</span><span class="s">"2017-09-28T02:32:44.9882167+10:00"</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/HotelReservationIDs&gt;</span>
-        <span class="nt">&lt;/ResGlobalInfo&gt;</span>
-    <span class="nt">&lt;/HotelReservation&gt;</span>
-  <span class="nt">&lt;/HotelReservations&gt;</span>
-<span class="nt">&lt;/OTA_HotelResRS&gt;</span>
-</code></pre><h3 id='cancellation-parameters'>Cancellation Parameters</h3>
+<pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_CancelRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">Status=</span><span class="s">"Cancelled"</span>
+<span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Success/&gt;</span>
+    <span class="nt">&lt;HotelReservationIDs&gt;</span>
+        <span class="nt">&lt;HotelRservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/HotelReservationIDs&gt;</span>
+<span class="nt">&lt;/OTA_CancelRS&gt;</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Element</th>
@@ -2716,10 +2928,10 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tr>
 </thead><tbody>
 <tr>
-<td>ResResponseType</td>
+<td>Status</td>
 <td>string</td>
 <td>Yes</td>
-<td>Always &quot;Committed&quot; if correctly saved into the Channel system</td>
+<td>Send &quot;Cancelled&quot; to acknowledge Weekendesk that the reservation has been successfully cancelled</td>
 </tr>
 <tr>
 <td>ResID_Type</td>
@@ -2739,21 +2951,11 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <td>Yes</td>
 <td>Weekendesk or ChannelPartner</td>
 </tr>
-<tr>
-<td>ResID_Date</td>
-<td>date</td>
-<td>Yes</td>
-<td>TimeStamp of integration of the reservation</td>
-</tr>
 </tbody></table>
-
-<aside class="success">
-Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
-</aside>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<aside class="notice">These are all errors you can receive while sending a request to Weekendesk system. Remember once the requests respects the format and pass the validation, all errors will be returned in a form of XML message and the status will be 200.</aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The OTA ARI API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -2761,6 +2963,10 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>200</td>
+<td>Success -- Your request has been correctly parsed.</td>
+</tr>
 <tr>
 <td>400</td>
 <td>Bad Request -- Your request sucks.</td>
