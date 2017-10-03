@@ -2949,7 +2949,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>ResID_Source</td>
 <td>string</td>
 <td>Yes</td>
-<td>Weekendesk or ChannelPartner</td>
+<td>Weekendesk or Channel Partner</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -2959,7 +2959,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 
 <table><thead>
 <tr>
-<th>Error Code</th>
+<th>Status Code</th>
 <th>Meaning</th>
 </tr>
 </thead><tbody>
@@ -2968,48 +2968,56 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>Success -- Your request has been correctly parsed.</td>
 </tr>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request sucks.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- Our server cannot parse your request</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Code=&quot;A01.RIT&quot;</td>
+<td>Unauthorised Client -- The IP or the credentials used by the Channel partner are not valid.</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Code=&quot;2.1&quot;</td>
+<td>ERROR: Hotel ID not found - The Hotel ID used in the request is not valid.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>ERROR: Rate Plan Code not found -- The Room ID used in the request is not valid.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>ERROR: Room ID not found -- The Rate Plan Code used in the request is not valid.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>ERROR: The request is missing a mandatory item -- One of the parameter used in the request is missing.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>Wrong value -- One of the values used in the request is not of the right format.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>Amount must be a positive number grater than zero -- Wrong value used in the request.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>Invalid date - Start date is before today -- The Start date used is in the past.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>Invalid date - End date should not exceed 1 year -- The updated period should be less than 1 year.</td>
+</tr>
+<tr>
+<td>Code=&quot;2.1&quot;</td>
+<td>Invalid date - Start date is after End date -- The Start date cannot be after the End date.</td>
 </tr>
 </tbody></table>
 
