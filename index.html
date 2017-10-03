@@ -2881,6 +2881,11 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>Password provided by the Channel partner to authenticate the request</td>
 </tr>
 <tr>
+<td>HotelID</td>
+<td>string</td>
+<td>Hotel ID for which the cancellation is requested</td>
+</tr>
+<tr>
 <td>@HotelReservationID</td>
 <td></td>
 <td></td>
@@ -2910,13 +2915,19 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <blockquote>
 <p>The above request sent to the Channel partner should the following XML :</p>
 </blockquote>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_CancelRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
-<span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">Status=</span><span class="s">"Cancelled"</span>
-<span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Success/&gt;</span>
-    <span class="nt">&lt;HotelReservationIDs&gt;</span>
-        <span class="nt">&lt;HotelRservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/HotelReservationIDs&gt;</span>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;OTA_CancelRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.00"</span>  <span class="na">Status=</span><span class="s">"Cancelled"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Success</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;HotelReservations&gt;</span>
+            <span class="nt">&lt;HotelReservation&gt;</span>
+                <span class="nt">&lt;ResGlobalInfo&gt;</span>
+                    <span class="nt">&lt;HotelReservationIDs&gt;</span>
+                          <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span> <span class="na">ResID_Date=</span><span class="s">"2017-10-01T12:23:26+2"</span><span class="nt">/&gt;</span>
+                          <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"987654321"</span> <span class="na">ResID_Source=</span><span class="s">"Channel Partner"</span>  <span class="na">ResID_Date=</span><span class="s">"2017-10-01T12:23:31"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/HotelReservationIDs&gt;</span>
+                <span class="nt">&lt;/ResGlobalInfo&gt;</span>
+            <span class="nt">&lt;/HotelReservation&gt;</span>
+        <span class="nt">&lt;/HotelReservations&gt;</span>
 <span class="nt">&lt;/OTA_CancelRS&gt;</span>
 </code></pre>
 <table><thead>
@@ -2950,6 +2961,12 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>string</td>
 <td>Yes</td>
 <td>Weekendesk or Channel Partner</td>
+</tr>
+<tr>
+<td>ResID_Date</td>
+<td>date</td>
+<td>Yes</td>
+<td>TimeStamp of the cancellation (YYYY-MM-DDThh:mm:ss)</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
