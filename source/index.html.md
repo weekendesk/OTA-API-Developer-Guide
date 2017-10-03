@@ -2204,4 +2204,4 @@ Element | Type | Required | Description
 Status | string | Yes | Send "Cancelled" to acknowledge Weekendesk that the reservation has been successfully cancelled
 ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
 ResID_Value | string | Yes | Reservation number
-ResID_Source | string | Yes | Weekendesk or ChannelPartner
+ResID_Source | string | Yes | Weekendesk or Channel Partner
