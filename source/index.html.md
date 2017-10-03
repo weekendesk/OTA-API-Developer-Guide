@@ -681,8 +681,8 @@ TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
-End | date | Yes | Ending date of the updated period (YYY-MM-DD)
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 Status | string | Yes | Open=The rate plan is sellable; Close=Stop sale
@@ -915,8 +915,8 @@ TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
-End | date | Yes | Ending date of the updated period (YYY-MM-DD)
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 Time | integer | Yes | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
@@ -1114,8 +1114,8 @@ TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
-End | date | Yes | Ending date of the updated period (YYY-MM-DD)
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
@@ -1449,8 +1449,8 @@ TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
-End | date | Yes | Ending date of the updated period (YYY-MM-DD)
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
@@ -1724,8 +1724,8 @@ TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
 LocatorID | integer | Yes | Progressive number based on the number of AvailStatusMessage tag within the same request
-Start | date | Yes | Starting date of the updated period (YYY-MM-DD)
-End | date | Yes | Ending date of the updated period (YYY-MM-DD)
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 AmountAfterTax | decimal | Yes | The price for the Rate of a specific Rate Plan
