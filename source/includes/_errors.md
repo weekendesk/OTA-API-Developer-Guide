@@ -5,17 +5,20 @@
 The OTA ARI API uses the following error codes:
 
 
-Error Code | Meaning
+Status Code | Meaning
 ---------- | -------
 200 | Success -- Your request has been correctly parsed.
-400 | Bad Request -- Your request sucks.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+500 | Internal Server Error -- Our server cannot parse your request
+
+Error Code | Meaning
+---------- | -------
+Code="A01.RIT" | Unauthorised Client -- The IP or the credentials used by the Channel partner are not valid.
+Code="2.1" | ERROR: Hotel ID not found - The Hotel ID used in the request is not valid.
+Code="2.1" | ERROR: Rate Plan Code not found -- The Room ID used in the request is not valid.
+Code="2.1" | ERROR: Room ID not found -- The Rate Plan Code used in the request is not valid.
+Code="2.1" | ERROR: The request is missing a mandatory item -- One of the parameter used in the request is missing.
+Code="2.1" | Wrong value -- One of the values used in the request is not of the right format.
+Code="2.1" | Amount must be a positive number grater than zero -- Wrong value used in the request.
+Code="2.1" | Invalid date - Start date is before today -- The Start date used is in the past.
+Code="2.1" | Invalid date - End date should not exceed 1 year -- The updated period should be less than 1 year.
+Code="2.1" | Invalid date - Start date is after End date -- The Start date cannot be after the End date.
