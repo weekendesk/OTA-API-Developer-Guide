@@ -2178,6 +2178,7 @@ CancelType | string | Weekendesk always send Commit
 @RequestorID |  |
 ID | string | User provided by the Channel partner to authenticate the request
 MessagePassword | string | Password provided by the Channel partner to authenticate the request
+HotelID | string | Hotel ID for which the cancellation is requested
 @HotelReservationID |  |
 ResID_Type | integer | 5=Weekendesk Reservation number; 14=Channel partner reservation number
 ResID_Value | string | Reservation number
@@ -2189,13 +2190,19 @@ ResID_Date | date | TimeStamp of integration of the cancellation
 > The above request sent to the Channel partner should the following XML :
 
 ```xml
-<OTA_CancelRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="3.0" Status="Cancelled"
-xmlns="http://www.opentravel.org/OTA/2003/05">
-  <Success/>
-    <HotelReservationIDs>
-        <HotelRservationID ResID_Type="5" ResID_Value="12345678" ResID_Source="Weekendesk"/>
-    </HotelReservationIDs>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<OTA_CancelRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.00"  Status="Cancelled" xmlns="http://www.opentravel.org/OTA/2003/05">
+    <Success />
+        <HotelReservations>
+            <HotelReservation>
+                <ResGlobalInfo>
+                    <HotelReservationIDs>
+                          <HotelReservationID ResID_Type="5" ResID_Value="12345678"	ResID_Source="Weekendesk" ResID_Date="2017-10-01T12:23:26+2"/>
+                          <HotelReservationID ResID_Type="14" ResID_Value="987654321" ResID_Source="Channel Partner"  ResID_Date="2017-10-01T12:23:31" />
+                    </HotelReservationIDs>
+                </ResGlobalInfo>
+            </HotelReservation>
+        </HotelReservations>
 </OTA_CancelRS>
 ```
 
@@ -2205,3 +2212,4 @@ Status | string | Yes | Send "Cancelled" to acknowledge Weekendesk that the rese
 ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
 ResID_Value | string | Yes | Reservation number
 ResID_Source | string | Yes | Weekendesk or Channel Partner
+ResID_Date | date | Yes | TimeStamp of the cancellation (YYYY-MM-DDThh:mm:ss)
