@@ -121,7 +121,7 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_PingRQ Version="3.00" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>
 ```
@@ -132,7 +132,7 @@ curl
   -H "Content-Type: text/xml"
   -H "Authorization: Basic TEStTesttEsTt3st"
   -H "Cache-Control: no-cache"
-  -d '<?xml version="3.0" encoding="UTF-8"?>
+  -d '<?xml version="1.0" encoding="UTF-8"?>
 <OTA_PingRQ Version="3.0" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
 ```
@@ -150,7 +150,7 @@ $request->setHeaders(array(
   'content-type' => 'text/xml'
 ));
 
-$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
 <OTA_PingRQ version="3.0"" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>');
 
@@ -192,35 +192,35 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <OTA_PingRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="">
     <Success/>
 </OTA_PingRS>
@@ -247,7 +247,7 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <POS>
     <Source>
@@ -266,7 +266,7 @@ curl
  -H "Content-Type: text/xml"
  -H "Authorization: Basic TEStTesttEsTt3st"
  -H "Cache-Control: no-cache"
- -d '<?xml version="3.0" encoding="UTF-8"?>
+ -d '<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <POS>
     <Source>
@@ -292,7 +292,7 @@ $request->setHeaders(array(
   'content-type' => 'text/xml'
 ));
 
-$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <POS>
       <Source>
@@ -342,7 +342,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -366,7 +366,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -390,7 +390,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -414,7 +414,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -438,7 +438,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRoomListRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="2.0">
     <Success />
     <HotelRoomLists>
@@ -497,7 +497,7 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -516,7 +516,7 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
 curl -X POST
 -H "Authorization: Basic TEStTesttEsTt3st"
 -H "Content-Type: text/xml" -H "Cache-Control: no-cache"
--d '<?xml version="3.0" encoding="UTF-8"?>
+-d '<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -544,7 +544,7 @@ $request->setHeaders(array(
   'authorization' => 'Basic TEStTesttEsTt3st'
 ));
 
-$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -617,7 +617,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -627,7 +627,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -636,7 +636,7 @@ Response response = client.newCall(request).execute();
 </OTA_HotelAvailNotifRS>```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -646,7 +646,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -656,7 +656,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -849,7 +849,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -859,7 +859,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -869,7 +869,7 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -879,7 +879,7 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -889,7 +889,7 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1049,7 +1049,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1059,7 +1059,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1069,7 +1069,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1079,7 +1079,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1089,7 +1089,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1133,7 +1133,7 @@ Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
 
 BODY
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1182,7 +1182,7 @@ curl
 -H "Authorization: Basic TEStTesttEsTt3st"
 -H "Content-Type: text/xml"
 -H "Cache-Control: no-cache"
--d '<?xml version="3.0" encoding="UTF-8"?>
+-d '<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1238,7 +1238,7 @@ $request->setHeaders(array(
   'authorization' => 'Basic TEStTesttEsTt3st'
 ));
 
-$request->setBody('<?xml version="3.0" encoding="UTF-8"?>
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1384,7 +1384,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1394,7 +1394,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1404,7 +1404,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1414,7 +1414,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1424,7 +1424,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelAvailNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1660,7 +1660,7 @@ Response response = client.newCall(request).execute();
 > The above request returns XML structured like this:
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1670,7 +1670,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```shell
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1680,7 +1680,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```php
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1689,7 +1689,7 @@ Response response = client.newCall(request).execute();
 </OTA_HotelRateAmountNotifRS>```
 
 ```csharp
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1699,7 +1699,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ```java
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelRateAmountNotifRS xmlns="http://www.opentravel.org/OTA/2003/05"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1"
@@ -1823,7 +1823,7 @@ AmountAfterTax | decimal | Day price for which a Room is being reserved at a spe
 CurrencyCode | string | Currency used to specify the Day price.
 @GuestCount |  |  
 AgeQualifyingCode | integer | AgeCategory of the Guests for which the Room is being reserved. 10=Adults, 8=Children, 7=Babies
-Count | integer | Number of guests for a specific AgeCategory
+Count | integer | Total number of guests for a specific AgeCategory
 ResGuestRPH | integer | Incremental number of GuestCount (which defines the types of AgeCategory included in this reservation)
 @TimeSpan |  |  
 Start | date | Date of the CheckIn
@@ -2012,7 +2012,7 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
 Here an example of a request and the response expected from the channel partner with all the elements included in the body.
 
 ```xml
-<?xml version="3.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OTA_HotelResRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd"
