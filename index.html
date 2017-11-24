@@ -276,22 +276,24 @@
               </ul>
           </li>
           <li>
-            <a href="#ari-read-beta-test" class="toc-h1 toc-link" data-title="ARI Read (Beta Test)">ARI Read (Beta Test)</a>
+            <a href="#ari-read" class="toc-h1 toc-link" data-title="ARI Read">ARI Read</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#read-availabilities" class="toc-h2 toc-link" data-title="ARI Read">Read Availabilities</a>
+                  </li>
+                  <li>
+                    <a href="#read-prices" class="toc-h2 toc-link" data-title="ARI Read">Read Prices</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#reservation-delivery" class="toc-h1 toc-link" data-title="Reservation Delivery">Reservation Delivery</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#receive-booking-notifications" class="toc-h2 toc-link" data-title="Reservation Delivery">Receive Booking Notifications</a>
+                    <a href="#booking-notification" class="toc-h2 toc-link" data-title="Reservation Delivery">Booking Notification</a>
                   </li>
                   <li>
-                    <a href="#booking-response" class="toc-h2 toc-link" data-title="Reservation Delivery">Booking Response</a>
-                  </li>
-                  <li>
-                    <a href="#receive-cancel-notifications" class="toc-h2 toc-link" data-title="Reservation Delivery">Receive Cancel Notifications</a>
-                  </li>
-                  <li>
-                    <a href="#cancellation-response" class="toc-h2 toc-link" data-title="Reservation Delivery">Cancellation Response</a>
+                    <a href="#cancel-notification" class="toc-h2 toc-link" data-title="Reservation Delivery">Cancel Notification</a>
                   </li>
               </ul>
           </li>
@@ -376,7 +378,7 @@ Content-Type: text/xml
 
 BODY
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;OTA_PingRQ</span> <span class="na">Version=</span><span class="s">"3.00"</span> <span class="na">TimeStamp=</span><span class="s">"2008-05-29T10:58:21"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;OTA_PingRQ</span> <span class="na">Version=</span><span class="s">"1.00"</span> <span class="na">TimeStamp=</span><span class="s">"2008-05-29T10:58:21"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/OTA_PingRQ&gt;</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl
   -X POST
@@ -384,7 +386,7 @@ BODY
   -H <span class="s2">"Authorization: Basic TEStTesttEsTt3st"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
   -d <span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;OTA_PingRQ Version="3.0" TimeStamp="2008-05-29T10:58:21"&gt;
+&lt;OTA_PingRQ Version="1.0" TimeStamp="2008-05-29T10:58:21"&gt;
 &lt;/OTA_PingRQ&gt;'</span> <span class="s2">"http://qualification-ari.weekendesk.com/ari/"</span>
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
@@ -399,7 +401,7 @@ BODY
 <span class="p">));</span>
 
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;OTA_PingRQ version="3.0"" TimeStamp="2008-05-29T10:58:21"&gt;
+&lt;OTA_PingRQ Version="1.0"" TimeStamp="2008-05-29T10:58:21"&gt;
 &lt;/OTA_PingRQ&gt;'</span><span class="p">);</span>
 
 <span class="k">try</span> <span class="p">{</span>
@@ -858,7 +860,7 @@ RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n
 <td>Version</td>
 <td>string</td>
 <td>Yes</td>
-<td>3.0 is the latest version</td>
+<td>1.0 is the latest version</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -1113,7 +1115,7 @@ xmlns:xsi<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSch
 <td>Version</td>
 <td>string</td>
 <td>Yes</td>
-<td>3.0 is the latest version</td>
+<td>1.0 is the latest version</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -1350,7 +1352,7 @@ End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\n\t
 <td>Version</td>
 <td>string</td>
 <td>Yes</td>
-<td>3.0 is the latest version</td>
+<td>1.0 is the latest version</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -1709,7 +1711,7 @@ Restriction=\"Departure\" Status=\"Open\" /&gt;\r\n      &lt;/AvailStatusMessage
 <td>Version</td>
 <td>string</td>
 <td>Yes</td>
-<td>3.0 is the latest version</td>
+<td>1.0 is the latest version</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -2034,7 +2036,7 @@ DecimalPlaces=\"0\" /&gt;\n                    &lt;/BaseByGuestAmts&gt;\n
 <td>Version</td>
 <td>string</td>
 <td>Yes</td>
-<td>3.0 is the latest version</td>
+<td>1.0 is the latest version</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -2097,8 +2099,680 @@ DecimalPlaces=\"0\" /&gt;\n                    &lt;/BaseByGuestAmts&gt;\n
 <td>Number of decimal places used in the AmountAfterTax</td>
 </tr>
 </tbody></table>
-<h1 id='ari-read-beta-test'>ARI Read (Beta Test)</h1>
-<p>Functionality under developement</p>
+<h1 id='ari-read'>ARI Read</h1>
+<p>The Reading function allows the Channel partner to retrieve prices and availabilities for a given Room and RatePlan code.</p>
+<h2 id='read-availabilities'>Read Availabilities</h2>
+<p>The AvailGet request allows the Channel Partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
+<br>
+- Booking Limit<br>
+- Min LengthOfStay<br>
+- Max LengthOfStay<br>
+- Closed to Arrival<br>
+- Closed to Departure<br>
+<br></p>
+<pre class="highlight xml tab-xml"><code>HEADER
+Authorization: Basic TEStTesttEsTt3st
+Content-Type: text/xml
+
+BODY
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OTA_HotelAvailGetRQ</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span>
+                     <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+                     <span class="na">Version=</span><span class="s">"1.0"</span> <span class="na">TimeStamp=</span><span class="s">"2016-02-26T10:32:51"</span> <span class="na">Target=</span><span class="s">"Production"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;HotelAvailRequests</span> <span class="na">HotelCode=</span><span class="s">"AL_TEST"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;HotelAvailRequest&gt;</span>
+            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-03-23"</span> <span class="na">End=</span><span class="s">"2017-03-25"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RatePlans&gt;</span>
+                <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/RatePlans&gt;</span>
+        <span class="nt">&lt;/HotelAvailRequest&gt;</span>
+        <span class="nt">&lt;HotelAvailRequest&gt;</span>
+            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-03-26"</span> <span class="na">End=</span><span class="s">"2017-03-26"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RatePlans&gt;</span>
+                <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/RatePlans&gt;</span>
+        <span class="nt">&lt;/HotelAvailRequest&gt;</span>
+    <span class="nt">&lt;/HotelAvailRequests&gt;</span>
+<span class="nt">&lt;/OTA_HotelAvailGetRQ&gt;</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl
+-X POST
+-H <span class="s2">"Authorization: Basic TEStTesttEsTt3st"</span>
+-H <span class="s2">"Content-Type: text/xml"</span>
+-H <span class="s2">"Cache-Control: no-cache"</span>
+-d <span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;OTA_HotelAvailGetRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     Version="1.0" TimeStamp="2016-02-26T10:32:51" Target="Production"&gt;
+    &lt;HotelAvailRequests HotelCode="AL_TEST"&gt;
+        &lt;HotelAvailRequest&gt;
+            &lt;DateRange Start="2017-03-23" End="2017-03-25"/&gt;
+            &lt;RatePlans&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/&gt;
+            &lt;/RatePlans&gt;
+        &lt;/HotelAvailRequest&gt;
+        &lt;HotelAvailRequest&gt;
+            &lt;DateRange Start="2017-03-26" End="2017-03-26"/&gt;
+            &lt;RatePlans&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+            &lt;/RatePlans&gt;
+        &lt;/HotelAvailRequest&gt;
+    &lt;/HotelAvailRequests&gt;
+&lt;/OTA_HotelAvailGetRQ&gt;'</span> <span class="s2">"http://qualification-ari.weekendesk.com/ari/"</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'http://qualification-ari.weekendesk.com/ari/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'text/xml'</span><span class="p">,</span>
+  <span class="s1">'authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Basic TEStTesttEsTt3st'</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'&lt;OTA_HotelAvailGetRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     Version="1.0" TimeStamp="2016-02-26T10:32:51" Target="Production"&gt;
+    &lt;HotelAvailRequests HotelCode="AL_TEST"&gt;
+        &lt;HotelAvailRequest&gt;
+            &lt;DateRange Start="2017-03-23" End="2017-03-25"/&gt;
+            &lt;RatePlans&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/&gt;
+            &lt;/RatePlans&gt;
+        &lt;/HotelAvailRequest&gt;
+        &lt;HotelAvailRequest&gt;
+            &lt;DateRange Start="2017-03-26" End="2017-03-26"/&gt;
+            &lt;RatePlans&gt;
+                &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+            &lt;/RatePlans&gt;
+        &lt;/HotelAvailRequest&gt;
+    &lt;/HotelAvailRequests&gt;
+&lt;/OTA_HotelAvailGetRQ&gt;'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://qualification-ari.weekendesk.com/ari/"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"text/xml"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_HotelAvailGetRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n                     xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n                     Version=\"1.0\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\"&gt;\n    &lt;HotelAvailRequests HotelCode=\"AL_TEST\"&gt;\n        &lt;HotelAvailRequest&gt;\n            &lt;DateRange Start=\"2017-03-23\" End=\"2017-03-25\"/&gt;\n            &lt;RatePlans&gt;\n                &lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt;\n                &lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"003\"/&gt;\n            &lt;/RatePlans&gt;\n        &lt;/HotelAvailRequest&gt;\n        &lt;HotelAvailRequest&gt;\n            &lt;DateRange Start=\"2017-03-26\" End=\"2017-03-26\"/&gt;\n            &lt;RatePlans&gt;\n                &lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt;\n            &lt;/RatePlans&gt;\n        &lt;/HotelAvailRequest&gt;\n    &lt;/HotelAvailRequests&gt;\n&lt;/OTA_HotelAvailGetRQ&gt;"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
+
+<span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/xml"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\"
+encoding=\"UTF-8\"?&gt;\n&lt;OTA_HotelAvailGetRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n                    
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n                    
+Version=\"1.0\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\"&gt;\n   
+&lt;HotelAvailRequests HotelCode=\"AL_TEST\"&gt;\n       
+&lt;HotelAvailRequest&gt;\n            &lt;DateRange Start=\"2017-03-23\"
+End=\"2017-03-25\"/&gt;\n            &lt;RatePlans&gt;\n                &lt;RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt;\n                &lt;RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"003\"/&gt;\n           
+&lt;/RatePlans&gt;\n        &lt;/HotelAvailRequest&gt;\n       
+&lt;HotelAvailRequest&gt;\n            &lt;DateRange Start=\"2017-03-26\"
+End=\"2017-03-26\"/&gt;\n            &lt;RatePlans&gt;\n                &lt;RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt;\n           
+&lt;/RatePlans&gt;\n        &lt;/HotelAvailRequest&gt;\n   
+&lt;/HotelAvailRequests&gt;\n&lt;/OTA_HotelAvailGetRQ&gt;"</span><span class="o">);</span>
+<span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://qualification-ari.weekendesk.com/ari/"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Basic TEStTesttEsTt3st"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"text/xml"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"cache-control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre>
+<blockquote>
+<p>The above request returns XML structured like this:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OTA_HotelAvailGetRS</span>
+    <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
+    <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">Version=</span><span class="s">"1"</span> <span class="na">TimeStamp=</span><span class="s">"2016-02-26T10:32:51"</span> <span class="na">Target=</span><span class="s">"Production"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Success</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;AvailStatusMessages</span> <span class="na">HotelCode=</span><span class="s">"AL_TEST"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;AvailStatusMessage</span> <span class="na">BookingLimit=</span><span class="s">"12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;StatusApplicationControl</span> <span class="na">Start=</span><span class="s">"2017-03-23"</span> <span class="na">End=</span><span class="s">"2017-03-23"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;LenghtsOfStay&gt;</span>
+                <span class="nt">&lt;LenghtOfStay</span> <span class="na">MinLOS=</span><span class="s">"2"</span> <span class="na">MaxLOS=</span><span class="s">"99"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/LenghtsOfStay&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Master"</span> <span class="na">Status=</span><span class="s">"Close"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Arrival"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Departure"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/AvailStatusMessage&gt;</span>
+        <span class="nt">&lt;AvailStatusMessage</span> <span class="na">BookingLimit=</span><span class="s">"12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;StatusApplicationControl</span> <span class="na">Start=</span><span class="s">"2017-03-24"</span> <span class="na">End=</span><span class="s">"2017-03-24"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;LenghtsOfStay&gt;</span>
+                <span class="nt">&lt;LenghtOfStay</span> <span class="na">MinLOS=</span><span class="s">"2"</span> <span class="na">MaxLOS=</span><span class="s">"99"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/LenghtsOfStay&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Master"</span> <span class="na">Status=</span><span class="s">"Close"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Arrival"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Departure"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/AvailStatusMessage&gt;</span>
+    <span class="nt">&lt;/AvailStatusMessages&gt;</span>
+<span class="nt">&lt;/OTA_HotelAvailGetRS&gt;</span>
+</code></pre><pre class="highlight shell tab-shell"><code>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span>?&gt;
+&lt;OTA_HotelAvailGetRS
+    <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://www.opentravel.org/OTA/2003/05"</span>
+    xmlns:xsd<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSchema"</span>
+    xmlns:xsi<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="nv">Version</span><span class="o">=</span><span class="s2">"1"</span> <span class="nv">TimeStamp</span><span class="o">=</span><span class="s2">"2016-02-26T10:32:51"</span> <span class="nv">Target</span><span class="o">=</span><span class="s2">"Production"</span>&gt;
+    &lt;Success /&gt;
+    &lt;AvailStatusMessages <span class="nv">HotelCode</span><span class="o">=</span><span class="s2">"AL_TEST"</span>&gt;
+        &lt;AvailStatusMessage <span class="nv">BookingLimit</span><span class="o">=</span><span class="s2">"12"</span>&gt;
+            &lt;StatusApplicationControl <span class="nv">Start</span><span class="o">=</span><span class="s2">"2017-03-23"</span> <span class="nv">End</span><span class="o">=</span><span class="s2">"2017-03-23"</span> <span class="nv">InvTypeCode</span><span class="o">=</span><span class="s2">"RO_TEST"</span> <span class="nv">RatePlanCode</span><span class="o">=</span><span class="s2">"001"</span> /&gt;
+            &lt;LenghtsOfStay&gt;
+                &lt;LenghtOfStay <span class="nv">MinLOS</span><span class="o">=</span><span class="s2">"2"</span> <span class="nv">MaxLOS</span><span class="o">=</span><span class="s2">"99"</span> /&gt;
+            &lt;/LenghtsOfStay&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Master"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Close"</span>/&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Arrival"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Open"</span>/&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Departure"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Open"</span>/&gt;
+        &lt;/AvailStatusMessage&gt;
+        &lt;AvailStatusMessage <span class="nv">BookingLimit</span><span class="o">=</span><span class="s2">"12"</span>&gt;
+            &lt;StatusApplicationControl <span class="nv">Start</span><span class="o">=</span><span class="s2">"2017-03-24"</span> <span class="nv">End</span><span class="o">=</span><span class="s2">"2017-03-24"</span> <span class="nv">InvTypeCode</span><span class="o">=</span><span class="s2">"RO_TEST"</span> <span class="nv">RatePlanCode</span><span class="o">=</span><span class="s2">"001"</span> /&gt;
+            &lt;LenghtsOfStay&gt;
+                &lt;LenghtOfStay <span class="nv">MinLOS</span><span class="o">=</span><span class="s2">"2"</span> <span class="nv">MaxLOS</span><span class="o">=</span><span class="s2">"99"</span> /&gt;
+            &lt;/LenghtsOfStay&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Master"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Close"</span>/&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Arrival"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Open"</span>/&gt;
+            &lt;RestrictionStatus <span class="nv">Restriction</span><span class="o">=</span><span class="s2">"Departure"</span> <span class="nv">Status</span><span class="o">=</span><span class="s2">"Open"</span>/&gt;
+        &lt;/AvailStatusMessage&gt;
+    &lt;/AvailStatusMessages&gt;
+&lt;/OTA_HotelAvailGetRS&gt;
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span><span class="nx">xml</span> <span class="nx">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nx">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
+<span class="nt">&lt;OTA</span><span class="na">_HotelAvailGetRS</span>
+    <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
+    <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">Version=</span><span class="s">"1"</span> <span class="na">TimeStamp=</span><span class="s">"2016-02-26T10:32:51"</span> <span class="na">Target=</span><span class="s">"Production"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Success</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;AvailStatusMessages</span> <span class="na">HotelCode=</span><span class="s">"AL_14292"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;AvailStatusMessage</span> <span class="na">BookingLimit=</span><span class="s">"12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;StatusApplicationControl</span> <span class="na">Start=</span><span class="s">"2017-03-23"</span> <span class="na">End=</span><span class="s">"2017-03-23"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;LenghtsOfStay&gt;</span>
+                <span class="nt">&lt;LenghtOfStay</span> <span class="na">MinLOS=</span><span class="s">"2"</span> <span class="na">MaxLOS=</span><span class="s">"99"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/LenghtsOfStay&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Master"</span> <span class="na">Status=</span><span class="s">"Close"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Arrival"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Departure"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/AvailStatusMessage&gt;</span>
+        <span class="nt">&lt;AvailStatusMessage</span> <span class="na">BookingLimit=</span><span class="s">"12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;StatusApplicationControl</span> <span class="na">Start=</span><span class="s">"2017-03-24"</span> <span class="na">End=</span><span class="s">"2017-03-24"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;LenghtsOfStay&gt;</span>
+                <span class="nt">&lt;LenghtOfStay</span> <span class="na">MinLOS=</span><span class="s">"2"</span> <span class="na">MaxLOS=</span><span class="s">"99"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/LenghtsOfStay&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Master"</span> <span class="na">Status=</span><span class="s">"Close"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Arrival"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RestrictionStatus</span> <span class="na">Restriction=</span><span class="s">"Departure"</span> <span class="na">Status=</span><span class="s">"Open"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/AvailStatusMessage&gt;</span>
+    <span class="nt">&lt;/AvailStatusMessages&gt;</span>
+<span class="err">&lt;</span>/OTA_HotelAvailGetRS&gt;
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="p">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="p">=</span><span class="s">"1.0"</span> <span class="n">encoding</span><span class="p">=</span><span class="s">"UTF-8"</span><span class="p">?&gt;</span>
+<span class="p">&lt;</span><span class="n">OTA_HotelAvailGetRS</span>
+    <span class="n">xmlns</span><span class="p">=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
+    <span class="n">xmlns</span><span class="p">:</span><span class="n">xsd</span><span class="p">=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span>
+    <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="p">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="n">Version</span><span class="p">=</span><span class="s">"1"</span> <span class="n">TimeStamp</span><span class="p">=</span><span class="s">"2016-02-26T10:32:51"</span> <span class="n">Target</span><span class="p">=</span><span class="s">"Production"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">Success</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="n">AvailStatusMessages</span> <span class="n">HotelCode</span><span class="p">=</span><span class="s">"AL_TEST"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">AvailStatusMessage</span> <span class="n">BookingLimit</span><span class="p">=</span><span class="s">"12"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">StatusApplicationControl</span> <span class="n">Start</span><span class="p">=</span><span class="s">"2017-03-23"</span> <span class="n">End</span><span class="p">=</span><span class="s">"2017-03-23"</span> <span class="n">InvTypeCode</span><span class="p">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="p">=</span><span class="s">"001"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">LenghtsOfStay</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="n">LenghtOfStay</span> <span class="n">MinLOS</span><span class="p">=</span><span class="s">"2"</span> <span class="n">MaxLOS</span><span class="p">=</span><span class="s">"99"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="n">LenghtsOfStay</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Master"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Close"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Arrival"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Open"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Departure"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Open"</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">AvailStatusMessage</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">AvailStatusMessage</span> <span class="n">BookingLimit</span><span class="p">=</span><span class="s">"12"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">StatusApplicationControl</span> <span class="n">Start</span><span class="p">=</span><span class="s">"2017-03-24"</span> <span class="n">End</span><span class="p">=</span><span class="s">"2017-03-24"</span> <span class="n">InvTypeCode</span><span class="p">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="p">=</span><span class="s">"001"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">LenghtsOfStay</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="n">LenghtOfStay</span> <span class="n">MinLOS</span><span class="p">=</span><span class="s">"2"</span> <span class="n">MaxLOS</span><span class="p">=</span><span class="s">"99"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="n">LenghtsOfStay</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Master"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Close"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Arrival"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Open"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="p">=</span><span class="s">"Departure"</span> <span class="n">Status</span><span class="p">=</span><span class="s">"Open"</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">AvailStatusMessage</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">AvailStatusMessages</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">OTA_HotelAvailGetRS</span><span class="p">&gt;</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="o">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="o">?&gt;</span>
+<span class="o">&lt;</span><span class="n">OTA_HotelAvailGetRS</span>
+    <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
+    <span class="nl">xmlns:</span><span class="n">xsd</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span>
+    <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="n">Version</span><span class="o">=</span><span class="s">"1"</span> <span class="n">TimeStamp</span><span class="o">=</span><span class="s">"2016-02-26T10:32:51"</span> <span class="n">Target</span><span class="o">=</span><span class="s">"Production"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Success</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">AvailStatusMessages</span> <span class="n">HotelCode</span><span class="o">=</span><span class="s">"AL_TEST"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">AvailStatusMessage</span> <span class="n">BookingLimit</span><span class="o">=</span><span class="s">"12"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">StatusApplicationControl</span> <span class="n">Start</span><span class="o">=</span><span class="s">"2017-03-23"</span> <span class="n">End</span><span class="o">=</span><span class="s">"2017-03-23"</span> <span class="n">InvTypeCode</span><span class="o">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="o">=</span><span class="s">"001"</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">LenghtsOfStay</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">LenghtOfStay</span> <span class="n">MinLOS</span><span class="o">=</span><span class="s">"2"</span> <span class="n">MaxLOS</span><span class="o">=</span><span class="s">"99"</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="n">LenghtsOfStay</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Master"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Close"</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Arrival"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Open"</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Departure"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Open"</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="n">AvailStatusMessage</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">AvailStatusMessage</span> <span class="n">BookingLimit</span><span class="o">=</span><span class="s">"12"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">StatusApplicationControl</span> <span class="n">Start</span><span class="o">=</span><span class="s">"2017-03-24"</span> <span class="n">End</span><span class="o">=</span><span class="s">"2017-03-24"</span> <span class="n">InvTypeCode</span><span class="o">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="o">=</span><span class="s">"001"</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">LenghtsOfStay</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">LenghtOfStay</span> <span class="n">MinLOS</span><span class="o">=</span><span class="s">"2"</span> <span class="n">MaxLOS</span><span class="o">=</span><span class="s">"99"</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="n">LenghtsOfStay</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Master"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Close"</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Arrival"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Open"</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">RestrictionStatus</span> <span class="n">Restriction</span><span class="o">=</span><span class="s">"Departure"</span> <span class="n">Status</span><span class="o">=</span><span class="s">"Open"</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="n">AvailStatusMessage</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">AvailStatusMessages</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">OTA_HotelAvailGetRS</span><span class="o">&gt;</span>
+</code></pre><h3 id='http-request-8'>HTTP Request</h3>
+<p>Testing:<br>
+<code>POST</code> http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+<code>POST</code> http://ari.weekendesk.com/ari/</p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td>string</td>
+<td>Yes</td>
+<td>1.0 is the latest version</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>date</td>
+<td>Yes</td>
+<td>TimeStamp of the request (YYY-MM-DD-THH:MM:SS)</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>string</td>
+<td>Yes</td>
+<td>Testing=Test environment; Production=Prod environment</td>
+</tr>
+<tr>
+<td>HotelCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Weekendesk Hotel ID</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>date</td>
+<td>Yes</td>
+<td>Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.</td>
+</tr>
+<tr>
+<td>End</td>
+<td>date</td>
+<td>Yes</td>
+<td>Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.</td>
+</tr>
+<tr>
+<td>InvTypeCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Code of the Room for which the update is sent</td>
+</tr>
+<tr>
+<td>RatePlanCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Code of the Rate Plan for which the update is sent</td>
+</tr>
+</tbody></table>
+<h2 id='read-prices'>Read Prices</h2>
+<p>The RatePlan request allows the Channel Partner to request rates for a specific Room and RatePlan.</p>
+<pre class="highlight xml tab-xml"><code>HEADER
+Authorization: Basic TEStTesttEsTt3st
+Content-Type: text/xml
+
+BODY
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OTA_HotelRatePlanRQ</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">TimeStamp=</span><span class="s">"2016-02-26T10:32:51"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;RateAmountMessages</span> <span class="na">HotelCode=</span><span class="s">"AL_TEST"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RateAmountMessage&gt;</span>
+            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-10-23"</span> <span class="na">End=</span><span class="s">"2017-10-25"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RatePlans&gt;</span>             
+            <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RatePlans&gt;</span>
+        <span class="nt">&lt;/RateAmountMessage&gt;</span>
+        <span class="nt">&lt;RateAmountMessage&gt;</span>
+            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-10-23"</span> <span class="na">End=</span><span class="s">"2017-10-25"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RatePlans&gt;</span>             
+            <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RatePlans&gt;</span>
+        <span class="nt">&lt;/RateAmountMessage&gt;</span>
+    <span class="nt">&lt;/RateAmountMessages&gt;</span>
+<span class="nt">&lt;/OTA_HotelRatePlanRQ&gt;</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl
+-X POST
+-H <span class="s2">"Authorization: Basic TEStTesttEsTt3st"</span>
+-H <span class="s2">"Content-Type: text/xml"</span>
+-H <span class="s2">"Cache-Control: no-cache"</span>
+-d <span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;OTA_HotelRatePlanRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2016-02-26T10:32:51"&gt;
+    &lt;RateAmountMessages HotelCode="AL_TEST"&gt;
+        &lt;RateAmountMessage&gt;
+            &lt;DateRange Start="2017-10-23" End="2017-10-25"/&gt;
+        &lt;RatePlans&gt;             
+            &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+        &lt;/RatePlans&gt;
+        &lt;/RateAmountMessage&gt;
+        &lt;RateAmountMessage&gt;
+            &lt;DateRange Start="2017-10-23" End="2017-10-25"/&gt;
+        &lt;RatePlans&gt;             
+            &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/&gt;
+        &lt;/RatePlans&gt;
+        &lt;/RateAmountMessage&gt;
+    &lt;/RateAmountMessages&gt;
+&lt;/OTA_HotelRatePlanRQ&gt;'</span> <span class="s2">"http://test-standard-ari-gateway.weekendesk.com/ari"</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'http://test-standard-ari-gateway.weekendesk.com/ari'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'text/xml'</span><span class="p">,</span>
+  <span class="s1">'authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Basic MTAyOmlhdGVhc2hh'</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;OTA_HotelRatePlanRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2016-02-26T10:32:51"&gt;
+    &lt;RateAmountMessages HotelCode="AL_TEST"&gt;
+        &lt;RateAmountMessage&gt;
+            &lt;DateRange Start="2017-10-23" End="2017-10-25"/&gt;
+        &lt;RatePlans&gt;             
+            &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/&gt;
+        &lt;/RatePlans&gt;
+        &lt;/RateAmountMessage&gt;
+        &lt;RateAmountMessage&gt;
+            &lt;DateRange Start="2017-10-23" End="2017-10-25"/&gt;
+        &lt;RatePlans&gt;             
+            &lt;RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/&gt;
+        &lt;/RatePlans&gt;
+        &lt;/RateAmountMessage&gt;
+    &lt;/RateAmountMessages&gt;
+&lt;/OTA_HotelRatePlanRQ&gt;'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://test-standard-ari-gateway.weekendesk.com/ari"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"text/xml"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Basic MTAyOmlhdGVhc2hh"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"text/xml"</span><span class="p">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_HotelRatePlanRQ
+</span><span class="n">xmlns</span><span class="p">=</span><span class="err">\</span><span class="s">"http://www.opentravel.org/OTA/2003/05\" TimeStamp=\"2016-02-26T10:32:51\"&gt;\n\t&lt;RateAmountMessages HotelCode=\"AL_TEST\"&gt;\n\t\t&lt;RateAmountMessage&gt;\n\t\t\t&lt;DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/&gt;\n\t\t&lt;RatePlans&gt;\t\t\t\t\n\t\t\t&lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt; \n\t\t&lt;/RatePlans&gt; \n\t\t&lt;/RateAmountMessage&gt;\n\t\t&lt;RateAmountMessage&gt;\n\t\t\t&lt;DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/&gt;\n\t\t&lt;RatePlans&gt;\t\t\t\t\n\t\t\t&lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"002\"/&gt; \n\t\t&lt;/RatePlans&gt; \n\t\t&lt;/RateAmountMessage&gt;\n\t&lt;/RateAmountMessages&gt;\n&lt;/OTA_HotelRatePlanRQ&gt;"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
+
+<span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/xml"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;OTA_HotelRatePlanRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" TimeStamp=\"2016-02-26T10:32:51\"&gt;\n\t&lt;RateAmountMessages HotelCode=\"AL_TEST\"&gt;\n\t\t&lt;RateAmountMessage&gt;\n\t\t\t&lt;DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/&gt;\n\t\t&lt;RatePlans&gt;\t\t\t\t\n\t\t\t&lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt; \n\t\t&lt;/RatePlans&gt; \n\t\t&lt;/RateAmountMessage&gt;\n\t\t&lt;RateAmountMessage&gt;\n\t\t\t&lt;DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/&gt;\n\t\t&lt;RatePlans&gt;\t\t\t\t\n\t\t\t&lt;RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"002\"/&gt; \n\t\t&lt;/RatePlans&gt; \n\t\t&lt;/RateAmountMessage&gt;\n\t&lt;/RateAmountMessages&gt;\n&lt;/OTA_HotelRatePlanRQ&gt;"</span><span class="o">);</span>
+<span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://test-standard-ari-gateway.weekendesk.com/ari"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Basic MTAyOmlhdGVhc2hh"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"text/xml"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"cache-control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre>
+<blockquote>
+<p>The above request returns XML structured like this:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
+<span class="nt">&lt;OTA_HotelRatePlanRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">TimeStamp=</span><span class="s">"2017-11-24T08:59:08.992Z"</span> <span class="na">Version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Success/&gt;</span>
+    <span class="nt">&lt;RatePlans</span> <span class="na">HotelCode=</span><span class="s">"AL_TEST"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-23"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-23"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-24"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-24"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-25"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-25"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+    <span class="nt">&lt;/RatePlans&gt;</span>
+<span class="nt">&lt;/OTA_HotelRatePlanRS&gt;</span>
+</code></pre><pre class="highlight shell tab-shell"><code>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span> <span class="nv">standalone</span><span class="o">=</span><span class="s2">"no"</span>?&gt;
+&lt;OTA_HotelRatePlanRS <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://www.opentravel.org/OTA/2003/05"</span> <span class="nv">TimeStamp</span><span class="o">=</span><span class="s2">"2017-11-24T08:59:08.992Z"</span> <span class="nv">Version</span><span class="o">=</span><span class="s2">"1.0"</span>&gt;
+    &lt;Success/&gt;
+    &lt;RatePlans <span class="nv">HotelCode</span><span class="o">=</span><span class="s2">"AL_TEST"</span>&gt;
+        &lt;RatePlan <span class="nv">End</span><span class="o">=</span><span class="s2">"2017-12-23"</span> <span class="nv">InvTypeCode</span><span class="o">=</span><span class="s2">"RO_TEST"</span> <span class="nv">RatePlanCode</span><span class="o">=</span><span class="s2">"003"</span> <span class="nv">Start</span><span class="o">=</span><span class="s2">"2017-12-23"</span>&gt;
+            &lt;Rates&gt;
+                &lt;Rate&gt;
+                    &lt;BaseByGuestAmts&gt;
+                        &lt;BaseByGuestAmt <span class="nv">AgeQualifyingCode</span><span class="o">=</span><span class="s2">"10"</span> <span class="nv">AmountAfterTax</span><span class="o">=</span><span class="s2">"56.00"</span> <span class="nv">NumberOfGuests</span><span class="o">=</span><span class="s2">"2"</span>/&gt;
+                    &lt;/BaseByGuestAmts&gt;
+                &lt;/Rate&gt;
+            &lt;/Rates&gt;
+        &lt;/RatePlan&gt;
+        &lt;RatePlan <span class="nv">End</span><span class="o">=</span><span class="s2">"2017-12-24"</span> <span class="nv">InvTypeCode</span><span class="o">=</span><span class="s2">"RO_TEST"</span> <span class="nv">RatePlanCode</span><span class="o">=</span><span class="s2">"003"</span> <span class="nv">Start</span><span class="o">=</span><span class="s2">"2017-12-24"</span>&gt;
+            &lt;Rates&gt;
+                &lt;Rate&gt;
+                    &lt;BaseByGuestAmts&gt;
+                        &lt;BaseByGuestAmt <span class="nv">AgeQualifyingCode</span><span class="o">=</span><span class="s2">"10"</span> <span class="nv">AmountAfterTax</span><span class="o">=</span><span class="s2">"56.00"</span> <span class="nv">NumberOfGuests</span><span class="o">=</span><span class="s2">"2"</span>/&gt;
+                    &lt;/BaseByGuestAmts&gt;
+                &lt;/Rate&gt;
+            &lt;/Rates&gt;
+        &lt;/RatePlan&gt;
+        &lt;RatePlan <span class="nv">End</span><span class="o">=</span><span class="s2">"2017-12-25"</span> <span class="nv">InvTypeCode</span><span class="o">=</span><span class="s2">"RO_TEST"</span> <span class="nv">RatePlanCode</span><span class="o">=</span><span class="s2">"003"</span> <span class="nv">Start</span><span class="o">=</span><span class="s2">"2017-12-25"</span>&gt;
+            &lt;Rates&gt;
+                &lt;Rate&gt;
+                    &lt;BaseByGuestAmts&gt;
+                        &lt;BaseByGuestAmt <span class="nv">AgeQualifyingCode</span><span class="o">=</span><span class="s2">"10"</span> <span class="nv">AmountAfterTax</span><span class="o">=</span><span class="s2">"56.00"</span> <span class="nv">NumberOfGuests</span><span class="o">=</span><span class="s2">"2"</span>/&gt;
+                    &lt;/BaseByGuestAmts&gt;
+                &lt;/Rate&gt;
+            &lt;/Rates&gt;
+        &lt;/RatePlan&gt;
+    &lt;/RatePlans&gt;
+&lt;/OTA_HotelRatePlanRS&gt;
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span><span class="nx">xml</span> <span class="nx">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nx">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span> <span class="nx">standalone</span><span class="o">=</span><span class="s2">"no"</span><span class="cp">?&gt;</span>
+<span class="nt">&lt;OTA</span><span class="na">_HotelRatePlanRS</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="na">TimeStamp=</span><span class="s">"2017-11-24T08:59:08.992Z"</span> <span class="na">Version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Success/&gt;</span>
+    <span class="nt">&lt;RatePlans</span> <span class="na">HotelCode=</span><span class="s">"AL_TEST"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-23"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-23"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-24"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-24"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+        <span class="nt">&lt;RatePlan</span> <span class="na">End=</span><span class="s">"2017-12-25"</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span> <span class="na">Start=</span><span class="s">"2017-12-25"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Rates&gt;</span>
+                <span class="nt">&lt;Rate&gt;</span>
+                    <span class="nt">&lt;BaseByGuestAmts&gt;</span>
+                        <span class="nt">&lt;BaseByGuestAmt</span> <span class="na">AgeQualifyingCode=</span><span class="s">"10"</span> <span class="na">AmountAfterTax=</span><span class="s">"56.00"</span> <span class="na">NumberOfGuests=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/BaseByGuestAmts&gt;</span>
+                <span class="nt">&lt;/Rate&gt;</span>
+            <span class="nt">&lt;/Rates&gt;</span>
+        <span class="nt">&lt;/RatePlan&gt;</span>
+    <span class="nt">&lt;/RatePlans&gt;</span>
+<span class="err">&lt;</span>/OTA_HotelRatePlanRS&gt;
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="p">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="p">=</span><span class="s">"1.0"</span> <span class="n">encoding</span><span class="p">=</span><span class="s">"UTF-8"</span> <span class="n">standalone</span><span class="p">=</span><span class="s">"no"</span><span class="p">?&gt;</span>
+<span class="p">&lt;</span><span class="n">OTA_HotelRatePlanRS</span> <span class="n">xmlns</span><span class="p">=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="n">TimeStamp</span><span class="p">=</span><span class="s">"2017-11-24T08:59:08.992Z"</span> <span class="n">Version</span><span class="p">=</span><span class="s">"1.0"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">Success</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="n">RatePlans</span> <span class="n">HotelCode</span><span class="p">=</span><span class="s">"AL_TEST"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="p">=</span><span class="s">"2017-12-23"</span> <span class="n">InvTypeCode</span><span class="p">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="p">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="p">=</span><span class="s">"2017-12-23"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">Rates</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="n">Rate</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="p">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="p">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="p">=</span><span class="s">"2"</span><span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="n">Rate</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="n">Rates</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="n">RatePlan</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="p">=</span><span class="s">"2017-12-24"</span> <span class="n">InvTypeCode</span><span class="p">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="p">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="p">=</span><span class="s">"2017-12-24"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">Rates</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="n">Rate</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="p">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="p">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="p">=</span><span class="s">"2"</span><span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="n">Rate</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="n">Rates</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="n">RatePlan</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="p">=</span><span class="s">"2017-12-25"</span> <span class="n">InvTypeCode</span><span class="p">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="p">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="p">=</span><span class="s">"2017-12-25"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">Rates</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="n">Rate</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="p">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="p">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="p">=</span><span class="s">"2"</span><span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="n">Rate</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="n">Rates</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="n">RatePlan</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">RatePlans</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">OTA_HotelRatePlanRS</span><span class="p">&gt;</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="o">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"UTF-8"</span> <span class="n">standalone</span><span class="o">=</span><span class="s">"no"</span><span class="o">?&gt;</span>
+<span class="o">&lt;</span><span class="n">OTA_HotelRatePlanRS</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span> <span class="n">TimeStamp</span><span class="o">=</span><span class="s">"2017-11-24T08:59:08.992Z"</span> <span class="n">Version</span><span class="o">=</span><span class="s">"1.0"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Success</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">RatePlans</span> <span class="n">HotelCode</span><span class="o">=</span><span class="s">"AL_TEST"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="o">=</span><span class="s">"2017-12-23"</span> <span class="n">InvTypeCode</span><span class="o">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="o">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="o">=</span><span class="s">"2017-12-23"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">Rates</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">Rate</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="o">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="o">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="o">=</span><span class="s">"2"</span><span class="o">/&gt;</span>
+                    <span class="o">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">Rate</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">Rates</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">RatePlan</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="o">=</span><span class="s">"2017-12-24"</span> <span class="n">InvTypeCode</span><span class="o">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="o">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="o">=</span><span class="s">"2017-12-24"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">Rates</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">Rate</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="o">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="o">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="o">=</span><span class="s">"2"</span><span class="o">/&gt;</span>
+                    <span class="o">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">Rate</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">Rates</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">RatePlan</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">RatePlan</span> <span class="n">End</span><span class="o">=</span><span class="s">"2017-12-25"</span> <span class="n">InvTypeCode</span><span class="o">=</span><span class="s">"RO_TEST"</span> <span class="n">RatePlanCode</span><span class="o">=</span><span class="s">"003"</span> <span class="n">Start</span><span class="o">=</span><span class="s">"2017-12-25"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">Rates</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">Rate</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">BaseByGuestAmt</span> <span class="n">AgeQualifyingCode</span><span class="o">=</span><span class="s">"10"</span> <span class="n">AmountAfterTax</span><span class="o">=</span><span class="s">"56.00"</span> <span class="n">NumberOfGuests</span><span class="o">=</span><span class="s">"2"</span><span class="o">/&gt;</span>
+                    <span class="o">&lt;/</span><span class="n">BaseByGuestAmts</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">Rate</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">Rates</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">RatePlan</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">RatePlans</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">OTA_HotelRatePlanRS</span><span class="o">&gt;</span>
+</code></pre><h3 id='http-request-9'>HTTP Request</h3>
+<p>Testing:<br>
+<code>POST</code> http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+<code>POST</code> http://ari.weekendesk.com/ari/</p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td>string</td>
+<td>Yes</td>
+<td>1.0 is the latest version</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>date</td>
+<td>Yes</td>
+<td>TimeStamp of the request (YYY-MM-DD-THH:MM:SS)</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>string</td>
+<td>Yes</td>
+<td>Testing=Test environment; Production=Prod environment</td>
+</tr>
+<tr>
+<td>HotelCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Weekendesk Hotel ID</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>date</td>
+<td>Yes</td>
+<td>Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.</td>
+</tr>
+<tr>
+<td>End</td>
+<td>date</td>
+<td>Yes</td>
+<td>Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.</td>
+</tr>
+<tr>
+<td>InvTypeCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Code of the Room for which the update is sent</td>
+</tr>
+<tr>
+<td>RatePlanCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Code of the Rate Plan for which the update is sent</td>
+</tr>
+</tbody></table>
 <h1 id='reservation-delivery'>Reservation Delivery</h1>
 <p>The Reservation delivery allows the Channel partner to receive both Booking and Cancel Notifications real time via the web-service.<br>
 Weekendesk Reservation API is based on XML messages based on the standards OTA (http://www.opentravel.org/)<br>
@@ -2108,17 +2782,17 @@ Specifically the following are used for notifying the Channel partner of a Booki
 - OTA_HotelResRQ/RS<br>
 - OTA_CancelRQ/RS<br>
 <br></p>
-<h2 id='receive-booking-notifications'>Receive Booking Notifications</h2>
+<h2 id='booking-notification'>Booking Notification</h2>
 <p>Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
 Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p>Endpoint:<br>
 <code>POST</code> https://channel-manager-endpoint.com</p>
 
 <aside class="success">
 Remember - Before starting receiving Booking Notifications <b>send the Endpoint and Credentials (if any)</b> of both your testing and production environment to your technical contact at Weekendesk.
 </aside>
-<h3 id='authentication-2'>Authentication</h3><pre class="highlight xml tab-xml"><code><span class="nt">&lt;POS&gt;</span>
+<h3 id='booking-request'>Booking Request</h3><h3 id='authentication-2'>Authentication</h3><pre class="highlight xml tab-xml"><code><span class="nt">&lt;POS&gt;</span>
     <span class="nt">&lt;Source&gt;</span>
       <span class="nt">&lt;RequestorID</span> <span class="na">ID=</span><span class="s">"user"</span> <span class="na">MessagePassword=</span><span class="s">"password"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/Source&gt;</span>
@@ -2636,12 +3310,12 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <td>Card Holder Name</td>
 </tr>
 </tbody></table>
-<h2 id='booking-response'>Booking Response</h2>
+<h3 id='booking-response'>Booking Response</h3>
 <blockquote>
 <p>The above request sent to the ChannelPartner should the following  XML:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_HotelResRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
-  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"3.0"</span>
+  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.0"</span>
   <span class="na">ResResponseType=</span><span class="s">"Committed"</span>
   <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;&lt;Success/&gt;</span>
   <span class="nt">&lt;HotelReservations&gt;</span>
@@ -2709,7 +3383,7 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
 <span class="nt">&lt;OTA_HotelResRQ</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
 <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
 <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd"</span>
-<span class="na">Version=</span><span class="s">"3.0"</span>
+<span class="na">Version=</span><span class="s">"1.0"</span>
                 <span class="na">ResStatus=</span><span class="s">"Commit"</span> <span class="na">PrimaryLangID=</span><span class="s">"en-US"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;POS&gt;</span>
         <span class="nt">&lt;Source&gt;</span>
@@ -2824,10 +3498,10 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
         <span class="nt">&lt;/HotelReservation&gt;</span>
     <span class="nt">&lt;/HotelReservations&gt;</span>
 <span class="nt">&lt;/OTA_HotelResRQ&gt;</span>
-</code></pre><h2 id='receive-cancel-notifications'>Receive Cancel Notifications</h2>
+</code></pre><h2 id='cancel-notification'>Cancel Notification</h2>
 <p>Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
 Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p>Endpoint:<br>
 <code>POST</code> https://channel-manager-endpoint.com</p>
 
@@ -2835,7 +3509,7 @@ Once received the notification, and successfully confirmed, it is responsability
 Remember - Before starting receiving Cancellation Notifications <b>send the Endpoint and Credentials (if any)</b> of both your testing and production environment to your technical contact at Weekendesk.
 </aside>
 <h3 id='cancellation-request'>Cancellation Request</h3><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;OTA_CancelRQ</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">CancelType=</span><span class="s">"Commit"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;OTA_CancelRQ</span> <span class="na">Version=</span><span class="s">"1.0"</span> <span class="na">CancelType=</span><span class="s">"Commit"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;POS&gt;</span>
         <span class="nt">&lt;Source&gt;</span>
         <span class="nt">&lt;RequestorID</span> <span class="na">ID=</span><span class="s">"user"</span> <span class="na">MessagePassword=</span><span class="s">"password"</span> <span class="na">HotelID=</span><span class="s">"AL_TEST"</span><span class="nt">/&gt;</span>
@@ -2911,7 +3585,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>TimeStamp of integration of the cancellation</td>
 </tr>
 </tbody></table>
-<h2 id='cancellation-response'>Cancellation Response</h2>
+<h3 id='cancel-response'>Cancel Response</h3>
 <blockquote>
 <p>The above request sent to the Channel partner should the following XML :</p>
 </blockquote>
