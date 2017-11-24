@@ -122,7 +122,7 @@ Content-Type: text/xml
 
 BODY
 <?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="3.00" TimeStamp="2008-05-29T10:58:21">
+<OTA_PingRQ Version="1.00" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>
 ```
 
@@ -133,7 +133,7 @@ curl
   -H "Authorization: Basic TEStTesttEsTt3st"
   -H "Cache-Control: no-cache"
   -d '<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ Version="3.0" TimeStamp="2008-05-29T10:58:21">
+<OTA_PingRQ Version="1.0" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
 ```
 
@@ -151,7 +151,7 @@ $request->setHeaders(array(
 ));
 
 $request->setBody('<?xml version="1.0" encoding="UTF-8"?>
-<OTA_PingRQ version="3.0"" TimeStamp="2008-05-29T10:58:21">
+<OTA_PingRQ Version="1.0"" TimeStamp="2008-05-29T10:58:21">
 </OTA_PingRQ>');
 
 try {
@@ -676,7 +676,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-Version | string | Yes | 3.0 is the latest version
+Version | string | Yes | 1.0 is the latest version
 TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
@@ -910,7 +910,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-Version | string | Yes | 3.0 is the latest version
+Version | string | Yes | 1.0 is the latest version
 TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
@@ -1109,7 +1109,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-Version | string | Yes | 3.0 is the latest version
+Version | string | Yes | 1.0 is the latest version
 TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
@@ -1444,7 +1444,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-Version | string | Yes | 3.0 is the latest version
+Version | string | Yes | 1.0 is the latest version
 TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
@@ -1719,7 +1719,7 @@ Testing:<br>
 
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
-Version | string | Yes | 3.0 is the latest version
+Version | string | Yes | 1.0 is the latest version
 TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
 Target | string | Yes | Testing=Test environment; Production=Prod environment
 HotelCode | string | Yes | The Weekendesk Hotel ID
@@ -1731,9 +1731,655 @@ InvTypeCode | string | Yes | Code of the Room for which the update is sent
 AmountAfterTax | decimal | Yes | The price for the Rate of a specific Rate Plan
 DecimalPlaces | integer | No | Number of decimal places used in the AmountAfterTax
 
-#ARI Read (Beta Test)
+#ARI Read
 
-Functionality under developement
+The Reading function allows the Channel partner to retrieve prices and availabilities for a given Room and RatePlan code.
+
+##Read Availabilities
+
+The AvailGet request allows the Channel Partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
+<br>
+- Booking Limit<br>
+- Min LengthOfStay<br>
+- Max LengthOfStay<br>
+- Closed to Arrival<br>
+- Closed to Departure<br>
+<br>
+
+```xml
+HEADER
+Authorization: Basic TEStTesttEsTt3st
+Content-Type: text/xml
+
+BODY
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     Version="1.0" TimeStamp="2016-02-26T10:32:51" Target="Production">
+    <HotelAvailRequests HotelCode="AL_TEST">
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-23" End="2017-03-25"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/>
+            </RatePlans>
+        </HotelAvailRequest>
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-26" End="2017-03-26"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+            </RatePlans>
+        </HotelAvailRequest>
+    </HotelAvailRequests>
+</OTA_HotelAvailGetRQ>
+```
+
+```shell
+curl
+-X POST
+-H "Authorization: Basic TEStTesttEsTt3st"
+-H "Content-Type: text/xml"
+-H "Cache-Control: no-cache"
+-d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     Version="1.0" TimeStamp="2016-02-26T10:32:51" Target="Production">
+    <HotelAvailRequests HotelCode="AL_TEST">
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-23" End="2017-03-25"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/>
+            </RatePlans>
+        </HotelAvailRequest>
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-26" End="2017-03-26"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+            </RatePlans>
+        </HotelAvailRequest>
+    </HotelAvailRequests>
+</OTA_HotelAvailGetRQ>' "http://qualification-ari.weekendesk.com/ari/"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'content-type' => 'text/xml',
+  'authorization' => 'Basic TEStTesttEsTt3st'
+));
+
+$request->setBody('<OTA_HotelAvailGetRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     Version="1.0" TimeStamp="2016-02-26T10:32:51" Target="Production">
+    <HotelAvailRequests HotelCode="AL_TEST">
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-23" End="2017-03-25"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/>
+            </RatePlans>
+        </HotelAvailRequest>
+        <HotelAvailRequest>
+            <DateRange Start="2017-03-26" End="2017-03-26"/>
+            <RatePlans>
+                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+            </RatePlans>
+        </HotelAvailRequest>
+    </HotelAvailRequests>
+</OTA_HotelAvailGetRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("content-type", "text/xml");
+request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_HotelAvailGetRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n                     xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n                     Version=\"1.0\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n    <HotelAvailRequests HotelCode=\"AL_TEST\">\n        <HotelAvailRequest>\n            <DateRange Start=\"2017-03-23\" End=\"2017-03-25\"/>\n            <RatePlans>\n                <RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/>\n                <RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"003\"/>\n            </RatePlans>\n        </HotelAvailRequest>\n        <HotelAvailRequest>\n            <DateRange Start=\"2017-03-26\" End=\"2017-03-26\"/>\n            <RatePlans>\n                <RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/>\n            </RatePlans>\n        </HotelAvailRequest>\n    </HotelAvailRequests>\n</OTA_HotelAvailGetRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\"
+encoding=\"UTF-8\"?>\n<OTA_HotelAvailGetRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n                    
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n                    
+Version=\"1.0\" TimeStamp=\"2016-02-26T10:32:51\" Target=\"Production\">\n   
+<HotelAvailRequests HotelCode=\"AL_TEST\">\n       
+<HotelAvailRequest>\n            <DateRange Start=\"2017-03-23\"
+End=\"2017-03-25\"/>\n            <RatePlans>\n                <RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/>\n                <RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"003\"/>\n           
+</RatePlans>\n        </HotelAvailRequest>\n       
+<HotelAvailRequest>\n            <DateRange Start=\"2017-03-26\"
+End=\"2017-03-26\"/>\n            <RatePlans>\n                <RatePlan
+InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/>\n           
+</RatePlans>\n        </HotelAvailRequest>\n   
+</HotelAvailRequests>\n</OTA_HotelAvailGetRQ>");
+Request request = new Request.Builder()
+  .url("http://qualification-ari.weekendesk.com/ari/")
+  .post(body)
+  .addHeader("authorization", "Basic TEStTesttEsTt3st")
+  .addHeader("content-type", "text/xml")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above request returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRS
+	xmlns="http://www.opentravel.org/OTA/2003/05"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+	<Success />
+	<AvailStatusMessages HotelCode="AL_TEST">
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-23" End="2017-03-23" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-24" End="2017-03-24" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+	</AvailStatusMessages>
+</OTA_HotelAvailGetRS>
+```
+
+```shell
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRS
+	xmlns="http://www.opentravel.org/OTA/2003/05"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+	<Success />
+	<AvailStatusMessages HotelCode="AL_TEST">
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-23" End="2017-03-23" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-24" End="2017-03-24" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+	</AvailStatusMessages>
+</OTA_HotelAvailGetRS>
+```
+
+```php
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRS
+	xmlns="http://www.opentravel.org/OTA/2003/05"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+	<Success />
+	<AvailStatusMessages HotelCode="AL_14292">
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-23" End="2017-03-23" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-24" End="2017-03-24" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+	</AvailStatusMessages>
+</OTA_HotelAvailGetRS>
+```
+
+```csharp
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRS
+	xmlns="http://www.opentravel.org/OTA/2003/05"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+	<Success />
+	<AvailStatusMessages HotelCode="AL_TEST">
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-23" End="2017-03-23" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-24" End="2017-03-24" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+	</AvailStatusMessages>
+</OTA_HotelAvailGetRS>
+```
+
+```java
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelAvailGetRS
+	xmlns="http://www.opentravel.org/OTA/2003/05"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1" TimeStamp="2016-02-26T10:32:51" Target="Production">
+	<Success />
+	<AvailStatusMessages HotelCode="AL_TEST">
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-23" End="2017-03-23" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+		<AvailStatusMessage BookingLimit="12">
+			<StatusApplicationControl Start="2017-03-24" End="2017-03-24" InvTypeCode="RO_TEST" RatePlanCode="001" />
+			<LenghtsOfStay>
+				<LenghtOfStay MinLOS="2" MaxLOS="99" />
+			</LenghtsOfStay>
+			<RestrictionStatus Restriction="Master" Status="Close"/>
+			<RestrictionStatus Restriction="Arrival" Status="Open"/>
+			<RestrictionStatus Restriction="Departure" Status="Open"/>
+		</AvailStatusMessage>
+	</AvailStatusMessages>
+</OTA_HotelAvailGetRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+Version | string | Yes | 1.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
+HotelCode | string | Yes | The Weekendesk Hotel ID
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
+InvTypeCode | string | Yes | Code of the Room for which the update is sent
+RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
+
+##Read Prices
+
+The RatePlan request allows the Channel Partner to request rates for a specific Room and RatePlan.
+
+```xml
+HEADER
+Authorization: Basic TEStTesttEsTt3st
+Content-Type: text/xml
+
+BODY
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRatePlanRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2016-02-26T10:32:51">
+	<RateAmountMessages HotelCode="AL_TEST">
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+		</RatePlans>
+		</RateAmountMessage>
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/>
+		</RatePlans>
+		</RateAmountMessage>
+	</RateAmountMessages>
+</OTA_HotelRatePlanRQ>
+```
+
+```shell
+curl
+-X POST
+-H "Authorization: Basic TEStTesttEsTt3st"
+-H "Content-Type: text/xml"
+-H "Cache-Control: no-cache"
+-d '<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRatePlanRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2016-02-26T10:32:51">
+	<RateAmountMessages HotelCode="AL_TEST">
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+		</RatePlans>
+		</RateAmountMessage>
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/>
+		</RatePlans>
+		</RateAmountMessage>
+	</RateAmountMessages>
+</OTA_HotelRatePlanRQ>' "http://test-standard-ari-gateway.weekendesk.com/ari"
+```
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('http://test-standard-ari-gateway.weekendesk.com/ari');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'cache-control' => 'no-cache',
+  'content-type' => 'text/xml',
+  'authorization' => 'Basic MTAyOmlhdGVhc2hh'
+));
+
+$request->setBody('<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelRatePlanRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2016-02-26T10:32:51">
+	<RateAmountMessages HotelCode="AL_TEST">
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
+		</RatePlans>
+		</RateAmountMessage>
+		<RateAmountMessage>
+			<DateRange Start="2017-10-23" End="2017-10-25"/>
+		<RatePlans>				
+			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/>
+		</RatePlans>
+		</RateAmountMessage>
+	</RateAmountMessages>
+</OTA_HotelRatePlanRQ>');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+```csharp
+var client = new RestClient("http://test-standard-ari-gateway.weekendesk.com/ari");
+var request = new RestRequest(Method.POST);
+request.AddHeader("cache-control", "no-cache");
+request.AddHeader("content-type", "text/xml");
+request.AddHeader("authorization", "Basic MTAyOmlhdGVhc2hh");
+request.AddParameter("text/xml", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_HotelRatePlanRQ
+xmlns=\"http://www.opentravel.org/OTA/2003/05\" TimeStamp=\"2016-02-26T10:32:51\">\n\t<RateAmountMessages HotelCode=\"AL_TEST\">\n\t\t<RateAmountMessage>\n\t\t\t<DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/>\n\t\t<RatePlans>\t\t\t\t\n\t\t\t<RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/> \n\t\t</RatePlans> \n\t\t</RateAmountMessage>\n\t\t<RateAmountMessage>\n\t\t\t<DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/>\n\t\t<RatePlans>\t\t\t\t\n\t\t\t<RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"002\"/> \n\t\t</RatePlans> \n\t\t</RateAmountMessage>\n\t</RateAmountMessages>\n</OTA_HotelRatePlanRQ>", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("text/xml");
+RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_HotelRatePlanRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" TimeStamp=\"2016-02-26T10:32:51\">\n\t<RateAmountMessages HotelCode=\"AL_TEST\">\n\t\t<RateAmountMessage>\n\t\t\t<DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/>\n\t\t<RatePlans>\t\t\t\t\n\t\t\t<RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/> \n\t\t</RatePlans> \n\t\t</RateAmountMessage>\n\t\t<RateAmountMessage>\n\t\t\t<DateRange Start=\"2017-10-23\" End=\"2017-10-25\"/>\n\t\t<RatePlans>\t\t\t\t\n\t\t\t<RatePlan InvTypeCode=\"RO_TEST\" RatePlanCode=\"002\"/> \n\t\t</RatePlans> \n\t\t</RateAmountMessage>\n\t</RateAmountMessages>\n</OTA_HotelRatePlanRQ>");
+Request request = new Request.Builder()
+  .url("http://test-standard-ari-gateway.weekendesk.com/ari")
+  .post(body)
+  .addHeader("authorization", "Basic MTAyOmlhdGVhc2hh")
+  .addHeader("content-type", "text/xml")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+> The above request returns XML structured like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OTA_HotelRatePlanRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2017-11-24T08:59:08.992Z" Version="1.0">
+    <Success/>
+    <RatePlans HotelCode="AL_TEST">
+        <RatePlan End="2017-12-23" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-23">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-24" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-24">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-25" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-25">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+    </RatePlans>
+</OTA_HotelRatePlanRS>
+```
+
+```shell
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OTA_HotelRatePlanRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2017-11-24T08:59:08.992Z" Version="1.0">
+    <Success/>
+    <RatePlans HotelCode="AL_TEST">
+        <RatePlan End="2017-12-23" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-23">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-24" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-24">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-25" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-25">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+    </RatePlans>
+</OTA_HotelRatePlanRS>
+```
+
+```php
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OTA_HotelRatePlanRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2017-11-24T08:59:08.992Z" Version="1.0">
+    <Success/>
+    <RatePlans HotelCode="AL_TEST">
+        <RatePlan End="2017-12-23" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-23">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-24" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-24">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-25" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-25">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+    </RatePlans>
+</OTA_HotelRatePlanRS>
+```
+
+```csharp
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OTA_HotelRatePlanRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2017-11-24T08:59:08.992Z" Version="1.0">
+    <Success/>
+    <RatePlans HotelCode="AL_TEST">
+        <RatePlan End="2017-12-23" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-23">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-24" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-24">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-25" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-25">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+    </RatePlans>
+</OTA_HotelRatePlanRS>
+```
+
+```java
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OTA_HotelRatePlanRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2017-11-24T08:59:08.992Z" Version="1.0">
+    <Success/>
+    <RatePlans HotelCode="AL_TEST">
+        <RatePlan End="2017-12-23" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-23">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-24" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-24">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+        <RatePlan End="2017-12-25" InvTypeCode="RO_TEST" RatePlanCode="003" Start="2017-12-25">
+            <Rates>
+                <Rate>
+                    <BaseByGuestAmts>
+                        <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="56.00" NumberOfGuests="2"/>
+                    </BaseByGuestAmts>
+                </Rate>
+            </Rates>
+        </RatePlan>
+    </RatePlans>
+</OTA_HotelRatePlanRS>
+```
+
+### HTTP Request
+
+Testing:<br>
+`POST` http://qualification-ari.weekendesk.com/ari/
+<br>Production:<br>
+`POST` http://ari.weekendesk.com/ari/
+
+### Query Parameters
+
+Element | Type | Required | Description
+--------- | ------- | ----- |-----------
+Version | string | Yes | 1.0 is the latest version
+TimeStamp | date | Yes | TimeStamp of the request (YYY-MM-DD-THH:MM:SS)
+Target | string | Yes | Testing=Test environment; Production=Prod environment
+HotelCode | string | Yes | The Weekendesk Hotel ID
+Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start date is included in the updated period.
+End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
+InvTypeCode | string | Yes | Code of the Room for which the update is sent
+RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 
 #Reservation Delivery
 
@@ -1746,11 +2392,10 @@ Specifically the following are used for notifying the Channel partner of a Booki
 - OTA_CancelRQ/RS<br>
 <br>
 
-## Receive Booking Notifications
+## Booking Notification
 
 Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
 Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.
-
 
 ### HTTP Request
 
@@ -1761,6 +2406,7 @@ Endpoint:<br>
 Remember - Before starting receiving Booking Notifications <b>send the Endpoint and Credentials (if any)</b> of both your testing and production environment to your technical contact at Weekendesk.
 </aside>
 
+### Booking Request
 
 ### Authentication
 
@@ -1968,13 +2614,13 @@ CardCode | string | Type of card - always VCC (Virtual Credit Card)
 CardHolderName | string | Card Holder Name
 
 
-## Booking Response
+### Booking Response
 
 > The above request sent to the ChannelPartner should the following  XML:
 
 ```xml
 <OTA_HotelResRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="3.0"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0"
   ResResponseType="Committed"
   xmlns="http://www.opentravel.org/OTA/2003/05"><Success/>
   <HotelReservations>
@@ -2016,7 +2662,7 @@ Here an example of a request and the response expected from the channel partner 
 <OTA_HotelResRQ xmlns="http://www.opentravel.org/OTA/2003/05"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd"
-Version="3.0"
+Version="1.0"
                 ResStatus="Commit" PrimaryLangID="en-US">
     <POS>
         <Source>
@@ -2134,11 +2780,10 @@ Version="3.0"
 ```
 
 
-## Receive Cancel Notifications
+## Cancel Notification
 
 Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
 Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.
-
 
 ### HTTP Request
 
@@ -2153,7 +2798,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<OTA_CancelRQ Version="3.0" CancelType="Commit" xmlns="http://www.opentravel.org/OTA/2003/05">
+<OTA_CancelRQ Version="1.0" CancelType="Commit" xmlns="http://www.opentravel.org/OTA/2003/05">
     <POS>
         <Source>
         <RequestorID ID="user" MessagePassword="password" HotelID="AL_TEST"/>
@@ -2185,7 +2830,7 @@ ResID_Value | string | Reservation number
 ResID_Source | string | Weekendesk or ChannelPartner
 ResID_Date | date | TimeStamp of integration of the cancellation
 
-## Cancellation Response
+### Cancel Response
 
 > The above request sent to the Channel partner should the following XML :
 
