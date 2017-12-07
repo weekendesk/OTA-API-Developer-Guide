@@ -919,10 +919,10 @@ Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start 
 End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-Time | integer | Yes | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
-MinMaxMessageType | string | Yes | SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction
-Restriction | string | Yes | Arrival=updates the CTA restriction; Departure=updates the CTD restriction
-Status | string | Yes | Open=The CheckIn (or CheckOut) is available for a specific RatePlan; Close=The CheckIn (or CheckOut) is NOT available for a specific RatePlan
+Time | integer | No | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
+MinMaxMessageType | string | No | SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction
+Restriction | string | No | Arrival=updates the CTA restriction; Departure=updates the CTD restriction
+Status | string | No | Open=The rate plan is sellable. If the Restriction tag is present it indicates that CheckIn (or CheckOut) is Open for that day; Close=Stop sale. If the Restriction tag is present it indicates a CloseToArrival (or CloseToDeparture) on that day.
 
 ##Update Inventory
 
@@ -1118,7 +1118,7 @@ Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start 
 End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
+BookingLimit | integer | No | Defines the number of Stock available for a specific Rate Plan
 
 ##Multiple Updates
 (Availability, Restrictions, Inventory)
@@ -1453,12 +1453,11 @@ Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start 
 End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-BookingLimit | integer | Yes | Defines the number of Stock available for a specific Rate Plan
-Status | string | Yes | Open=The rate plan is sellable; Close=Stop sale
-Type | integer | Yes | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
-MinMaxMessageType | string | Yes | SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction
-Restriction | string | Yes | Arrival=updates the CTA restriction; Departure=updates the CTD restriction
-Status | string | Yes | Open=The CheckIn (or CheckOut) is available for a specific RatePlan; Close=The CheckIn (or CheckOut) is NOT available for a specific RatePlan
+BookingLimit | integer | No | Defines the number of Stock available for a specific Rate Plan
+Time | integer | No | Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan
+MinMaxMessageType | string | No | SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction
+Restriction | string | No | Arrival=updates the CTA restriction; Departure=updates the CTD restriction
+Status | string | No | Open=The rate plan is sellable. If the Restriction tag is present it indicates that CheckIn (or CheckOut) is Open for that day; Close=Stop sale. If the Restriction tag is present it indicates a CloseToArrival (or CloseToDeparture) on that day.
 
 
 ##Update Rates
