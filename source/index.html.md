@@ -685,7 +685,7 @@ Start | date | Yes | Starting date of the updated period (YYY-MM-DD). The Start 
 End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date is included in the updated period.
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
-Status | string | Yes | Open=The rate plan is sellable; Close=Stop sale
+Status | string | No | Open=The rate plan is sellable; Close=Stop sale
 
 ##Update Restrictions
 
