@@ -23,10 +23,10 @@ search: true
 # Introduction
 
 This document describes the interface specifications between the Weekendesk and a Channel Manager partner.<br>
-The interface developed by the Channel partner, according to the specifications present in this document, will allow a “2-ways” communication which will provide the following features:<br>
+The interface developed by the ChannelManager partner, according to the specifications present in this document, will allow a “2-ways” communication which will provide the following features:<br>
 
-1. **ARI updates**: Availability&Restrictions, Rates and Inventory are received from Channel partner and saved into Weekendesk inventory system
-2. **Booking Notifications**: Reservations as soon as they are confirmed on Weekendesk front Website are PUSHed to the channel partner. When a reservation is cancelled a Cancellation notification is also PUSHed to the channel system.
+1. **ARI updates**: Availability&Restrictions, Rates and Inventory are received from ChannelManager partner and saved into Weekendesk inventory system
+2. **Booking Notifications**: Reservations as soon as they are confirmed on Weekendesk front Website are PUSHed to the ChannelManager partner. When a reservation is cancelled a Cancellation notification is also PUSHed to the channel system.
 
 Following this document, the Channel Manager partner can develop a web-service (client side) that will be compatible with Weekendesk inventory system (server side).
 
@@ -47,19 +47,19 @@ The standard interface of Weekendesk handles several cases based on the followin
 
 ### OTA_Ping
 
-The Ping RQ/RS allows the channel partner to test the connectivity is working.
+The Ping RQ/RS allows the ChannelManager partner to test the connectivity is working.
 
 ### OTA_HotelRoomList
 
-The RoomList RQ/RS is used by the channel partner to map the Weekendesk rooms and rate plans with the ones on its system.
+The RoomList RQ/RS is used by the ChannelManager partner to map the Weekendesk rooms and rate plans with the ones on its system.
 
 ### OTA_HotelAvailNotif
 
-The Availability Notification RQ/RS allows the channel partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.
+The Availability Notification RQ/RS allows the ChannelManager partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.
 
 ### OTA_HotelRateAmountNotif
 
-The Rates Amount Notification RQ/RS allows the channel partner to send prices for each rate that is mapped in its system.
+The Rates Amount Notification RQ/RS allows the ChannelManager partner to send prices for each rate that is mapped in its system.
 
 #Setup
 
@@ -478,14 +478,14 @@ ID | string | Yes | Weekendesk Hotel ID
 
 # ARI Updates
 
-The updates of Availability, Rates and Inventory are performed by the Channel partner to Weekendesk system.<br>Data receive via these updates are reflected in the product displayed on the front which are updated consequently.<br>
+The updates of Availability, Rates and Inventory are performed by the ChannelManager partner to Weekendesk system.<br>Data receive via these updates are reflected in the product displayed on the front which are updated consequently.<br>
 In details<br>
 - The <b> OTA_HotelAvailNotifRQ </b> handles Availability, Restrictions and Inventory<br>
 - The <b> OTA_HotelRateAmountNotifRQ </b> handles the prices for each Rate
 
 ## Update Availability
 
-The Channel partner can Open or Close the availability of any RatePlan of any Room mapped with Weekendesk. Once Closed, the RatePlan will not be available for sale on the Website and Applications.
+The ChannelManager partner can Open or Close the availability of any RatePlan of any Room mapped with Weekendesk. Once Closed, the RatePlan will not be available for sale on the Website and Applications.
 
 <aside class="success">
 Remember - The Availability is per RatePlan. If your Room has more than one RatePlan <b>only the RatePlan that is specified in the request</b> will be Closed (or Opened).
@@ -698,7 +698,7 @@ Weekendesk handles several types of restrictions.
 <br>Each of the these restrictions can be sent in the same request and/or combined with Availability and Inventory updates.
 
 <aside class="success">
-Remember - The Channel partner may decide not to send one or more restrictions. If this happens, no update will be made for this restriction.
+Remember - The ChannelManager partner may decide not to send one or more restrictions. If this happens, no update will be made for this restriction.
 </aside>
 
 
@@ -926,9 +926,9 @@ Status | string | No | Open=The rate plan is sellable. If the Restriction tag is
 
 ##Update Inventory
 
-Weekendesk supports the Inventory at the RatePlan level. The Channel partner can either send the same value for all RatePlans or a different value for each RatePlan.
+Weekendesk supports the Inventory at the RatePlan level. The ChannelManager partner can either send the same value for all RatePlans or a different value for each RatePlan.
 <br>
-If the Channel partner handles the stock at the room level, is supposed to send the same value for all RatePlans, and update the same for all RatePlans when receiving a new reservation.
+If the ChannelManager partner handles the stock at the room level, is supposed to send the same value for all RatePlans, and update the same for all RatePlans when receiving a new reservation.
 
 ```xml
 HEADER
@@ -1123,7 +1123,7 @@ BookingLimit | integer | No | Defines the number of Stock available for a specif
 ##Multiple Updates
 (Availability, Restrictions, Inventory)
 
-The Channel partner can combine multiple updates of availability, restrictions and inventory in the same request, for different room and rates, specifying each section with a <b>different LocatorID</b>s.
+The ChannelManager partner can combine multiple updates of availability, restrictions and inventory in the same request, for different room and rates, specifying each section with a <b>different LocatorID</b>s.
 <br>
 <aside class="warning">We highly recommend to use multiple updates only for short periods in order to avoid service disruptions. Weekendesk reserves the right of restricting the number of requests per minute if noticed a high usage of this type of request</aside>
 
@@ -1732,11 +1732,11 @@ DecimalPlaces | integer | No | Number of decimal places used in the AmountAfterT
 
 #ARI Read
 
-The Reading function allows the Channel partner to retrieve prices and availabilities for a given Room and RatePlan code.
+The Reading function allows the ChannelManager partner to retrieve prices and availabilities for a given Room and RatePlan code.
 
 ##Read Availabilities
 
-The AvailGet request allows the Channel Partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
+The AvailGet request allows the ChannelManager partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
 <br>
 - Booking Limit<br>
 - Min LengthOfStay<br>
@@ -1744,6 +1744,9 @@ The AvailGet request allows the Channel Partner to request availabilities for a 
 - Closed to Arrival<br>
 - Closed to Departure<br>
 <br>
+<aside class="notice">
+Remember, due to performance constraints <code>only one data range is allowed</code> within the same request.
+</aside>
 
 ```xml
 HEADER
@@ -1761,12 +1764,6 @@ BODY
             <RatePlans>
                 <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
                 <RatePlan InvTypeCode="RO_TEST" RatePlanCode="003"/>
-            </RatePlans>
-        </HotelAvailRequest>
-        <HotelAvailRequest>
-            <DateRange Start="2017-03-26" End="2017-03-26"/>
-            <RatePlans>
-                <RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
             </RatePlans>
         </HotelAvailRequest>
     </HotelAvailRequests>
@@ -2059,7 +2056,11 @@ RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 
 ##Read Prices
 
-The RatePlan request allows the Channel Partner to request rates for a specific Room and RatePlan.
+The RatePlan request allows the ChannelManager partner to request rates for a specific Room and RatePlan.
+<br>
+<aside class="notice">
+Remember, due to performance constraints <code>only one data range is allowed</code> within the same request.
+</aside>
 
 ```xml
 HEADER
@@ -2074,12 +2075,7 @@ BODY
 			<DateRange Start="2017-10-23" End="2017-10-25"/>
 		<RatePlans>				
 			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="001"/>
-		</RatePlans>
-		</RateAmountMessage>
-		<RateAmountMessage>
-			<DateRange Start="2017-10-23" End="2017-10-25"/>
-		<RatePlans>				
-			<RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/>
+      <RatePlan InvTypeCode="RO_TEST" RatePlanCode="002"/>
 		</RatePlans>
 		</RateAmountMessage>
 	</RateAmountMessages>
@@ -2382,10 +2378,10 @@ RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 
 #Reservation Delivery
 
-The Reservation delivery allows the Channel partner to receive both Booking and Cancel Notifications real time via the web-service.<br>
+The Reservation delivery allows the ChannelManager partner to receive both Booking and Cancel Notifications real time via the web-service.<br>
 Weekendesk Reservation API is based on XML messages based on the standards OTA (http://www.opentravel.org/)<br>
 <br>
-Specifically the following are used for notifying the Channel partner of a Booking or Cancellation:<br>
+Specifically the following are used for notifying the ChannelManager partner of a Booking or Cancellation:<br>
 <br>
 - OTA_HotelResRQ/RS<br>
 - OTA_CancelRQ/RS<br>
@@ -2393,8 +2389,8 @@ Specifically the following are used for notifying the Channel partner of a Booki
 
 ## Booking Notification
 
-Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.
+Booking notifications allows the ChannelManager partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the ChannelManager partner to notify the hotel in order to reserve the room(s) for the stay.
 
 ### HTTP Request
 
@@ -2421,8 +2417,8 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 Element | Type |  Description
 --------- | ------- | -----------
 @RequestorID |  |  
-ID | string | User provided by the Channel partner to authenticate the request
-MessagePassword | string | Password provided by the Channel partner to authenticate the request
+ID | string | User provided by the ChannelManager partner to authenticate the request
+MessagePassword | string | Password provided by the ChannelManager partner to authenticate the request
 
 ### Room Information
 
@@ -2574,7 +2570,7 @@ CountryName | CDATA | Country of the customer
     <Total AmountAfterTax="840.00" CurrencyCode="EUR"/>
     <HotelReservationIDs>
         <HotelReservationID ResID_Type="5" ResID_Value="123456" ResID_Source="Weekendesk" ResID_Date="2017-06-08T09:38:30.655"/>
-        <HotelReservationID ResID_Type="14" ResID_Value="ABC123" ResID_Source="ChannelPartner" ResID_Date="2017-06-08T09:38:30.655"/>
+        <HotelReservationID ResID_Type="14" ResID_Value="ABC123" ResID_Source="ChannelManagerPartner" ResID_Date="2017-06-08T09:38:30.655"/>
     </HotelReservationIDs>
     <Guarantee>
          <GuaranteesAccepted>
@@ -2600,9 +2596,9 @@ Text | CDATA | Description of the package booked
 AmountAfterTax | decimal | Total price of the stay booked (including services and activities)
 CurrencyCode | string | Currency of the amount. Always "EUR"
 @HotelReservationID |  |  
-ResID_Type | integer | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Type | integer | 5=Weekendesk Reservation number; 14=ChannelManager partner reservation number
 ResID_Value | string | Reservation number
-ResID_Source | string | Weekendesk or ChannelPartner
+ResID_Source | string | Weekendesk or ChannelManager partner
 ResID_Date | date | TimeStamp of integration of the reservation
 @PaymentCard |  |
 CardNumber | integer | Number of the Virtual Credit Card that should be used by the hotel
@@ -2615,7 +2611,7 @@ CardHolderName | string | Card Holder Name
 
 ### Booking Response
 
-> The above request sent to the ChannelPartner should the following  XML:
+> The above request sent to the ChannelManager partner should the following  XML:
 
 ```xml
 <OTA_HotelResRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -2630,7 +2626,7 @@ CardHolderName | string | Card Holder Name
               ResID_Source="Weekendesk"
               ResID_Date="2017-09-27T18:32:43.612"/>
             <HotelReservationID ResID_Type="14" ResID_Value="ABCDEFG"
-              ResID_Source="ChannelPartner"
+              ResID_Source="ChannelManager"
               ResID_Date="2017-09-28T02:32:44.9882167+10:00"/>
             </HotelReservationIDs>
         </ResGlobalInfo>
@@ -2642,19 +2638,19 @@ CardHolderName | string | Card Holder Name
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
 ResResponseType | string | Yes | Always "Committed" if correctly saved into the Channel system
-ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=ChannelManager partner reservation number
 ResID_Value | string | Yes | Reservation number
-ResID_Source | string | Yes | Weekendesk or ChannelPartner
+ResID_Source | string | Yes | Weekendesk or ChannelManager partner
 ResID_Date | date | Yes | TimeStamp of integration of the reservation
 
 <aside class="success">
-Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
+Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the ChannelManager partner is not generating a new booking number can send back for the Type 14 any value.
 </aside>
 
 
 ### Example of Booking Request
 
-Here an example of a request and the response expected from the channel partner with all the elements included in the body.
+Here an example of a request and the response expected from the ChannelManager partner with all the elements included in the body.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -2760,7 +2756,7 @@ Version="1.0"
                     <HotelReservationID ResID_Type="5" ResID_Value="12345678" ResID_Source="Weekendesk"
                                         ResID_Date="2017-09-19T17:50:41.059"/>
                                             <HotelReservationID ResID_Type="14" ResID_Value="ABCDEFGH"
-                                            ResID_Source="ChannelPartner"
+                                            ResID_Source="ChannelManager"
                                             ResID_Date="2017-09-19T17:50:41.059"/>
                 </HotelReservationIDs>
             <Guarantee>
@@ -2781,8 +2777,8 @@ Version="1.0"
 
 ## Cancel Notification
 
-Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.
+Cancellation notifications allows the ChannelManager partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the ChannelManager partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.
 
 ### HTTP Request
 
@@ -2810,7 +2806,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
                             ResID_Date="2017-09-26T17:29:03.743"/>
         <HotelReservationID ResID_Type="14"
                             ResID_Value="ABC123CDE"
-                            ResID_Source="ChannelPartner"
+                            ResID_Source="ChannelManager"
                             ResID_Date="2017-09-26T17:29:03.743"/>
     </HotelReservationIDs>
     </OTA_CancelRQ>
@@ -2820,18 +2816,18 @@ Element | Type |  Description
 --------- | ------- | -----------
 CancelType | string | Weekendesk always send Commit
 @RequestorID |  |
-ID | string | User provided by the Channel partner to authenticate the request
-MessagePassword | string | Password provided by the Channel partner to authenticate the request
+ID | string | User provided by the ChannelManager partner to authenticate the request
+MessagePassword | string | Password provided by the ChannelManager partner to authenticate the request
 HotelID | string | Hotel ID for which the cancellation is requested
 @HotelReservationID |  |
-ResID_Type | integer | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Type | integer | 5=Weekendesk Reservation number; 14=ChannelManager partner reservation number
 ResID_Value | string | Reservation number
-ResID_Source | string | Weekendesk or ChannelPartner
+ResID_Source | string | Weekendesk or ChannelManager partner
 ResID_Date | date | TimeStamp of integration of the cancellation
 
 ### Cancel Response
 
-> The above request sent to the Channel partner should the following XML :
+> The above request sent to the ChannelManager partner should the following XML :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -2842,7 +2838,7 @@ ResID_Date | date | TimeStamp of integration of the cancellation
                 <ResGlobalInfo>
                     <HotelReservationIDs>
                           <HotelReservationID ResID_Type="5" ResID_Value="12345678"	ResID_Source="Weekendesk" ResID_Date="2017-10-01T12:23:26+2"/>
-                          <HotelReservationID ResID_Type="14" ResID_Value="987654321" ResID_Source="Channel Partner"  ResID_Date="2017-10-01T12:23:31" />
+                          <HotelReservationID ResID_Type="14" ResID_Value="987654321" ResID_Source="ChannelManager"  ResID_Date="2017-10-01T12:23:31" />
                     </HotelReservationIDs>
                 </ResGlobalInfo>
             </HotelReservation>
@@ -2853,7 +2849,7 @@ ResID_Date | date | TimeStamp of integration of the cancellation
 Element | Type | Required | Description
 --------- | ------- | ----- |-----------
 Status | string | Yes | Send "Cancelled" to acknowledge Weekendesk that the reservation has been successfully cancelled
-ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=Channel partner reservation number
+ResID_Type | integer | Yes | 5=Weekendesk Reservation number; 14=ChannelManager partner reservation number
 ResID_Value | string | Yes | Reservation number
-ResID_Source | string | Yes | Weekendesk or Channel Partner
+ResID_Source | string | Yes | Weekendesk or ChannelManager partner
 ResID_Date | date | Yes | TimeStamp of the cancellation (YYYY-MM-DDThh:mm:ss)
