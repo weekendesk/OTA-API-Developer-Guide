@@ -312,11 +312,11 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>This document describes the interface specifications between the Weekendesk and a Channel Manager partner.<br>
-The interface developed by the Channel partner, according to the specifications present in this document, will allow a “2-ways” communication which will provide the following features:<br></p>
+The interface developed by the ChannelManager partner, according to the specifications present in this document, will allow a “2-ways” communication which will provide the following features:<br></p>
 
 <ol>
-<li><strong>ARI updates</strong>: Availability&amp;Restrictions, Rates and Inventory are received from Channel partner and saved into Weekendesk inventory system</li>
-<li><strong>Booking Notifications</strong>: Reservations as soon as they are confirmed on Weekendesk front Website are PUSHed to the channel partner. When a reservation is cancelled a Cancellation notification is also PUSHed to the channel system.</li>
+<li><strong>ARI updates</strong>: Availability&amp;Restrictions, Rates and Inventory are received from ChannelManager partner and saved into Weekendesk inventory system</li>
+<li><strong>Booking Notifications</strong>: Reservations as soon as they are confirmed on Weekendesk front Website are PUSHed to the ChannelManager partner. When a reservation is cancelled a Cancellation notification is also PUSHed to the channel system.</li>
 </ol>
 
 <p>Following this document, the Channel Manager partner can develop a web-service (client side) that will be compatible with Weekendesk inventory system (server side).</p>
@@ -329,13 +329,13 @@ For further information on these standards, please consult:<br></p>
 <h2 id='messages'>Messages</h2>
 <p>The standard interface of Weekendesk handles several cases based on the following OTA messages:</p>
 <h3 id='ota_ping'>OTA_Ping</h3>
-<p>The Ping RQ/RS allows the channel partner to test the connectivity is working.</p>
+<p>The Ping RQ/RS allows the ChannelManager partner to test the connectivity is working.</p>
 <h3 id='ota_hotelroomlist'>OTA_HotelRoomList</h3>
-<p>The RoomList RQ/RS is used by the channel partner to map the Weekendesk rooms and rate plans with the ones on its system.</p>
+<p>The RoomList RQ/RS is used by the ChannelManager partner to map the Weekendesk rooms and rate plans with the ones on its system.</p>
 <h3 id='ota_hotelavailnotif'>OTA_HotelAvailNotif</h3>
-<p>The Availability Notification RQ/RS allows the channel partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.</p>
+<p>The Availability Notification RQ/RS allows the ChannelManager partner to send Availability, Restrictions and Booking Limits to Weekendesk for each rate plan mapped in its system.</p>
 <h3 id='ota_hotelrateamountnotif'>OTA_HotelRateAmountNotif</h3>
-<p>The Rates Amount Notification RQ/RS allows the channel partner to send prices for each rate that is mapped in its system.</p>
+<p>The Rates Amount Notification RQ/RS allows the ChannelManager partner to send prices for each rate that is mapped in its system.</p>
 <h1 id='setup'>Setup</h1>
 <p>In this section it will be described all necessary steps to get your connectivity up and running.
 <br>
@@ -683,12 +683,12 @@ BODY
 </tr>
 </tbody></table>
 <h1 id='ari-updates'>ARI Updates</h1>
-<p>The updates of Availability, Rates and Inventory are performed by the Channel partner to Weekendesk system.<br>Data receive via these updates are reflected in the product displayed on the front which are updated consequently.<br>
+<p>The updates of Availability, Rates and Inventory are performed by the ChannelManager partner to Weekendesk system.<br>Data receive via these updates are reflected in the product displayed on the front which are updated consequently.<br>
 In details<br>
 - The <b> OTA_HotelAvailNotifRQ </b> handles Availability, Restrictions and Inventory<br>
 - The <b> OTA_HotelRateAmountNotifRQ </b> handles the prices for each Rate</p>
 <h2 id='update-availability'>Update Availability</h2>
-<p>The Channel partner can Open or Close the availability of any RatePlan of any Room mapped with Weekendesk. Once Closed, the RatePlan will not be available for sale on the Website and Applications.</p>
+<p>The ChannelManager partner can Open or Close the availability of any RatePlan of any Room mapped with Weekendesk. Once Closed, the RatePlan will not be available for sale on the Website and Applications.</p>
 
 <aside class="success">
 Remember - The Availability is per RatePlan. If your Room has more than one RatePlan <b>only the RatePlan that is specified in the request</b> will be Closed (or Opened).
@@ -913,7 +913,7 @@ RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n
 <tr>
 <td>Status</td>
 <td>string</td>
-<td>Yes</td>
+<td>No</td>
 <td>Open=The rate plan is sellable; Close=Stop sale</td>
 </tr>
 </tbody></table>
@@ -927,7 +927,7 @@ RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\r\n
 <br>Each of the these restrictions can be sent in the same request and/or combined with Availability and Inventory updates.</p>
 
 <aside class="success">
-Remember - The Channel partner may decide not to send one or more restrictions. If this happens, no update will be made for this restriction.
+Remember - The ChannelManager partner may decide not to send one or more restrictions. If this happens, no update will be made for this restriction.
 </aside>
 <pre class="highlight xml tab-xml"><code>HEADER
 Authorization: Basic TEStTesttEsTt3st
@@ -1168,32 +1168,32 @@ xmlns:xsi<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSch
 <tr>
 <td>Time</td>
 <td>integer</td>
-<td>Yes</td>
+<td>No</td>
 <td>Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan</td>
 </tr>
 <tr>
 <td>MinMaxMessageType</td>
 <td>string</td>
-<td>Yes</td>
+<td>No</td>
 <td>SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction</td>
 </tr>
 <tr>
 <td>Restriction</td>
 <td>string</td>
-<td>Yes</td>
+<td>No</td>
 <td>Arrival=updates the CTA restriction; Departure=updates the CTD restriction</td>
 </tr>
 <tr>
 <td>Status</td>
 <td>string</td>
-<td>Yes</td>
-<td>Open=The CheckIn (or CheckOut) is available for a specific RatePlan; Close=The CheckIn (or CheckOut) is NOT available for a specific RatePlan</td>
+<td>No</td>
+<td>Open=The rate plan is sellable. If the Restriction tag is present it indicates that CheckIn (or CheckOut) is Open for that day; Close=Stop sale. If the Restriction tag is present it indicates a CloseToArrival (or CloseToDeparture) on that day.</td>
 </tr>
 </tbody></table>
 <h2 id='update-inventory'>Update Inventory</h2>
-<p>Weekendesk supports the Inventory at the RatePlan level. The Channel partner can either send the same value for all RatePlans or a different value for each RatePlan.
+<p>Weekendesk supports the Inventory at the RatePlan level. The ChannelManager partner can either send the same value for all RatePlans or a different value for each RatePlan.
 <br>
-If the Channel partner handles the stock at the room level, is supposed to send the same value for all RatePlans, and update the same for all RatePlans when receiving a new reservation.</p>
+If the ChannelManager partner handles the stock at the room level, is supposed to send the same value for all RatePlans, and update the same for all RatePlans when receiving a new reservation.</p>
 <pre class="highlight xml tab-xml"><code>HEADER
 Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
@@ -1405,14 +1405,14 @@ End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" /&gt;\n\t
 <tr>
 <td>BookingLimit</td>
 <td>integer</td>
-<td>Yes</td>
+<td>No</td>
 <td>Defines the number of Stock available for a specific Rate Plan</td>
 </tr>
 </tbody></table>
 <h2 id='multiple-updates'>Multiple Updates</h2>
 <p>(Availability, Restrictions, Inventory)</p>
 
-<p>The Channel partner can combine multiple updates of availability, restrictions and inventory in the same request, for different room and rates, specifying each section with a <b>different LocatorID</b>s.
+<p>The ChannelManager partner can combine multiple updates of availability, restrictions and inventory in the same request, for different room and rates, specifying each section with a <b>different LocatorID</b>s.
 <br>
 <aside class="warning">We highly recommend to use multiple updates only for short periods in order to avoid service disruptions. Weekendesk reserves the right of restricting the number of requests per minute if noticed a high usage of this type of request</aside></p>
 <pre class="highlight xml tab-xml"><code>HEADER
@@ -1764,38 +1764,32 @@ Restriction=\"Departure\" Status=\"Open\" /&gt;\r\n      &lt;/AvailStatusMessage
 <tr>
 <td>BookingLimit</td>
 <td>integer</td>
-<td>Yes</td>
+<td>No</td>
 <td>Defines the number of Stock available for a specific Rate Plan</td>
 </tr>
 <tr>
-<td>Status</td>
-<td>string</td>
-<td>Yes</td>
-<td>Open=The rate plan is sellable; Close=Stop sale</td>
-</tr>
-<tr>
-<td>Type</td>
+<td>Time</td>
 <td>integer</td>
-<td>Yes</td>
+<td>No</td>
 <td>Defines the Minimum (or Maximum) number of days of Stay required for a specific Rate Plan</td>
 </tr>
 <tr>
 <td>MinMaxMessageType</td>
 <td>string</td>
-<td>Yes</td>
+<td>No</td>
 <td>SetMinLOS=updates the MinStay restriction; SetMaxLOS=updates the MaxStay restriction</td>
 </tr>
 <tr>
 <td>Restriction</td>
 <td>string</td>
-<td>Yes</td>
+<td>No</td>
 <td>Arrival=updates the CTA restriction; Departure=updates the CTD restriction</td>
 </tr>
 <tr>
 <td>Status</td>
 <td>string</td>
-<td>Yes</td>
-<td>Open=The CheckIn (or CheckOut) is available for a specific RatePlan; Close=The CheckIn (or CheckOut) is NOT available for a specific RatePlan</td>
+<td>No</td>
+<td>Open=The rate plan is sellable. If the Restriction tag is present it indicates that CheckIn (or CheckOut) is Open for that day; Close=Stop sale. If the Restriction tag is present it indicates a CloseToArrival (or CloseToDeparture) on that day.</td>
 </tr>
 </tbody></table>
 <h2 id='update-rates'>Update Rates</h2>
@@ -2100,16 +2094,19 @@ DecimalPlaces=\"0\" /&gt;\n                    &lt;/BaseByGuestAmts&gt;\n
 </tr>
 </tbody></table>
 <h1 id='ari-read'>ARI Read</h1>
-<p>The Reading function allows the Channel partner to retrieve prices and availabilities for a given Room and RatePlan code.</p>
+<p>The Reading function allows the ChannelManager partner to retrieve prices and availabilities for a given Room and RatePlan code.</p>
 <h2 id='read-availabilities'>Read Availabilities</h2>
-<p>The AvailGet request allows the Channel Partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
+<p>The AvailGet request allows the ChannelManager partner to request availabilities for a specific Room and RatePlan. The following information will be given: <br>
 <br>
 - Booking Limit<br>
 - Min LengthOfStay<br>
 - Max LengthOfStay<br>
 - Closed to Arrival<br>
 - Closed to Departure<br>
-<br></p>
+<br>
+<aside class="notice">
+Remember, due to performance constraints <code>only one data range is allowed</code> within the same request.
+</aside></p>
 <pre class="highlight xml tab-xml"><code>HEADER
 Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
@@ -2125,12 +2122,6 @@ BODY
             <span class="nt">&lt;RatePlans&gt;</span>
                 <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
                 <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"003"</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/RatePlans&gt;</span>
-        <span class="nt">&lt;/HotelAvailRequest&gt;</span>
-        <span class="nt">&lt;HotelAvailRequest&gt;</span>
-            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-03-26"</span> <span class="na">End=</span><span class="s">"2017-03-26"</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;RatePlans&gt;</span>
-                <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
             <span class="nt">&lt;/RatePlans&gt;</span>
         <span class="nt">&lt;/HotelAvailRequest&gt;</span>
     <span class="nt">&lt;/HotelAvailRequests&gt;</span>
@@ -2438,7 +2429,11 @@ InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/&gt;\n
 </tr>
 </tbody></table>
 <h2 id='read-prices'>Read Prices</h2>
-<p>The RatePlan request allows the Channel Partner to request rates for a specific Room and RatePlan.</p>
+<p>The RatePlan request allows the ChannelManager partner to request rates for a specific Room and RatePlan.
+<br>
+<aside class="notice">
+Remember, due to performance constraints <code>only one data range is allowed</code> within the same request.
+</aside></p>
 <pre class="highlight xml tab-xml"><code>HEADER
 Authorization: Basic TEStTesttEsTt3st
 Content-Type: text/xml
@@ -2451,12 +2446,7 @@ BODY
             <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-10-23"</span> <span class="na">End=</span><span class="s">"2017-10-25"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;RatePlans&gt;</span>             
             <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"001"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/RatePlans&gt;</span>
-        <span class="nt">&lt;/RateAmountMessage&gt;</span>
-        <span class="nt">&lt;RateAmountMessage&gt;</span>
-            <span class="nt">&lt;DateRange</span> <span class="na">Start=</span><span class="s">"2017-10-23"</span> <span class="na">End=</span><span class="s">"2017-10-25"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;RatePlans&gt;</span>             
-            <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"002"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;RatePlan</span> <span class="na">InvTypeCode=</span><span class="s">"RO_TEST"</span> <span class="na">RatePlanCode=</span><span class="s">"002"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/RatePlans&gt;</span>
         <span class="nt">&lt;/RateAmountMessage&gt;</span>
     <span class="nt">&lt;/RateAmountMessages&gt;</span>
@@ -2774,17 +2764,17 @@ BODY
 </tr>
 </tbody></table>
 <h1 id='reservation-delivery'>Reservation Delivery</h1>
-<p>The Reservation delivery allows the Channel partner to receive both Booking and Cancel Notifications real time via the web-service.<br>
+<p>The Reservation delivery allows the ChannelManager partner to receive both Booking and Cancel Notifications real time via the web-service.<br>
 Weekendesk Reservation API is based on XML messages based on the standards OTA (http://www.opentravel.org/)<br>
 <br>
-Specifically the following are used for notifying the Channel partner of a Booking or Cancellation:<br>
+Specifically the following are used for notifying the ChannelManager partner of a Booking or Cancellation:<br>
 <br>
 - OTA_HotelResRQ/RS<br>
 - OTA_CancelRQ/RS<br>
 <br></p>
 <h2 id='booking-notification'>Booking Notification</h2>
-<p>Booking notifications allows the Channel partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to reserve the room(s) for the stay.</p>
+<p>Booking notifications allows the ChannelManager partner to be acknowledged about a new booking that entered into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the ChannelManager partner to notify the hotel in order to reserve the room(s) for the stay.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p>Endpoint:<br>
 <code>POST</code> https://channel-manager-endpoint.com</p>
@@ -2814,12 +2804,12 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>ID</td>
 <td>string</td>
-<td>User provided by the Channel partner to authenticate the request</td>
+<td>User provided by the ChannelManager partner to authenticate the request</td>
 </tr>
 <tr>
 <td>MessagePassword</td>
 <td>string</td>
-<td>Password provided by the Channel partner to authenticate the request</td>
+<td>Password provided by the ChannelManager partner to authenticate the request</td>
 </tr>
 </tbody></table>
 <h3 id='room-information'>Room Information</h3><pre class="highlight xml tab-xml"><code><span class="nt">&lt;RoomStays&gt;</span>
@@ -3184,7 +3174,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
     <span class="nt">&lt;Total</span> <span class="na">AmountAfterTax=</span><span class="s">"840.00"</span> <span class="na">CurrencyCode=</span><span class="s">"EUR"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;HotelReservationIDs&gt;</span>
         <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"123456"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span> <span class="na">ResID_Date=</span><span class="s">"2017-06-08T09:38:30.655"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"ABC123"</span> <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span> <span class="na">ResID_Date=</span><span class="s">"2017-06-08T09:38:30.655"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"ABC123"</span> <span class="na">ResID_Source=</span><span class="s">"ChannelManagerPartner"</span> <span class="na">ResID_Date=</span><span class="s">"2017-06-08T09:38:30.655"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/HotelReservationIDs&gt;</span>
     <span class="nt">&lt;Guarantee&gt;</span>
          <span class="nt">&lt;GuaranteesAccepted&gt;</span>
@@ -3257,7 +3247,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>ResID_Type</td>
 <td>integer</td>
-<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+<td>5=Weekendesk Reservation number; 14=ChannelManager partner reservation number</td>
 </tr>
 <tr>
 <td>ResID_Value</td>
@@ -3267,7 +3257,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <tr>
 <td>ResID_Source</td>
 <td>string</td>
-<td>Weekendesk or ChannelPartner</td>
+<td>Weekendesk or ChannelManager partner</td>
 </tr>
 <tr>
 <td>ResID_Date</td>
@@ -3312,7 +3302,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tbody></table>
 <h3 id='booking-response'>Booking Response</h3>
 <blockquote>
-<p>The above request sent to the ChannelPartner should the following  XML:</p>
+<p>The above request sent to the ChannelManager partner should the following  XML:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_HotelResRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
   <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.0"</span>
@@ -3326,7 +3316,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
               <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span>
               <span class="na">ResID_Date=</span><span class="s">"2017-09-27T18:32:43.612"</span><span class="nt">/&gt;</span>
             <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"ABCDEFG"</span>
-              <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span>
+              <span class="na">ResID_Source=</span><span class="s">"ChannelManager"</span>
               <span class="na">ResID_Date=</span><span class="s">"2017-09-28T02:32:44.9882167+10:00"</span><span class="nt">/&gt;</span>
             <span class="nt">&lt;/HotelReservationIDs&gt;</span>
         <span class="nt">&lt;/ResGlobalInfo&gt;</span>
@@ -3352,7 +3342,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <td>ResID_Type</td>
 <td>integer</td>
 <td>Yes</td>
-<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+<td>5=Weekendesk Reservation number; 14=ChannelManager partner reservation number</td>
 </tr>
 <tr>
 <td>ResID_Value</td>
@@ -3364,7 +3354,7 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <td>ResID_Source</td>
 <td>string</td>
 <td>Yes</td>
-<td>Weekendesk or ChannelPartner</td>
+<td>Weekendesk or ChannelManager partner</td>
 </tr>
 <tr>
 <td>ResID_Date</td>
@@ -3375,10 +3365,10 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 </tbody></table>
 
 <aside class="success">
-Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the Channel partner is not generating a new booking number can send back for the Type 14 any value.
+Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the ChannelManager partner is not generating a new booking number can send back for the Type 14 any value.
 </aside>
 <h3 id='example-of-booking-request'>Example of Booking Request</h3>
-<p>Here an example of a request and the response expected from the channel partner with all the elements included in the body.</p>
+<p>Here an example of a request and the response expected from the ChannelManager partner with all the elements included in the body.</p>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OTA_HotelResRQ</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span>
 <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
@@ -3482,7 +3472,7 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
                     <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span>
                                         <span class="na">ResID_Date=</span><span class="s">"2017-09-19T17:50:41.059"</span><span class="nt">/&gt;</span>
                                             <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"ABCDEFGH"</span>
-                                            <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span>
+                                            <span class="na">ResID_Source=</span><span class="s">"ChannelManager"</span>
                                             <span class="na">ResID_Date=</span><span class="s">"2017-09-19T17:50:41.059"</span><span class="nt">/&gt;</span>
                 <span class="nt">&lt;/HotelReservationIDs&gt;</span>
             <span class="nt">&lt;Guarantee&gt;</span>
@@ -3499,8 +3489,8 @@ Remember — Both ResID_Type=5 and ResID_Type=14 must be returned. In case the C
     <span class="nt">&lt;/HotelReservations&gt;</span>
 <span class="nt">&lt;/OTA_HotelResRQ&gt;</span>
 </code></pre><h2 id='cancel-notification'>Cancel Notification</h2>
-<p>Cancellation notifications allows the Channel partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
-Once received the notification, and successfully confirmed, it is responsability of the Channel partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.</p>
+<p>Cancellation notifications allows the ChannelManager partner to be acknowledged about a new cancellation that has been made into the Weekendesk system.<br>
+Once received the notification, and successfully confirmed, it is responsability of the ChannelManager partner to notify the hotel in order to cancel the reservation of a previously confirmed stay.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p>Endpoint:<br>
 <code>POST</code> https://channel-manager-endpoint.com</p>
@@ -3522,7 +3512,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
                             <span class="na">ResID_Date=</span><span class="s">"2017-09-26T17:29:03.743"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span>
                             <span class="na">ResID_Value=</span><span class="s">"ABC123CDE"</span>
-                            <span class="na">ResID_Source=</span><span class="s">"ChannelPartner"</span>
+                            <span class="na">ResID_Source=</span><span class="s">"ChannelManager"</span>
                             <span class="na">ResID_Date=</span><span class="s">"2017-09-26T17:29:03.743"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/HotelReservationIDs&gt;</span>
     <span class="nt">&lt;/OTA_CancelRQ&gt;</span>
@@ -3547,12 +3537,12 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <tr>
 <td>ID</td>
 <td>string</td>
-<td>User provided by the Channel partner to authenticate the request</td>
+<td>User provided by the ChannelManager partner to authenticate the request</td>
 </tr>
 <tr>
 <td>MessagePassword</td>
 <td>string</td>
-<td>Password provided by the Channel partner to authenticate the request</td>
+<td>Password provided by the ChannelManager partner to authenticate the request</td>
 </tr>
 <tr>
 <td>HotelID</td>
@@ -3567,7 +3557,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <tr>
 <td>ResID_Type</td>
 <td>integer</td>
-<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+<td>5=Weekendesk Reservation number; 14=ChannelManager partner reservation number</td>
 </tr>
 <tr>
 <td>ResID_Value</td>
@@ -3577,7 +3567,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <tr>
 <td>ResID_Source</td>
 <td>string</td>
-<td>Weekendesk or ChannelPartner</td>
+<td>Weekendesk or ChannelManager partner</td>
 </tr>
 <tr>
 <td>ResID_Date</td>
@@ -3587,7 +3577,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 </tbody></table>
 <h3 id='cancel-response'>Cancel Response</h3>
 <blockquote>
-<p>The above request sent to the Channel partner should the following XML :</p>
+<p>The above request sent to the ChannelManager partner should the following XML :</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;OTA_CancelRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.00"</span>  <span class="na">Status=</span><span class="s">"Cancelled"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
@@ -3597,7 +3587,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
                 <span class="nt">&lt;ResGlobalInfo&gt;</span>
                     <span class="nt">&lt;HotelReservationIDs&gt;</span>
                           <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"5"</span> <span class="na">ResID_Value=</span><span class="s">"12345678"</span> <span class="na">ResID_Source=</span><span class="s">"Weekendesk"</span> <span class="na">ResID_Date=</span><span class="s">"2017-10-01T12:23:26+2"</span><span class="nt">/&gt;</span>
-                          <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"987654321"</span> <span class="na">ResID_Source=</span><span class="s">"Channel Partner"</span>  <span class="na">ResID_Date=</span><span class="s">"2017-10-01T12:23:31"</span> <span class="nt">/&gt;</span>
+                          <span class="nt">&lt;HotelReservationID</span> <span class="na">ResID_Type=</span><span class="s">"14"</span> <span class="na">ResID_Value=</span><span class="s">"987654321"</span> <span class="na">ResID_Source=</span><span class="s">"ChannelManager"</span>  <span class="na">ResID_Date=</span><span class="s">"2017-10-01T12:23:31"</span> <span class="nt">/&gt;</span>
                     <span class="nt">&lt;/HotelReservationIDs&gt;</span>
                 <span class="nt">&lt;/ResGlobalInfo&gt;</span>
             <span class="nt">&lt;/HotelReservation&gt;</span>
@@ -3622,7 +3612,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>ResID_Type</td>
 <td>integer</td>
 <td>Yes</td>
-<td>5=Weekendesk Reservation number; 14=Channel partner reservation number</td>
+<td>5=Weekendesk Reservation number; 14=ChannelManager partner reservation number</td>
 </tr>
 <tr>
 <td>ResID_Value</td>
@@ -3634,7 +3624,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 <td>ResID_Source</td>
 <td>string</td>
 <td>Yes</td>
-<td>Weekendesk or Channel Partner</td>
+<td>Weekendesk or ChannelManager partner</td>
 </tr>
 <tr>
 <td>ResID_Date</td>
