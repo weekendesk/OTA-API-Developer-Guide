@@ -2054,7 +2054,7 @@ End | date | Yes | Ending date of the updated period (YYY-MM-DD). The End date i
 InvTypeCode | string | Yes | Code of the Room for which the update is sent
 RatePlanCode | string | Yes | Code of the Rate Plan for which the update is sent
 
-##Read Prices
+##Read RatePlans
 
 The RatePlan request allows the ChannelManager partner to request rates for a specific Room and RatePlan.
 <br>
