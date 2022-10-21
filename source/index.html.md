@@ -134,7 +134,7 @@ curl
   -H "Cache-Control: no-cache"
   -d '<?xml version="1.0" encoding="UTF-8"?>
 <OTA_PingRQ Version="1.0" TimeStamp="2008-05-29T10:58:21">
-</OTA_PingRQ>' "http://qualification-ari.weekendesk.com/ari/"
+</OTA_PingRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
@@ -164,7 +164,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
@@ -179,7 +179,7 @@ OkHttpClient client = new OkHttpClient();
 MediaType mediaType = MediaType.parse("text/xml");
 RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OTA_PingRQ Version=\"1.01\" TimeStamp=\"2008-05-29T10:58:21\">\n</OTA_PingRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("content-type", "text/xml")
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
@@ -229,7 +229,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -276,14 +276,14 @@ curl
  <HotelRoomLists>
     <HotelRoomList />
  </HotelRoomLists>
-</OTA_HotelRoomListRQ>' "http://qualification-ari.weekendesk.com/ari/"
+</OTA_HotelRoomListRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -314,7 +314,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
@@ -329,7 +329,7 @@ OkHttpClient client = new OkHttpClient();
 MediaType mediaType = MediaType.parse("text/xml");
 RequestBody body = RequestBody.create(mediaType, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<OTA_HotelRoomListRQ xmlns=\"http://www.opentravel.org/OTA/2003/05\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <POS>\r\n      <Source>\r\n         <RequestorID Type=\"1\" ID=\"AL_TEST\" />\r\n      </Source>\r\n   </POS>\r\n   <HotelRoomLists>\r\n      <HotelRoomList />\r\n   </HotelRoomLists>\r\n</OTA_HotelRoomListRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("content-type", "text/xml")
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
@@ -464,7 +464,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -528,14 +528,14 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
       </AvailStatusMessage>
    </AvailStatusMessages>
 </OTA_HotelAvailNotifRQ>
-' "http://qualification-ari.weekendesk.com/ari/"
+' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -569,7 +569,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
@@ -604,7 +604,7 @@ RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\r\n
 </AvailStatusMessages>\r\n
 </OTA_HotelAvailNotifRQ>\r\n");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -668,7 +668,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -749,7 +749,7 @@ curl
 	         <RestrictionStatus Restriction="Departure" Status="Open" />
 	      </AvailStatusMessage>
 	   </AvailStatusMessages>
-	</OTA_HotelAvailNotifRQ>' "http://qualification-ari.weekendesk.com/ari/"
+	</OTA_HotelAvailNotifRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
@@ -794,7 +794,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("authorization", "Basic TEStTesttEsTt3st");
@@ -836,7 +836,7 @@ MinMaxMessageType=\"SetMaxLOS\" />\n\t         </LengthsOfStay>\n\t
 <RestrictionStatus Restriction=\"Departure\" Status=\"Open\" />\n\t     
 </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -902,7 +902,7 @@ TimeStamp="2016-02-24T23:00:26" Target="Production">
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -965,14 +965,14 @@ TimeStamp="2016-02-26T10:32:51" Target="Production">
            RatePlanCode="003" InvTypeCode="RO_TEST" />
 	      </AvailStatusMessage>
 	   </AvailStatusMessages>
-	</OTA_HotelAvailNotifRQ>' "http://qualification-ari.weekendesk.com/ari/"
+	</OTA_HotelAvailNotifRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -1004,7 +1004,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
@@ -1036,7 +1036,7 @@ LocatorID=\"1\">\n\t         <StatusApplicationControl Start=\"2017-02-27\"
 End=\"2017-02-27\" RatePlanCode=\"003\" InvTypeCode=\"RO_TEST\" />\n\t     
 </AvailStatusMessage>\n\t   </AvailStatusMessages>\n\t</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -1101,7 +1101,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -1222,14 +1222,14 @@ TimeStamp="2016-02-26T10:32:51" Target="Production">
          <RestrictionStatus Restriction="Departure" Status="Open" />
       </AvailStatusMessage>
    </AvailStatusMessages>
-</OTA_HotelAvailNotifRQ>' "http://qualification-ari.weekendesk.com/ari/"
+</OTA_HotelAvailNotifRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -1290,7 +1290,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
@@ -1371,7 +1371,7 @@ Restriction=\"Arrival\" Status=\"Open\" />\r\n         <RestrictionStatus
 Restriction=\"Departure\" Status=\"Open\" />\r\n      </AvailStatusMessage>\r\n  
 </AvailStatusMessages>\r\n</OTA_HotelAvailNotifRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -1436,7 +1436,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -1539,14 +1539,14 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             </Rates>
         </RateAmountMessage>
     </RateAmountMessages>
-</OTA_HotelRateAmountNotifRQ>' "http://qualification-ari.weekendesk.com/ari/"
+</OTA_HotelRateAmountNotifRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -1595,7 +1595,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
@@ -1646,7 +1646,7 @@ DecimalPlaces=\"0\" />\n                    </BaseByGuestAmts>\n
 </Rate>\n            </Rates>\n        </RateAmountMessage>\n   
 </RateAmountMessages>\n</OTA_HotelRateAmountNotifRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -1710,7 +1710,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -1795,14 +1795,14 @@ curl
             </RatePlans>
         </HotelAvailRequest>
     </HotelAvailRequests>
-</OTA_HotelAvailGetRQ>' "http://qualification-ari.weekendesk.com/ari/"
+</OTA_HotelAvailGetRQ>' "https://ari.staging.weekendesk.com/ari/"
 ```
 
 ```php
 <?php
 
 $request = new HttpRequest();
-$request->setUrl('http://qualification-ari.weekendesk.com/ari/');
+$request->setUrl('https://ari.staging.weekendesk.com/ari/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
@@ -1841,7 +1841,7 @@ try {
 ```
 
 ```csharp
-var client = new RestClient("http://qualification-ari.weekendesk.com/ari/");
+var client = new RestClient("https://ari.staging.weekendesk.com/ari/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "text/xml");
@@ -1872,7 +1872,7 @@ InvTypeCode=\"RO_TEST\" RatePlanCode=\"001\"/>\n
 </RatePlans>\n        </HotelAvailRequest>\n   
 </HotelAvailRequests>\n</OTA_HotelAvailGetRQ>");
 Request request = new Request.Builder()
-  .url("http://qualification-ari.weekendesk.com/ari/")
+  .url("https://ari.staging.weekendesk.com/ari/")
   .post(body)
   .addHeader("authorization", "Basic TEStTesttEsTt3st")
   .addHeader("content-type", "text/xml")
@@ -2037,7 +2037,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
@@ -2359,7 +2359,7 @@ Response response = client.newCall(request).execute();
 ### HTTP Request
 
 Testing:<br>
-`POST` http://qualification-ari.weekendesk.com/ari/
+`POST` https://ari.staging.weekendesk.com/ari/
 <br>Production:<br>
 `POST` http://ari.weekendesk.com/ari/
 
