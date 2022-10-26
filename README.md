@@ -47,3 +47,8 @@ Now that `OTA-API-Developer-Guide` is all set up on your machine, you'll probabl
 - Open your file editor of preference.
 - Edit the files within the [source folder](./source).
 - Reload the page.
+
+### Deploy to production
+
+- Upload the generated files to the `gh-pages` branch.
+- After that github will upload automatically the changes to the [public domain](https://ota-doc.weekendesk.com/#introduction) 
