@@ -3181,7 +3181,8 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
              <span class="nt">&lt;GuaranteeAccepted&gt;</span>
                  <span class="nt">&lt;PaymentCard</span> <span class="na">CardNumber=</span><span class="s">"1111222233334444"</span> <span class="na">ExpireDate=</span><span class="s">"1219"</span>
                               <span class="na">SeriesCode=</span><span class="s">"123"</span> <span class="na">CardType=</span><span class="s">"MC"</span>
-                              <span class="na">CardCode=</span><span class="s">"VCC"</span> <span class="na">CardHolderName=</span><span class="s">"WEEKENDESK"</span><span class="nt">/&gt;</span>
+                              <span class="na">CardCode=</span><span class="s">"VCC"</span> <span class="na">CardHolderName=</span><span class="s">"WEEKENDESK"</span>
+                              <span class="na">VCCAmount=</span><span class="s">"232.75 EUR"</span><span class="nt">/&gt;</span>
              <span class="nt">&lt;/GuaranteeAccepted&gt;</span>
          <span class="nt">&lt;/GuaranteesAccepted&gt;</span>
      <span class="nt">&lt;/Guarantee&gt;</span>
@@ -3299,10 +3300,15 @@ Remember - Before starting receiving Booking Notifications <b>send the Endpoint 
 <td>string</td>
 <td>Card Holder Name</td>
 </tr>
+<tr>
+<td>VCCAmount</td>
+<td>string</td>
+<td>Amount that should be charged to the card.</td>
+</tr>
 </tbody></table>
 <h3 id='booking-response'>Booking Response</h3>
 <blockquote>
-<p>The above request sent to the ChannelManager partner should the following  XML:</p>
+<p>The above request sent to the ChannelManager partner should be the following XML:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="nt">&lt;OTA_HotelResRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
   <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.0"</span>
@@ -3578,7 +3584,7 @@ Remember - Before starting receiving Cancellation Notifications <b>send the Endp
 </tbody></table>
 <h3 id='cancel-response'>Cancel Response</h3>
 <blockquote>
-<p>The above request sent to the ChannelManager partner should the following XML :</p>
+<p>The above request sent to the ChannelManager partner should be the following XML:</p>
 </blockquote>
 <pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;OTA_CancelRS</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>  <span class="na">xmlns:xsd=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">Version=</span><span class="s">"1.00"</span>  <span class="na">Status=</span><span class="s">"Cancelled"</span> <span class="na">xmlns=</span><span class="s">"http://www.opentravel.org/OTA/2003/05"</span><span class="nt">&gt;</span>
